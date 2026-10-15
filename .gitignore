@@ -43,3 +43,4 @@ verify-*.png
 # System files
 .DS_Store
 Thumbs.db
+powershell.cmd

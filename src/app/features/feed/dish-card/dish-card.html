@@ -13,6 +13,11 @@
         [alt]="dish().name"
         loading="lazy"
       />
+    } @else {
+      <div class="no-photo-watermark">
+        <span class="watermark-icon">🍝</span>
+        <span class="watermark-brand">Il Matterello</span>
+      </div>
     }
     <div class="media-overlay"></div>
   </div>
@@ -117,6 +122,8 @@
         <div class="dish-preview-row">
           @if (dish().imageUrl) {
             <img class="share-dish-thumb" [src]="dish().imageUrl" [alt]="dish().name" />
+          } @else {
+            <div class="share-dish-thumb-placeholder">🍝</div>
           }
           <div class="share-dish-info">
             <strong>{{ dish().name }}</strong>
