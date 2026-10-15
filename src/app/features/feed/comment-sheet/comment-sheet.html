@@ -11,7 +11,7 @@
     <div class="sheet-header">
       <span class="header-spacer"></span>
       <h4>Comentarios ({{ comments().length }})</h4>
-      <button type="button" class="close-btn" (click)="closed.emit()">✕</button>
+      <button type="button" class="close-btn" (click)="closed.emit()"><i class="ti ti-x"></i></button>
     </div>
 
     <!-- Lista de comentarios con scroll -->
@@ -19,7 +19,7 @@
       @if (comments().length === 0) {
         <div class="empty-comments">
           <p>Todavía no hay comentarios.</p>
-          <span>¡Sé el primero en comentar sobre este plato! 💬</span>
+          <span>¡Sé el primero en comentar sobre este plato!</span>
         </div>
       } @else {
         @for (comment of comments(); track comment.id) {
@@ -53,7 +53,7 @@
 
     <!-- Input fijo en la parte inferior estilo Instagram -->
     <div class="comment-input-bar">
-      <div class="my-avatar">🍝</div>
+      <div class="my-avatar"><i class="ti ti-user"></i></div>
       <input
         type="text"
         placeholder="Añade un comentario..."

@@ -6,7 +6,10 @@
       [class.active]="category.id === activeCategoryId()"
       (click)="selectCategory(category.id)"
     >
-      {{ category.label }}
+      @if (category.icon) {
+        <i class="ti ti-{{ category.icon }} chip-icon"></i>
+      }
+      <span>{{ category.label }}</span>
     </button>
   }
 </div>

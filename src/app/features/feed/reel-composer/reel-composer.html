@@ -1,0 +1,396 @@
+@if (isOpen()) {
+  <div class="ig-backdrop" (click)="closeModal()">
+    <div class="ig-composer" (click)="$event.stopPropagation()">
+      <!-- Barra de progreso de publicación estilo Instagram -->
+      @if (isPublishing()) {
+        <div class="ig-progress-bar-wrap">
+          <div class="ig-progress-bar" [style.width.%]="publishProgress()"></div>
+        </div>
+      }
+
+      <!-- Cabecera del Modal estilo Instagram -->
+      <header class="ig-header">
+        <button
+          type="button"
+          class="ig-nav-btn"
+          (click)="mediaUrl() && !publishSuccess() ? removeMedia() : closeModal()"
+          [title]="mediaUrl() && !publishSuccess() ? 'Volver a elegir archivo' : 'Cerrar'"
+        >
+          @if (mediaUrl() && !publishSuccess()) {
+            <i class="ti ti-arrow-left"></i>
+          } @else {
+            <i class="ti ti-x"></i>
+          }
+        </button>
+
+        <h3 class="ig-title">
+          @if (publishSuccess()) {
+            Reel publicado
+          } @else {
+            Crear nuevo reel
+          }
+        </h3>
+
+        <div class="ig-header-action">
+          @if (!publishSuccess()) {
+            <button
+              type="button"
+              class="ig-share-btn"
+              [disabled]="!canShare"
+              [class.active]="canShare"
+              (click)="shareReel()"
+            >
+              @if (isPublishing()) {
+                <span class="spinner-dot"></span>
+              } @else {
+                <span>Compartir</span>
+              }
+            </button>
+          } @else {
+            <button type="button" class="ig-share-btn active" (click)="closeModal()">
+              <span>Listo</span>
+            </button>
+          }
+        </div>
+      </header>
+
+      <!-- CUERPO PRINCIPAL -->
+      @if (publishSuccess()) {
+        <!-- Pantalla de éxito estilo Instagram -->
+        <div class="ig-success-view">
+          <div class="success-ring">
+            <i class="ti ti-circle-check"></i>
+          </div>
+          <h4>¡Se compartió tu reel en el menú!</h4>
+          <p>
+            El plato <strong>{{ publishedDish()?.name }}</strong> ya está disponible en vivo en la carta virtual de Il Matterello.
+          </p>
+          <div class="success-actions">
+            <button type="button" class="btn-ig-primary" (click)="viewInMenu()">
+              <i class="ti ti-eye"></i>
+              <span>Ver en la carta virtual</span>
+            </button>
+            <button type="button" class="btn-ig-secondary" (click)="closeModal()">
+              <span>Cerrar</span>
+            </button>
+          </div>
+        </div>
+      } @else {
+        <div class="ig-body">
+          <!-- COLUMNA IZQUIERDA: ÁREA DE MEDIOS (FORMATO REEL VERTICAL 9:16) -->
+          <div
+            class="ig-media-col"
+            [class.drag-over]="dragActive()"
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)"
+            (drop)="onDrop($event)"
+          >
+            <input
+              #fileInput
+              type="file"
+              class="hidden-file-input"
+              accept="image/*,video/*"
+              (change)="onFileSelected($event)"
+            />
+
+            @if (!mediaUrl()) {
+              <!-- Dropzone vacío -->
+              <div class="media-dropzone">
+                <div class="drop-icon-box">
+                  <i class="ti ti-video-plus"></i>
+                </div>
+                <h4>Arrastra fotos o videos del plato aquí</h4>
+                <p>Formato vertical 9:16 sugerido (MP4, WEBM, JPG, PNG)</p>
+
+                <button
+                  type="button"
+                  class="btn-select-file"
+                  (click)="fileInput.click()"
+                >
+                  <i class="ti ti-photo-plus"></i>
+                  <span>Seleccionar de la computadora</span>
+                </button>
+
+                <!-- Opción para pegar URL si se desea -->
+                <div class="url-input-toggle">
+                  @if (!isUrlInputOpen()) {
+                    <button
+                      type="button"
+                      class="btn-text-link"
+                      (click)="isUrlInputOpen.set(true)"
+                    >
+                      <i class="ti ti-link"></i>
+                      <span>O ingresar enlace web directo</span>
+                    </button>
+                  } @else {
+                    <div class="url-bar">
+                      <input
+                        type="url"
+                        placeholder="https://..."
+                        [value]="directUrlInput()"
+                        (input)="directUrlInput.set($any($event.target).value)"
+                        (keydown.enter)="applyDirectUrl()"
+                      />
+                      <button type="button" class="btn-url-apply" (click)="applyDirectUrl()">
+                        Cargar
+                      </button>
+                    </div>
+                  }
+                </div>
+              </div>
+            } @else {
+              <!-- Previsualización activa en 9:16 -->
+              <div class="media-preview-container">
+                @if (mediaType() === 'video') {
+                  <video
+                    class="reel-media-player"
+                    [src]="mediaUrl()"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                  ></video>
+                } @else {
+                  <img
+                    class="reel-media-img"
+                    [src]="mediaUrl()"
+                    alt="Previsualización de plato"
+                  />
+                }
+
+                <!-- Overlays cinematográficos de Instagram Reels -->
+                <div class="preview-overlay">
+                  <div class="watermark-tag">
+                    <i class="ti ti-tools-kitchen-2"></i>
+                    <span>Il Matterello</span>
+                  </div>
+
+                  <div class="preview-audio-sticker">
+                    <i class="ti ti-music"></i>
+                    <span>{{ selectedAudio() }}</span>
+                  </div>
+                </div>
+
+                <!-- Botón flotante para cambiar de archivo -->
+                <div class="preview-toolbar">
+                  <button
+                    type="button"
+                    class="btn-preview-action"
+                    (click)="fileInput.click()"
+                    title="Cambiar foto/video"
+                  >
+                    <i class="ti ti-rotate-clockwise"></i>
+                    <span>Cambiar</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn-preview-action action-danger"
+                    (click)="removeMedia()"
+                    title="Eliminar archivo"
+                  >
+                    <i class="ti ti-trash"></i>
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- COLUMNA DERECHA: HOJA DE DETALLES ESTILO INSTAGRAM COMPOSER -->
+          <div class="ig-details-col">
+            <!-- Fila del creador / cuenta -->
+            <div class="ig-account-row">
+              <div class="account-avatar">
+                <i class="ti ti-tools-kitchen-2"></i>
+              </div>
+              <div class="account-meta">
+                <div class="handle-row">
+                  <span class="account-handle">il_materello</span>
+                  <i class="ti ti-badge-check verified-icon" title="Verificado"></i>
+                </div>
+                <span class="account-sub">Palermo, Buenos Aires · Carta Digital</span>
+              </div>
+            </div>
+
+            <!-- Pie de foto (Caption) -->
+            <div class="ig-caption-block">
+              <textarea
+                class="ig-caption-input"
+                rows="3"
+                placeholder="Escribe un pie de foto... (Ingredientes, historia artesanal, textura de la masa)"
+                [value]="dishCaption()"
+                (input)="dishCaption.set($any($event.target).value)"
+                maxlength="2200"
+              ></textarea>
+              <div class="caption-footer">
+                <span class="char-count">{{ dishCaption().length }} / 2,200</span>
+              </div>
+            </div>
+
+            <div class="ig-divider"></div>
+
+            <!-- SECCIÓN 1: ETIQUETAR PLATO (DATOS GASTRONÓMICOS) -->
+            <div class="ig-form-section">
+              <div class="section-heading">
+                <i class="ti ti-tag heading-icon"></i>
+                <h4>Etiquetar plato y precio</h4>
+              </div>
+
+              <div class="ig-inputs-grid">
+                <div class="ig-field">
+                  <label>Nombre del plato:</label>
+                  <input
+                    type="text"
+                    placeholder="Ej: Tagliolini ai Frutti di Mare"
+                    [value]="dishName()"
+                    (input)="dishName.set($any($event.target).value)"
+                  />
+                </div>
+
+                <div class="ig-field">
+                  <label>Precio ($ ARS):</label>
+                  <input
+                    type="number"
+                    placeholder="Ej: 24500"
+                    [value]="dishPrice()"
+                    (input)="dishPrice.set($any($event.target).value)"
+                  />
+                </div>
+
+                <div class="ig-field">
+                  <label>Categoría:</label>
+                  <select
+                    [value]="dishCategory()"
+                    (change)="dishCategory.set($any($event.target).value)"
+                  >
+                    @for (cat of categories(); track cat.id) {
+                      <option [value]="cat.id">{{ cat.label }}</option>
+                    }
+                  </select>
+                </div>
+
+                <div class="ig-field">
+                  <label>Tiempo de cocina estimado:</label>
+                  <input
+                    type="text"
+                    placeholder="Ej: 15-20 min"
+                    [value]="prepTime()"
+                    (input)="prepTime.set($any($event.target).value)"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="ig-divider"></div>
+
+            <!-- SECCIÓN 2: ETIQUETAS Y ALÉRGENOS -->
+            <div class="ig-form-section">
+              <div class="section-heading">
+                <i class="ti ti-sparkles heading-icon"></i>
+                <h4>Etiquetas gastronómicas</h4>
+              </div>
+
+              <div class="tag-chips-wrap">
+                @for (t of availableTags; track t.label) {
+                  <button
+                    type="button"
+                    class="tag-toggle-chip"
+                    [class.selected]="isTagSelected(t.label)"
+                    (click)="toggleTag(t.label)"
+                  >
+                    <i class="ti ti-{{ t.icon }}"></i>
+                    <span>{{ t.label }}</span>
+                  </button>
+                }
+              </div>
+            </div>
+
+            <div class="ig-divider"></div>
+
+            <!-- SECCIÓN 3: AUDIO DEL REEL -->
+            <div class="ig-form-section">
+              <div class="section-heading">
+                <i class="ti ti-music heading-icon"></i>
+                <h4>Audio del reel</h4>
+              </div>
+
+              <select
+                class="ig-select"
+                [value]="selectedAudio()"
+                (change)="selectedAudio.set($any($event.target).value)"
+              >
+                @for (track of audioTracks; track track) {
+                  <option [value]="track">{{ track }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="ig-divider"></div>
+
+            <!-- SECCIÓN 4: UBICACIÓN -->
+            <div class="ig-form-section">
+              <div class="section-heading">
+                <i class="ti ti-map-pin heading-icon"></i>
+                <h4>Ubicación</h4>
+              </div>
+              <div class="location-pill">
+                <i class="ti ti-building-store"></i>
+                <span>Il Matterello Palermo · Martín Coronado 3269, CABA</span>
+              </div>
+            </div>
+
+            <div class="ig-divider"></div>
+
+            <!-- SECCIÓN 5: CONFIGURACIÓN AVANZADA -->
+            <div class="ig-form-section">
+              <div class="section-heading">
+                <i class="ti ti-settings heading-icon"></i>
+                <h4>Configuración avanzada</h4>
+              </div>
+
+              <div class="toggles-list">
+                <label class="ig-switch-row">
+                  <div class="switch-info">
+                    <span class="switch-title">Disponible en stock</span>
+                    <span class="switch-sub">Los comensales podrán pedir este plato inmediatamente</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    class="ig-switch"
+                    [checked]="inStock()"
+                    (change)="inStock.set($any($event.target).checked)"
+                  />
+                </label>
+
+                <label class="ig-switch-row">
+                  <div class="switch-info">
+                    <span class="switch-title">Permitir comentarios</span>
+                    <span class="switch-sub">Los clientes pueden opinar sobre el plato</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    class="ig-switch"
+                    [checked]="allowComments()"
+                    (change)="allowComments.set($any($event.target).checked)"
+                  />
+                </label>
+
+                <label class="ig-switch-row">
+                  <div class="switch-info">
+                    <span class="switch-title">Plato sugerido del día</span>
+                    <span class="switch-sub">Se resaltará con insignia especial en la carta</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    class="ig-switch"
+                    [checked]="isFeatured()"
+                    (change)="isFeatured.set($any($event.target).checked)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}

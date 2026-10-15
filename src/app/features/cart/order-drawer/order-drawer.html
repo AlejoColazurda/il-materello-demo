@@ -6,7 +6,7 @@
     @if (submittedOrder(); as order) {
       <!-- Pantalla de confirmación de Comanda Enviada -->
       <div class="order-success-view">
-        <div class="success-icon-wrap">✓</div>
+        <div class="success-icon-wrap"><i class="ti ti-check"></i></div>
         <h3>¡Comanda Enviada al Mozo!</h3>
         <span class="ticket-id">{{ order.id }} · {{ order.table }}</span>
 
@@ -54,7 +54,7 @@
           </svg>
           <h3>Tu pedido</h3>
         </div>
-        <button type="button" class="drawer-close-x" (click)="close()">✕</button>
+        <button type="button" class="drawer-close-x" (click)="close()"><i class="ti ti-x"></i></button>
       </div>
 
       <!-- Selector de Mesa -->
@@ -76,7 +76,7 @@
 
       @if (lines().length === 0) {
         <div class="empty-wrap">
-          <span class="empty-icon">🍽️</span>
+          <i class="ti ti-tools-kitchen-2 empty-icon"></i>
           <p class="empty">Todavía no agregaste platos a tu pedido.</p>
           <span class="empty-sub">Navegá por los reels y tocá "Pedir" en los platos que te gusten.</span>
         </div>
@@ -114,7 +114,7 @@
 
         <!-- Botón Principal: Enviar comanda al mozo -->
         <button type="button" class="submit-order-btn" (click)="submitOrderToStaff()">
-          <span class="btn-icon">🛎️</span>
+          <span class="btn-icon"><i class="ti ti-bell-ringing"></i></span>
           <span>Enviar Comanda al Mozo ({{ selectedTable() }})</span>
         </button>
 

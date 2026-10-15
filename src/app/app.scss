@@ -81,6 +81,17 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   }
 
+  &.btn-create-reel {
+    background: linear-gradient(135deg, rgba(240, 148, 51, 0.2), rgba(220, 39, 67, 0.25));
+    border: 1px solid rgba(220, 39, 67, 0.5);
+    color: #ff7675;
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(240, 148, 51, 0.35), rgba(220, 39, 67, 0.45));
+      color: #fff;
+    }
+  }
+
   .counter-badge {
     background: #e74c3c;
     color: #fff;

@@ -1,10 +1,10 @@
 <div class="admin-container">
   <header class="admin-header">
     <div class="header-title">
-      <span class="icon">⚙️</span>
+      <span class="icon"><i class="ti ti-settings"></i></span>
       <div>
         <h2>Backoffice & Administración</h2>
-        <span class="sub">Il Materello · Carga de Carta, Personal y Conexión POS</span>
+        <span class="sub">Il Matterello · Carga de Carta, Personal y Conexión POS</span>
       </div>
     </div>
 
@@ -16,7 +16,8 @@
         [class.active]="activeTab() === 'dishes'"
         (click)="setTab('dishes')"
       >
-        🍝 Carta y Platos ({{ dishes().length }})
+        <i class="ti ti-tools-kitchen-2"></i>
+        <span>Carta y Platos ({{ dishes().length }})</span>
       </button>
       <button
         type="button"
@@ -24,7 +25,8 @@
         [class.active]="activeTab() === 'users'"
         (click)="setTab('users')"
       >
-        👥 Usuarios y Roles ({{ users().length }})
+        <i class="ti ti-users"></i>
+        <span>Usuarios y Roles ({{ users().length }})</span>
       </button>
       <button
         type="button"
@@ -32,7 +34,8 @@
         [class.active]="activeTab() === 'fudo'"
         (click)="setTab('fudo')"
       >
-        🔌 Integración Fudo POS
+        <i class="ti ti-plug"></i>
+        <span>Integración Fudo POS</span>
       </button>
     </nav>
   </header>
@@ -43,15 +46,18 @@
       <div class="section-actions">
         <div>
           <h3>Platos en la Carta</h3>
-          <p class="section-sub">Podés pausar stock en tiempo real o dar de alta nuevos platos.</p>
+          <p class="section-sub">Podés pausar stock en tiempo real o crear nuevos Reels para la carta.</p>
         </div>
-        <button
-          type="button"
-          class="btn-primary"
-          (click)="showDishForm.set(!showDishForm())"
-        >
-          {{ showDishForm() ? '✕ Cancelar' : '+ Cargar Nuevo Plato' }}
-        </button>
+        <div class="actions-group">
+          <button
+            type="button"
+            class="btn-primary btn-ig-reel-action"
+            (click)="openReelComposer()"
+          >
+            <i class="ti ti-video-plus"></i>
+            <span>+ Crear Reel (Estilo Instagram)</span>
+          </button>
+        </div>
       </div>
 
       <!-- Formulario para agregar nuevo plato -->
@@ -95,7 +101,7 @@
               <label>Etiquetas (separadas por coma):</label>
               <input
                 type="text"
-                placeholder="Ej: 🌿 Vegetariano, ⭐ Recomendado"
+                placeholder="Ej: Vegetariano, Recomendado"
                 [value]="newDishTags()"
                 (input)="newDishTags.set($any($event.target).value)"
               />
@@ -150,7 +156,7 @@
                   @if (dish.imageUrl) {
                     <img class="table-thumb" [src]="dish.imageUrl" [alt]="dish.name" />
                   } @else {
-                    <div class="table-thumb-placeholder">🍝</div>
+                    <div class="table-thumb-placeholder"><i class="ti ti-tools-kitchen-2"></i></div>
                   }
                   <div class="dish-name-desc">
                     <strong>{{ dish.name }}</strong>
@@ -160,8 +166,8 @@
                 <td><span class="cat-pill">{{ dish.categoryId }}</span></td>
                 <td class="price-cell">{{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</td>
                 <td>
-                  <span class="meta-tag">❤️ {{ dish.likes }}</span>
-                  <span class="meta-tag">✈️ {{ dish.shares ?? 0 }}</span>
+                  <span class="meta-tag"><i class="ti ti-heart"></i> {{ dish.likes }}</span>
+                  <span class="meta-tag"><i class="ti ti-share"></i> {{ dish.shares ?? 0 }}</span>
                 </td>
                 <td>
                   <button
@@ -170,7 +176,8 @@
                     [class.in-stock]="dish.inStock"
                     (click)="toggleDishStock(dish.id)"
                   >
-                    {{ dish.inStock ? '✓ En Stock' : '✕ Sin Stock' }}
+                    <i class="ti" [class.ti-check]="dish.inStock" [class.ti-x]="!dish.inStock"></i>
+                    <span>{{ dish.inStock ? 'En Stock' : 'Sin Stock' }}</span>
                   </button>
                 </td>
                 <td>
@@ -180,7 +187,7 @@
                     (click)="deleteDish(dish.id)"
                     title="Eliminar plato"
                   >
-                    🗑️
+                    <i class="ti ti-trash"></i>
                   </button>
                 </td>
               </tr>
@@ -204,7 +211,8 @@
           class="btn-primary"
           (click)="showUserForm.set(!showUserForm())"
         >
-          {{ showUserForm() ? '✕ Cancelar' : '+ Nuevo Empleado' }}
+          <i class="ti" [class.ti-x]="showUserForm()" [class.ti-user-plus]="!showUserForm()"></i>
+          <span>{{ showUserForm() ? 'Cancelar' : 'Nuevo Empleado' }}</span>
         </button>
       </div>
 
@@ -302,7 +310,8 @@
                     [class.active]="user.active"
                     (click)="toggleUserActive(user.id)"
                   >
-                    {{ user.active ? 'Activo ✓' : 'Inactivo ✕' }}
+                    <i class="ti" [class.ti-check]="user.active" [class.ti-x]="!user.active"></i>
+                    <span>{{ user.active ? 'Activo' : 'Inactivo' }}</span>
                   </button>
                 </td>
               </tr>

@@ -83,15 +83,15 @@ export class WaiterPanel {
   getStatusLabel(status: OrderStatus): string {
     switch (status) {
       case 'pendiente':
-        return 'Pendiente 🛎️';
+        return 'Pendiente';
       case 'preparando':
-        return 'En Cocina 🍳';
+        return 'En Cocina';
       case 'entregado':
-        return 'En Mesa 🍽️';
+        return 'En Mesa';
       case 'cobrado':
-        return 'Cobrado ✓';
+        return 'Cobrado';
       case 'cancelado':
-        return 'Cancelado ✕';
+        return 'Cancelado';
       default:
         return status;
     }
@@ -100,11 +100,11 @@ export class WaiterPanel {
   getNextActionLabel(status: OrderStatus): string {
     switch (status) {
       case 'pendiente':
-        return 'Mandar a Cocina 🍳';
+        return 'Mandar a Cocina';
       case 'preparando':
-        return 'Marcar Entregado 🍽️';
+        return 'Marcar Entregado';
       case 'entregado':
-        return 'Cobrar Mesa 💵';
+        return 'Cobrar Mesa';
       default:
         return '';
     }

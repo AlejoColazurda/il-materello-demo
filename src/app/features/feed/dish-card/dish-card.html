@@ -15,7 +15,7 @@
       />
     } @else {
       <div class="no-photo-watermark">
-        <span class="watermark-icon">🍝</span>
+        <i class="ti ti-tools-kitchen-2 watermark-icon"></i>
         <span class="watermark-brand">Il Matterello</span>
       </div>
     }
@@ -38,10 +38,10 @@
   <div class="dish-info" [class.with-comments]="commentsOpen">
     <!-- Fila del creador: @il_materello • Seguir -->
     <div class="creator-header">
-      <div class="creator-avatar">🍝</div>
+      <div class="creator-avatar"><i class="ti ti-tools-kitchen-2"></i></div>
       <div class="creator-meta">
         <span class="creator-handle">il_materello</span>
-        <span class="verified-badge" title="Verificado">✓</span>
+        <i class="ti ti-badge-check verified-badge" title="Verificado"></i>
       </div>
       <span class="meta-dot">•</span>
       <span class="creator-badge">Carta Virtual</span>
@@ -116,14 +116,14 @@
         <div class="share-handle"></div>
         <div class="share-header">
           <h3>Compartir plato</h3>
-          <button type="button" class="close-share-btn" (click)="closeShareModal()">✕</button>
+          <button type="button" class="close-share-btn" (click)="closeShareModal()"><i class="ti ti-x"></i></button>
         </div>
 
         <div class="dish-preview-row">
           @if (dish().imageUrl) {
             <img class="share-dish-thumb" [src]="dish().imageUrl" [alt]="dish().name" />
           } @else {
-            <div class="share-dish-thumb-placeholder">🍝</div>
+            <div class="share-dish-thumb-placeholder"><i class="ti ti-tools-kitchen-2"></i></div>
           }
           <div class="share-dish-info">
             <strong>{{ dish().name }}</strong>

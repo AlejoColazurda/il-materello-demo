@@ -3,7 +3,7 @@
   <header class="waiter-header">
     <div class="header-main">
       <div class="brand-title">
-        <span class="brand-icon">🛎️</span>
+        <span class="brand-icon"><i class="ti ti-bell-ringing"></i></span>
         <div>
           <h2>Panel de Mozos y Comandas</h2>
           <span class="sub">Il Materello · Control de Salón y Cocina en Vivo</span>
@@ -101,7 +101,7 @@
   <main class="orders-grid">
     @if (filteredOrders().length === 0) {
       <div class="empty-orders">
-        <span class="empty-icon">✓</span>
+        <i class="ti ti-check empty-icon"></i>
         <h3>No hay comandas con este filtro</h3>
         <p>Los pedidos que los clientes hagan desde la carta virtual aparecerán acá al instante.</p>
       </div>
@@ -125,7 +125,7 @@
           <!-- Comensal y notas -->
           @if (order.customerName) {
             <div class="customer-info">
-              <span>👤 Comensal: <b>{{ order.customerName }}</b></span>
+              <span><i class="ti ti-user"></i> Comensal: <b>{{ order.customerName }}</b></span>
             </div>
           }
 
@@ -156,7 +156,7 @@
               </div>
               @if (order.fudoSynced) {
                 <span class="fudo-badge" title="Comanda enviada a impresora de cocina y caja en Fudo">
-                  ✓ Fudo POS Synced
+                  <i class="ti ti-check"></i> Fudo POS Synced
                 </span>
               }
             </div>
@@ -180,7 +180,7 @@
                   (click)="cancelOrder(order.id)"
                   title="Anular comanda"
                 >
-                  ✕
+                  <i class="ti ti-x"></i>
                 </button>
               }
             </div>

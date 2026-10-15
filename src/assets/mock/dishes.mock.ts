@@ -5,31 +5,38 @@ import { Dish } from '../../app/core/models/dish.model';
 export const CATEGORIES_MOCK: Category[] = [
   {
     "id": "antipasto",
-    "label": "🥗 Antipasti"
+    "label": "Antipasti",
+    "icon": "tools-kitchen-2"
   },
   {
     "id": "pastas",
-    "label": "🍝 Pastas Caseras"
+    "label": "Pastas Caseras",
+    "icon": "tools-kitchen"
   },
   {
     "id": "risotto",
-    "label": "🍚 Risotto"
+    "label": "Risotto",
+    "icon": "bowl"
   },
   {
     "id": "pesce-carne",
-    "label": "🥩 Carnes y Pesce"
+    "label": "Carnes y Pesce",
+    "icon": "meat"
   },
   {
     "id": "ensaladas",
-    "label": "🥬 Insalate"
+    "label": "Insalate",
+    "icon": "leaf"
   },
   {
     "id": "postres",
-    "label": "🍮 Dolci / Postres"
+    "label": "Dolci / Postres",
+    "icon": "cake"
   },
   {
     "id": "bebidas",
-    "label": "🍷 Vinos y Bebidas"
+    "label": "Vinos y Bebidas",
+    "icon": "glass-cocktail"
   }
 ];
 
@@ -41,7 +48,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 15500,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 247,
@@ -56,7 +63,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 18500,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 98,
@@ -71,7 +78,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 18500,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 158,
@@ -85,7 +92,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 18500,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 408,
@@ -99,7 +106,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 22000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 359,
@@ -114,7 +121,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 18000,
     "categoryId": "antipasto",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 145,
@@ -128,7 +135,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 19000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 228,
@@ -143,7 +150,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 20000,
     "categoryId": "antipasto",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 301,
@@ -157,7 +164,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17500,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 85,
@@ -171,7 +178,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 318,
@@ -186,7 +193,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 18000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 388,
@@ -200,7 +207,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 49000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 78,
@@ -215,7 +222,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 32000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 403,
@@ -229,7 +236,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 21000,
     "categoryId": "antipasto",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 145,
@@ -243,7 +250,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 43000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 423,
@@ -257,7 +264,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 31000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 324,
@@ -272,7 +279,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 25000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 472,
@@ -286,7 +293,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 13000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 252,
@@ -300,7 +307,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 370,
@@ -314,7 +321,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "antipasto",
     "tags": [
-      "🇮🇹 Antipasto Tradicional"
+      " Antipasto Tradicional"
     ],
     "inStock": true,
     "likes": 62,
@@ -328,7 +335,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 29200,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
+      " Pasta Casera",
       "⭐ Especialidad de la casa"
     ],
     "inStock": true,
@@ -344,7 +351,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 25300,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
+      " Pasta Casera",
       "⭐ Especialidad de la casa"
     ],
     "inStock": true,
@@ -360,8 +367,8 @@ export const DISHES_MOCK: Dish[] = [
     "price": 32000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
-      "🐟 Frutos de Mar"
+      " Pasta Casera",
+      " Frutos de Mar"
     ],
     "inStock": true,
     "likes": 186,
@@ -376,7 +383,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 28500,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
+      " Pasta Casera",
       "⭐ Especialidad de la casa"
     ],
     "inStock": true,
@@ -392,9 +399,9 @@ export const DISHES_MOCK: Dish[] = [
     "price": 32000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
+      " Pasta Casera",
       "⭐ Especialidad de la casa",
-      "🐟 Frutos de Mar"
+      " Frutos de Mar"
     ],
     "inStock": true,
     "likes": 122,
@@ -409,7 +416,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 30000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 194,
@@ -424,7 +431,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 30000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 285,
@@ -439,7 +446,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 28000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 141,
@@ -454,7 +461,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 28000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 448,
@@ -469,7 +476,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 31000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 488,
@@ -484,8 +491,8 @@ export const DISHES_MOCK: Dish[] = [
     "price": 33000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
-      "🐟 Frutos de Mar"
+      " Pasta Casera",
+      " Frutos de Mar"
     ],
     "inStock": true,
     "likes": 429,
@@ -500,7 +507,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 29000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 86,
@@ -515,7 +522,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 32000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 326,
@@ -530,7 +537,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 32500,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 235,
@@ -545,7 +552,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 31000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
+      " Pasta Casera",
       "⭐ Especialidad de la casa"
     ],
     "inStock": true,
@@ -561,7 +568,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 29000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera",
+      " Pasta Casera",
       "⭐ Especialidad de la casa"
     ],
     "inStock": true,
@@ -577,7 +584,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 29000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 236,
@@ -592,7 +599,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 30000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 374,
@@ -607,7 +614,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 26000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 186,
@@ -622,7 +629,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 29200,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 193,
@@ -637,7 +644,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 29200,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 216,
@@ -652,7 +659,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 21000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 478,
@@ -666,7 +673,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 25000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 505,
@@ -680,7 +687,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 25000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 254,
@@ -694,7 +701,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 14000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 162,
@@ -708,7 +715,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 14000,
     "categoryId": "pastas",
     "tags": [
-      "🍝 Pasta Casera"
+      " Pasta Casera"
     ],
     "inStock": true,
     "likes": 165,
@@ -722,8 +729,8 @@ export const DISHES_MOCK: Dish[] = [
     "price": 39000,
     "categoryId": "risotto",
     "tags": [
-      "🐟 Frutos de Mar",
-      "🍚 Risotto al Dente"
+      " Frutos de Mar",
+      " Risotto al Dente"
     ],
     "inStock": true,
     "likes": 226,
@@ -737,8 +744,8 @@ export const DISHES_MOCK: Dish[] = [
     "price": 39000,
     "categoryId": "risotto",
     "tags": [
-      "🐟 Frutos de Mar",
-      "🍚 Risotto al Dente"
+      " Frutos de Mar",
+      " Risotto al Dente"
     ],
     "inStock": true,
     "likes": 395,
@@ -753,7 +760,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 35000,
     "categoryId": "risotto",
     "tags": [
-      "🍚 Risotto al Dente"
+      " Risotto al Dente"
     ],
     "inStock": true,
     "likes": 83,
@@ -767,7 +774,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 35000,
     "categoryId": "risotto",
     "tags": [
-      "🍚 Risotto al Dente"
+      " Risotto al Dente"
     ],
     "inStock": true,
     "likes": 435,
@@ -782,7 +789,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 36500,
     "categoryId": "risotto",
     "tags": [
-      "🍚 Risotto al Dente"
+      " Risotto al Dente"
     ],
     "inStock": true,
     "likes": 61,
@@ -796,7 +803,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 39500,
     "categoryId": "pesce-carne",
     "tags": [
-      "🐟 Frutos de Mar"
+      " Frutos de Mar"
     ],
     "inStock": true,
     "likes": 477,
@@ -810,7 +817,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 36000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 85,
@@ -825,7 +832,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 36500,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 494,
@@ -839,7 +846,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 45000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 130,
@@ -853,7 +860,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 39000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 278,
@@ -868,7 +875,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 44000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 293,
@@ -883,7 +890,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 39000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 161,
@@ -898,7 +905,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 35000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 311,
@@ -913,7 +920,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 31000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 112,
@@ -927,7 +934,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 35000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 416,
@@ -941,7 +948,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 35000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 447,
@@ -955,7 +962,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 80000,
     "categoryId": "pesce-carne",
     "tags": [
-      "🥩 Parrilla"
+      " Parrilla"
     ],
     "inStock": true,
     "likes": 182,
@@ -969,8 +976,8 @@ export const DISHES_MOCK: Dish[] = [
     "price": 30000,
     "categoryId": "ensaladas",
     "tags": [
-      "🐟 Frutos de Mar",
-      "🌿 Vegetariano"
+      " Frutos de Mar",
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 437,
@@ -985,7 +992,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 26000,
     "categoryId": "ensaladas",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 389,
@@ -1000,7 +1007,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 27000,
     "categoryId": "ensaladas",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 223,
@@ -1014,7 +1021,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 26000,
     "categoryId": "ensaladas",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 111,
@@ -1029,7 +1036,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 23500,
     "categoryId": "ensaladas",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 509,
@@ -1043,7 +1050,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 21500,
     "categoryId": "ensaladas",
     "tags": [
-      "🌿 Vegetariano"
+      " Vegetariano"
     ],
     "inStock": true,
     "likes": 160,
@@ -1057,7 +1064,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 343,
@@ -1072,7 +1079,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 384,
@@ -1087,7 +1094,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 19500,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 248,
@@ -1102,7 +1109,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 15500,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 158,
@@ -1116,7 +1123,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 436,
@@ -1131,7 +1138,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 23500,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 143,
@@ -1145,7 +1152,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 14000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 451,
@@ -1160,7 +1167,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 15000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 425,
@@ -1174,7 +1181,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 15000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 213,
@@ -1188,7 +1195,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 19500,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 350,
@@ -1202,7 +1209,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 195,
@@ -1216,7 +1223,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 21000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 392,
@@ -1231,7 +1238,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 15000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 301,
@@ -1245,7 +1252,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 19000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 93,
@@ -1259,7 +1266,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 12000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 319,
@@ -1273,7 +1280,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 4000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 328,
@@ -1287,7 +1294,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 6500,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 92,
@@ -1301,7 +1308,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 6500,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 380,
@@ -1315,7 +1322,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 4000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 131,
@@ -1329,7 +1336,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 14000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 380,
@@ -1343,7 +1350,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 14000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 248,
@@ -1357,7 +1364,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 14000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 314,
@@ -1371,7 +1378,7 @@ export const DISHES_MOCK: Dish[] = [
     "price": 17000,
     "categoryId": "postres",
     "tags": [
-      "🍮 Postre Casero"
+      " Postre Casero"
     ],
     "inStock": true,
     "likes": 117,
@@ -1685,7 +1692,7 @@ export const COMMENTS_MOCK: Comment[] = [
     id: 'c1',
     dishId: 'mellanzane-della-casa-198',
     author: 'martu_foodie',
-    text: '¡Increíble sabor! La masa fresca y los condimentos están a otro nivel 🤤👏',
+    text: '¡Increíble sabor! La masa fresca y los condimentos están a otro nivel ',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80',
     timeAgo: 'hace 1 h',
     likes: 19,
@@ -1703,7 +1710,7 @@ export const COMMENTS_MOCK: Comment[] = [
     id: 'c3',
     dishId: 'vitello-tonnato-143',
     author: 'caro_ba',
-    text: 'Porción super abundante, ideal para disfrutar en familia un domingo 🍕🍝',
+    text: 'Porción super abundante, ideal para disfrutar en familia un domingo ',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
     timeAgo: 'hace 5 h',
     likes: 8,

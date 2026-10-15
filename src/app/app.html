@@ -2,8 +2,8 @@
   <!-- Barra Superior de Demostración y Roles (Ideal para vender y presentar a clientes) -->
   <header class="demo-topbar">
     <div class="demo-brand">
-      <span class="logo">🍝</span>
-      <span class="brand-name">Il Materello · Suite Gastronómica</span>
+      <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
+      <span class="brand-name">Il Matterello · Suite Gastronómica</span>
     </div>
 
     <div class="view-switcher">
@@ -13,7 +13,7 @@
         [class.active]="currentView() === 'cliente'"
         (click)="setView('cliente')"
       >
-        <span class="icon">📱</span>
+        <span class="icon"><i class="ti ti-device-mobile"></i></span>
         <span>Cliente (Carta Reels)</span>
       </button>
 
@@ -23,7 +23,7 @@
         [class.active]="currentView() === 'mozos'"
         (click)="setView('mozos')"
       >
-        <span class="icon">🛎️</span>
+        <span class="icon"><i class="ti ti-bell-ringing"></i></span>
         <span>Panel Mozos (Comandas)</span>
         @if (pendingOrdersCount() > 0) {
           <span class="counter-badge">{{ pendingOrdersCount() }}</span>
@@ -36,8 +36,18 @@
         [class.active]="currentView() === 'admin'"
         (click)="setView('admin')"
       >
-        <span class="icon">⚙️</span>
+        <span class="icon"><i class="ti ti-settings"></i></span>
         <span>Backoffice & Admin</span>
+      </button>
+
+      <button
+        type="button"
+        class="switch-btn btn-create-reel"
+        (click)="openReelComposer()"
+        title="Subir nuevo plato como Reel de Instagram"
+      >
+        <span class="icon"><i class="ti ti-video-plus"></i></span>
+        <span>+ Subir Reel</span>
       </button>
     </div>
   </header>
@@ -52,8 +62,15 @@
         <app-waiter-panel />
       }
       @case ('admin') {
-        <app-admin-panel />
+        <app-admin-panel (openComposerRequested)="openReelComposer()" />
       }
     }
   </main>
+
+  <!-- Modal estilo Instagram para subir nuevos Reels -->
+  <app-reel-composer
+    [isOpen]="isReelComposerOpen()"
+    (closed)="closeReelComposer()"
+    (dishPublished)="onReelCreated($event)"
+  />
 </div>

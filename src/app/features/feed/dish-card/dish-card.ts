@@ -116,7 +116,7 @@ export class DishCard {
   shareViaWhatsApp(): void {
     const dish = this.dish();
     const url = `${window.location.origin}${window.location.pathname}#${dish.id}`;
-    const text = `¡Mirá este plato de Il Materello! 🍝\n*${dish.name}* - $${dish.price.toLocaleString('es-AR')}\n"${dish.description}"\n\nPodés verlo acá: ${url}`;
+    const text = `¡Mirá este plato de Il Materello!\n*${dish.name}* - $${dish.price.toLocaleString('es-AR')}\n"${dish.description}"\n\nPodés verlo acá: ${url}`;
     const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
     window.open(waUrl, '_blank');
     this.closeShareModal();
@@ -129,7 +129,7 @@ export class DishCard {
 
     try {
       await navigator.clipboard.writeText(text);
-      this.copyFeedback.set('¡Copiado! ✓');
+      this.copyFeedback.set('¡Copiado!');
     } catch {
       this.copyFeedback.set('Copiado');
     }

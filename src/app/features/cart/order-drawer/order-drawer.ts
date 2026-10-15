@@ -77,7 +77,7 @@ export class OrderDrawer {
     let msg = '';
 
     if (order) {
-      msg = `¡Hola Il Materello! 🍝 Acabo de enviar la comanda *${order.id}* desde la *${order.table}*:\n\n`;
+      msg = `¡Hola Il Materello! Acabo de enviar la comanda *${order.id}* desde la *${order.table}*:\n\n`;
       order.lines.forEach((line) => {
         msg += `• ${line.quantity}x ${line.dish.name} ($${(line.dish.price * line.quantity).toLocaleString('es-AR')})\n`;
       });
@@ -85,7 +85,7 @@ export class OrderDrawer {
     } else {
       const lines = this.lines();
       if (lines.length === 0) return;
-      msg = `¡Hola Il Materello! 🍝 Quiero pedir para la *${this.selectedTable()}*:\n\n`;
+      msg = `¡Hola Il Materello! Quiero pedir para la *${this.selectedTable()}*:\n\n`;
       lines.forEach((line) => {
         msg += `• ${line.quantity}x ${line.dish.name} ($${(line.dish.price * line.quantity).toLocaleString('es-AR')})\n`;
       });
