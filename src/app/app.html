@@ -1,1 +1,59 @@
-<app-feed />
+<div class="app-layout">
+  <!-- Barra Superior de Demostración y Roles (Ideal para vender y presentar a clientes) -->
+  <header class="demo-topbar">
+    <div class="demo-brand">
+      <span class="logo">🍝</span>
+      <span class="brand-name">Il Materello · Suite Gastronómica</span>
+    </div>
+
+    <div class="view-switcher">
+      <button
+        type="button"
+        class="switch-btn"
+        [class.active]="currentView() === 'cliente'"
+        (click)="setView('cliente')"
+      >
+        <span class="icon">📱</span>
+        <span>Cliente (Carta Reels)</span>
+      </button>
+
+      <button
+        type="button"
+        class="switch-btn"
+        [class.active]="currentView() === 'mozos'"
+        (click)="setView('mozos')"
+      >
+        <span class="icon">🛎️</span>
+        <span>Panel Mozos (Comandas)</span>
+        @if (pendingOrdersCount() > 0) {
+          <span class="counter-badge">{{ pendingOrdersCount() }}</span>
+        }
+      </button>
+
+      <button
+        type="button"
+        class="switch-btn"
+        [class.active]="currentView() === 'admin'"
+        (click)="setView('admin')"
+      >
+        <span class="icon">⚙️</span>
+        <span>Backoffice & Admin</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Contenido según la vista seleccionada -->
+  <main class="demo-main">
+    @switch (currentView()) {
+      @case ('cliente') {
+        <app-feed />
+      }
+      @case ('mozos') {
+        <app-waiter-panel />
+      }
+      @case ('admin') {
+        <app-admin-panel />
+      }
+    }
+  </main>
+</div>

@@ -1,0 +1,192 @@
+<div class="waiter-container">
+  <!-- Cabecera del Panel de Mozos / KDS -->
+  <header class="waiter-header">
+    <div class="header-main">
+      <div class="brand-title">
+        <span class="brand-icon">🛎️</span>
+        <div>
+          <h2>Panel de Mozos y Comandas</h2>
+          <span class="sub">Il Materello · Control de Salón y Cocina en Vivo</span>
+        </div>
+      </div>
+      <div class="sync-status">
+        <span class="sync-dot"></span>
+        <span>Conectado a Fudo POS</span>
+      </div>
+    </div>
+
+    <!-- Tarjetas de métricas en tiempo real -->
+    <div class="metrics-grid">
+      <div class="metric-card" [class.highlight]="pendingOrdersCount() > 0">
+        <span class="metric-num">{{ pendingOrdersCount() }}</span>
+        <span class="metric-title">Nuevos / Pendientes</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">{{ preparingOrdersCount() }}</span>
+        <span class="metric-title">En Cocina</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">{{ activeOrdersCount() }}</span>
+        <span class="metric-title">Comandas Activas</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Filtros -->
+  <section class="filters-bar">
+    <div class="filter-group">
+      <span class="filter-label">Estado:</span>
+      <div class="chips-row">
+        <button
+          type="button"
+          class="filter-chip"
+          [class.active]="statusFilter() === 'todos'"
+          (click)="setStatusFilter('todos')"
+        >
+          Todos ({{ orders().length }})
+        </button>
+        <button
+          type="button"
+          class="filter-chip chip-pending"
+          [class.active]="statusFilter() === 'pendiente'"
+          (click)="setStatusFilter('pendiente')"
+        >
+          Pendientes ({{ pendingOrdersCount() }})
+        </button>
+        <button
+          type="button"
+          class="filter-chip chip-preparing"
+          [class.active]="statusFilter() === 'preparando'"
+          (click)="setStatusFilter('preparando')"
+        >
+          En Cocina ({{ preparingOrdersCount() }})
+        </button>
+        <button
+          type="button"
+          class="filter-chip chip-delivered"
+          [class.active]="statusFilter() === 'entregado'"
+          (click)="setStatusFilter('entregado')"
+        >
+          En Mesa
+        </button>
+        <button
+          type="button"
+          class="filter-chip chip-paid"
+          [class.active]="statusFilter() === 'cobrado'"
+          (click)="setStatusFilter('cobrado')"
+        >
+          Cobradas
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <span class="filter-label">Mesa:</span>
+      <div class="chips-row">
+        @for (tbl of tables; track tbl) {
+          <button
+            type="button"
+            class="filter-chip"
+            [class.active]="tableFilter() === tbl"
+            (click)="setTableFilter(tbl)"
+          >
+            {{ tbl }}
+          </button>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Grilla de Comandas -->
+  <main class="orders-grid">
+    @if (filteredOrders().length === 0) {
+      <div class="empty-orders">
+        <span class="empty-icon">✓</span>
+        <h3>No hay comandas con este filtro</h3>
+        <p>Los pedidos que los clientes hagan desde la carta virtual aparecerán acá al instante.</p>
+      </div>
+    } @else {
+      @for (order of filteredOrders(); track order.id) {
+        <article class="order-card" [class.is-new]="order.status === 'pendiente'">
+          <!-- Cabecera de Comanda -->
+          <div class="order-card-header">
+            <div class="table-info">
+              <span class="table-badge">{{ order.table }}</span>
+              <span class="order-id">{{ order.id }}</span>
+            </div>
+            <div class="status-wrap">
+              <span class="status-tag" [class]="getStatusBadgeClass(order.status)">
+                {{ getStatusLabel(order.status) }}
+              </span>
+              <span class="time-elapsed">{{ getTimeElapsed(order.createdAt) }}</span>
+            </div>
+          </div>
+
+          <!-- Comensal y notas -->
+          @if (order.customerName) {
+            <div class="customer-info">
+              <span>👤 Comensal: <b>{{ order.customerName }}</b></span>
+            </div>
+          }
+
+          <!-- Lista de Ítems del pedido -->
+          <div class="order-items-list">
+            @for (line of order.lines; track line.dish.id) {
+              <div class="order-item-row">
+                <div class="item-qty-name">
+                  <span class="qty-badge">{{ line.quantity }}x</span>
+                  <span class="item-name">{{ line.dish.name }}</span>
+                </div>
+                <span class="item-price">{{ (line.dish.price * line.quantity) | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</span>
+              </div>
+              @if (line.notes) {
+                <div class="item-notes">
+                  <span>Nota: "{{ line.notes }}"</span>
+                </div>
+              }
+            }
+          </div>
+
+          <!-- Pie de tarjeta: Total y Sincronización POS -->
+          <div class="order-card-footer">
+            <div class="footer-meta">
+              <div class="order-total">
+                <span>Total:</span>
+                <strong>{{ order.totalPrice | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</strong>
+              </div>
+              @if (order.fudoSynced) {
+                <span class="fudo-badge" title="Comanda enviada a impresora de cocina y caja en Fudo">
+                  ✓ Fudo POS Synced
+                </span>
+              }
+            </div>
+
+            <!-- Botones de Acción según estado -->
+            <div class="order-actions">
+              @if (order.status !== 'cobrado' && order.status !== 'cancelado') {
+                <button
+                  type="button"
+                  class="action-btn next-btn"
+                  (click)="advanceStatus(order)"
+                >
+                  {{ getNextActionLabel(order.status) }}
+                </button>
+              }
+
+              @if (order.status === 'pendiente') {
+                <button
+                  type="button"
+                  class="action-btn cancel-btn"
+                  (click)="cancelOrder(order.id)"
+                  title="Anular comanda"
+                >
+                  ✕
+                </button>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    }
+  </main>
+</div>

@@ -3,55 +3,131 @@
   <div class="order-drawer">
     <div class="drawer-handle"></div>
 
-    <div class="drawer-header">
-      <div class="header-title-wrap">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <path d="M16 10a4 4 0 0 1-8 0" />
-        </svg>
-        <h3>Tu pedido (Il Materello)</h3>
-      </div>
-      <button type="button" class="drawer-close-x" (click)="close()">✕</button>
-    </div>
+    @if (submittedOrder(); as order) {
+      <!-- Pantalla de confirmación de Comanda Enviada -->
+      <div class="order-success-view">
+        <div class="success-icon-wrap">✓</div>
+        <h3>¡Comanda Enviada al Mozo!</h3>
+        <span class="ticket-id">{{ order.id }} · {{ order.table }}</span>
 
-    @if (lines().length === 0) {
-      <div class="empty-wrap">
-        <span class="empty-icon">🍽️</span>
-        <p class="empty">Todavía no agregaste platos a tu pedido.</p>
-        <span class="empty-sub">Navegá por los reels y tocá "Pedir" en los platos que te gusten.</span>
+        <p class="success-desc">
+          La cocina y el personal de salón ya recibieron tu pedido en su pantalla.
+        </p>
+
+        <div class="confirmed-summary">
+          <div class="summary-header">
+            <span>Resumen del pedido</span>
+            <span class="status-pill">En preparación</span>
+          </div>
+          <ul class="confirmed-lines">
+            @for (line of order.lines; track line.dish.id) {
+              <li>
+                <span>{{ line.quantity }}x {{ line.dish.name }}</span>
+                <span>{{ (line.dish.price * line.quantity) | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</span>
+              </li>
+            }
+          </ul>
+          <div class="summary-total">
+            <span>Total</span>
+            <strong>{{ order.totalPrice | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</strong>
+          </div>
+        </div>
+
+        <div class="success-actions">
+          <button type="button" class="whatsapp-btn" (click)="checkoutWhatsApp()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+            </svg>
+            <span>Enviar comprobante por WhatsApp</span>
+          </button>
+          <button type="button" class="close-btn" (click)="close()">Listo, volver a la carta</button>
+        </div>
       </div>
     } @else {
-      <div class="lines">
-        @for (line of lines(); track line.dish.id) {
-          <div class="line">
-            <div class="line-info">
-              <span class="line-name">{{ line.dish.name }}</span>
-              <span class="line-price">{{ line.dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }} c/u</span>
-            </div>
-            <div class="line-qty">
-              <button type="button" (click)="remove(line.dish.id)" title="Quitar uno">−</button>
-              <span class="qty-num">{{ line.quantity }}</span>
-              <button type="button" (click)="add(line.dish.id)" title="Sumar uno">+</button>
-            </div>
-          </div>
-        }
+      <!-- Vista normal de Armado de Pedido -->
+      <div class="drawer-header">
+        <div class="header-title-wrap">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <h3>Tu pedido</h3>
+        </div>
+        <button type="button" class="drawer-close-x" (click)="close()">✕</button>
       </div>
 
-      <div class="total">
-        <span>Total estimado</span>
-        <strong class="total-amount">{{ totalPrice() | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</strong>
+      <!-- Selector de Mesa -->
+      <div class="table-selector-row">
+        <span class="table-label">Tu Ubicación / Mesa:</span>
+        <div class="table-chips">
+          @for (table of tables; track table) {
+            <button
+              type="button"
+              class="table-chip"
+              [class.active]="table === selectedTable()"
+              (click)="setTable(table)"
+            >
+              {{ table }}
+            </button>
+          }
+        </div>
       </div>
 
-      <!-- Botón de acción principal: WhatsApp Checkout -->
-      <button type="button" class="whatsapp-btn" (click)="checkoutWhatsApp()">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
-        </svg>
-        <span>Confirmar Pedido por WhatsApp</span>
-      </button>
+      @if (lines().length === 0) {
+        <div class="empty-wrap">
+          <span class="empty-icon">🍽️</span>
+          <p class="empty">Todavía no agregaste platos a tu pedido.</p>
+          <span class="empty-sub">Navegá por los reels y tocá "Pedir" en los platos que te gusten.</span>
+        </div>
+      } @else {
+        <div class="lines">
+          @for (line of lines(); track line.dish.id) {
+            <div class="line">
+              <div class="line-info">
+                <span class="line-name">{{ line.dish.name }}</span>
+                <span class="line-price">{{ line.dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }} c/u</span>
+              </div>
+              <div class="line-qty">
+                <button type="button" (click)="remove(line.dish.id)" title="Quitar uno">−</button>
+                <span class="qty-num">{{ line.quantity }}</span>
+                <button type="button" (click)="add(line.dish.id)" title="Sumar uno">+</button>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Notas al mozo / cocina -->
+        <div class="notes-input-wrap">
+          <input
+            type="text"
+            placeholder="Aclaración especial para la cocina (opcional)..."
+            [value]="orderNotes()"
+            (input)="orderNotes.set($any($event.target).value)"
+          />
+        </div>
+
+        <div class="total">
+          <span>Total a pagar</span>
+          <strong class="total-amount">{{ totalPrice() | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</strong>
+        </div>
+
+        <!-- Botón Principal: Enviar comanda al mozo -->
+        <button type="button" class="submit-order-btn" (click)="submitOrderToStaff()">
+          <span class="btn-icon">🛎️</span>
+          <span>Enviar Comanda al Mozo ({{ selectedTable() }})</span>
+        </button>
+
+        <!-- Botón Secundario: WhatsApp -->
+        <button type="button" class="whatsapp-sub-btn" (click)="checkoutWhatsApp()">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+          </svg>
+          <span>O pedir por WhatsApp</span>
+        </button>
+      }
+
+      <button type="button" class="close-btn" (click)="close()">Seguir mirando la carta</button>
     }
-
-    <button type="button" class="close-btn" (click)="close()">Seguir mirando la carta</button>
   </div>
 }

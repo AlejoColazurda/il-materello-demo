@@ -80,4 +80,42 @@ export class MenuService {
   firstDishIdByCategory(categoryId: string): string | undefined {
     return this.dishesSignal().find((dish) => dish.categoryId === categoryId)?.id;
   }
+
+  toggleDishStock(dishId: string): void {
+    this.dishesSignal.update((dishes) =>
+      dishes.map((d) => (d.id === dishId ? { ...d, inStock: !d.inStock } : d)),
+    );
+  }
+
+  addDish(newDishData: Omit<Dish, 'id' | 'likes' | 'shares'>): Dish {
+    const slug = newDishData.name
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/-+/g, '-');
+    const id = `${slug}-${Date.now().toString().slice(-4)}`;
+
+    const newDish: Dish = {
+      ...newDishData,
+      id,
+      likes: 0,
+      shares: 0,
+      bgGradient: newDishData.bgGradient || 'linear-gradient(160deg,#2a1f1a,#140e0a 70%)',
+    };
+
+    this.dishesSignal.update((dishes) => [newDish, ...dishes]);
+    return newDish;
+  }
+
+  updateDish(dishId: string, updates: Partial<Dish>): void {
+    this.dishesSignal.update((dishes) =>
+      dishes.map((d) => (d.id === dishId ? { ...d, ...updates } : d)),
+    );
+  }
+
+  deleteDish(dishId: string): void {
+    this.dishesSignal.update((dishes) => dishes.filter((d) => d.id !== dishId));
+  }
 }
+

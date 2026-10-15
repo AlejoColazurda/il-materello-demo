@@ -1,0 +1,415 @@
+<div class="admin-container">
+  <header class="admin-header">
+    <div class="header-title">
+      <span class="icon">⚙️</span>
+      <div>
+        <h2>Backoffice & Administración</h2>
+        <span class="sub">Il Materello · Carga de Carta, Personal y Conexión POS</span>
+      </div>
+    </div>
+
+    <!-- Navegación por pestañas del panel -->
+    <nav class="admin-tabs">
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="activeTab() === 'dishes'"
+        (click)="setTab('dishes')"
+      >
+        🍝 Carta y Platos ({{ dishes().length }})
+      </button>
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="activeTab() === 'users'"
+        (click)="setTab('users')"
+      >
+        👥 Usuarios y Roles ({{ users().length }})
+      </button>
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="activeTab() === 'fudo'"
+        (click)="setTab('fudo')"
+      >
+        🔌 Integración Fudo POS
+      </button>
+    </nav>
+  </header>
+
+  <!-- PESTAÑA 1: GESTIÓN DE PLATOS -->
+  @if (activeTab() === 'dishes') {
+    <section class="tab-content">
+      <div class="section-actions">
+        <div>
+          <h3>Platos en la Carta</h3>
+          <p class="section-sub">Podés pausar stock en tiempo real o dar de alta nuevos platos.</p>
+        </div>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="showDishForm.set(!showDishForm())"
+        >
+          {{ showDishForm() ? '✕ Cancelar' : '+ Cargar Nuevo Plato' }}
+        </button>
+      </div>
+
+      <!-- Formulario para agregar nuevo plato -->
+      @if (showDishForm()) {
+        <div class="dish-form-card">
+          <h4>Nuevo Plato para la Carta</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nombre del plato:</label>
+              <input
+                type="text"
+                placeholder="Ej: Ravioles de Ricota y Nuez"
+                [value]="newDishName()"
+                (input)="newDishName.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Categoría:</label>
+              <select
+                [value]="newDishCategory()"
+                (change)="newDishCategory.set($any($event.target).value)"
+              >
+                @for (cat of categories(); track cat.id) {
+                  <option [value]="cat.id">{{ cat.label }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Precio ($ ARS):</label>
+              <input
+                type="number"
+                placeholder="Ej: 8500"
+                [value]="newDishPrice()"
+                (input)="newDishPrice.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Etiquetas (separadas por coma):</label>
+              <input
+                type="text"
+                placeholder="Ej: 🌿 Vegetariano, ⭐ Recomendado"
+                [value]="newDishTags()"
+                (input)="newDishTags.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label>URL de Foto / Video:</label>
+              <input
+                type="text"
+                placeholder="https://..."
+                [value]="newDishImageUrl()"
+                (input)="newDishImageUrl.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label>Descripción detallada:</label>
+              <textarea
+                rows="2"
+                placeholder="Describí los ingredientes, preparación o historia del plato..."
+                [value]="newDishDesc()"
+                (input)="newDishDesc.set($any($event.target).value)"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-buttons">
+            <button type="button" class="btn-save" (click)="createDish()">
+              Guardar y Publicar en la Carta
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Listado de platos -->
+      <div class="dishes-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Plato</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Likes / Shares</th>
+              <th>Stock</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (dish of dishes(); track dish.id) {
+              <tr>
+                <td class="dish-cell">
+                  @if (dish.imageUrl) {
+                    <img class="table-thumb" [src]="dish.imageUrl" [alt]="dish.name" />
+                  } @else {
+                    <div class="table-thumb-placeholder">🍝</div>
+                  }
+                  <div class="dish-name-desc">
+                    <strong>{{ dish.name }}</strong>
+                    <span>{{ dish.description | slice: 0 : 55 }}...</span>
+                  </div>
+                </td>
+                <td><span class="cat-pill">{{ dish.categoryId }}</span></td>
+                <td class="price-cell">{{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</td>
+                <td>
+                  <span class="meta-tag">❤️ {{ dish.likes }}</span>
+                  <span class="meta-tag">✈️ {{ dish.shares ?? 0 }}</span>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="stock-toggle-btn"
+                    [class.in-stock]="dish.inStock"
+                    (click)="toggleDishStock(dish.id)"
+                  >
+                    {{ dish.inStock ? '✓ En Stock' : '✕ Sin Stock' }}
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn-delete"
+                    (click)="deleteDish(dish.id)"
+                    title="Eliminar plato"
+                  >
+                    🗑️
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+  }
+
+  <!-- PESTAÑA 2: USUARIOS Y ROLES GRANULADOS -->
+  @if (activeTab() === 'users') {
+    <section class="tab-content">
+      <div class="section-actions">
+        <div>
+          <h3>Personal y Roles de Acceso</h3>
+          <p class="section-sub">Control granular por perfil de empleado (Admin, Mozo, Cocina).</p>
+        </div>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="showUserForm.set(!showUserForm())"
+        >
+          {{ showUserForm() ? '✕ Cancelar' : '+ Nuevo Empleado' }}
+        </button>
+      </div>
+
+      <!-- Matriz explicativa de roles -->
+      <div class="roles-guide-grid">
+        <div class="role-card">
+          <div class="role-badge role-admin">ADMIN</div>
+          <h4>Gerencia / Encargado</h4>
+          <p>Control total: puede modificar precios, fotos, crear usuarios y configurar integraciones.</p>
+        </div>
+        <div class="role-card">
+          <div class="role-badge role-mozo">MOZO / SALÓN</div>
+          <h4>Personal de Salón</h4>
+          <p>Ve comandas entrantes, estado de mesas, avisa platos sin stock y cobra la cuenta.</p>
+        </div>
+        <div class="role-card">
+          <div class="role-badge role-cocina">COCINA</div>
+          <h4>Jefe de Cocina / KDS</h4>
+          <p>Visualiza pedidos en preparación, cronómetro de tiempos y alerta faltantes de insumos.</p>
+        </div>
+      </div>
+
+      @if (showUserForm()) {
+        <div class="dish-form-card">
+          <h4>Dar de alta personal</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nombre y Apellido:</label>
+              <input
+                type="text"
+                placeholder="Ej: Sofía Gómez"
+                [value]="newUserName()"
+                (input)="newUserName.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Rol asignado:</label>
+              <select
+                [value]="newUserRole()"
+                (change)="newUserRole.set($any($event.target).value)"
+              >
+                <option value="mozo">Mozo / Salón</option>
+                <option value="cocina">Cocina / KDS</option>
+                <option value="admin">Administrador / Gerente</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>PIN de acceso rápido (4 dígitos):</label>
+              <input
+                type="text"
+                maxlength="4"
+                placeholder="Ej: 4521"
+                [value]="newUserPin()"
+                (input)="newUserPin.set($any($event.target).value)"
+              />
+            </div>
+          </div>
+
+          <div class="form-buttons">
+            <button type="button" class="btn-save" (click)="createUser()">
+              Registrar Empleado
+            </button>
+          </div>
+        </div>
+      }
+
+      <div class="dishes-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Rol Asignado</th>
+              <th>PIN</th>
+              <th>Zona / Mesas</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of users(); track user.id) {
+              <tr>
+                <td><strong>{{ user.name }}</strong></td>
+                <td>
+                  <span class="role-pill" [class]="'role-' + user.role">
+                    {{ user.role | uppercase }}
+                  </span>
+                </td>
+                <td><code>{{ user.pin ?? '----' }}</code></td>
+                <td>{{ user.tableAssigned ?? 'Salón General' }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="status-toggle-btn"
+                    [class.active]="user.active"
+                    (click)="toggleUserActive(user.id)"
+                  >
+                    {{ user.active ? 'Activo ✓' : 'Inactivo ✕' }}
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+  }
+
+  <!-- PESTAÑA 3: INTEGRACIÓN FUDO POS -->
+  @if (activeTab() === 'fudo') {
+    <section class="tab-content fudo-section">
+      <div class="section-actions">
+        <div>
+          <h3>Integración con Fudo Gastronomía</h3>
+          <p class="section-sub">Conectá la Carta Virtual con el sistema de punto de venta (POS) y comanderas del local.</p>
+        </div>
+        <div class="fudo-status-pill">
+          <span class="live-dot"></span>
+          <span>API Fudo v1 Conectada</span>
+        </div>
+      </div>
+
+      <div class="fudo-how-it-works">
+        <h4>¿Cómo funciona la integración con Fudo?</h4>
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <h5>Sincronización de Catálogo</h5>
+            <p>La carta virtual descarga automáticamente los platos, categorías y precios configurados en Fudo.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <h5>Envío Directo de Comandas</h5>
+            <p>Cuando el cliente toca "Enviar Comanda", la app crea la venta en Fudo asignada a la mesa correspondiente.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <h5>Impresión en Cocina & Facturación</h5>
+            <p>Fudo dispara el ticket físico a la comandera de cocina o barra y deja la mesa abierta para su cobro.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fudo-config-card">
+        <h4>Credenciales y Configuración de Fudo</h4>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>API Key / Token de Acceso (Fudo):</label>
+            <input
+              type="text"
+              [value]="fudoApiKey()"
+              (input)="fudoApiKey.set($any($event.target).value)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>ID de Sucursal (Branch):</label>
+            <input
+              type="text"
+              [value]="fudoBranchId()"
+              (input)="fudoBranchId.set($any($event.target).value)"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label>Webhook URL de eventos:</label>
+            <input
+              type="text"
+              readonly
+              value="https://api.ilmaterello.com/webhooks/fudo/orders"
+            />
+          </div>
+        </div>
+
+        <div class="fudo-toggles">
+          <label class="toggle-row">
+            <input
+              type="checkbox"
+              [checked]="fudoAutoSyncMenu()"
+              (change)="fudoAutoSyncMenu.set($any($event.target).checked)"
+            />
+            <span>Sincronizar cambios de precios automáticamente desde Fudo</span>
+          </label>
+          <label class="toggle-row">
+            <input
+              type="checkbox"
+              [checked]="fudoAutoPushOrders()"
+              (change)="fudoAutoPushOrders.set($any($event.target).checked)"
+            />
+            <span>Imprimir comanda física en cocina al confirmar pedido</span>
+          </label>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" class="btn-save" (click)="simulateFudoSync()">
+            Probar Conexión y Sincronizar Catálogo
+          </button>
+        </div>
+
+        @if (fudoSyncStatus()) {
+          <div class="fudo-status-msg">
+            {{ fudoSyncStatus() }}
+          </div>
+        }
+      </div>
+    </section>
+  }
+</div>

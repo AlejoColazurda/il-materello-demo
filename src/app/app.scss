@@ -1,0 +1,104 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0f1013;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Demo Top Switcher Bar */
+.demo-topbar {
+  background: #141418;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+  @media (max-width: 600px) {
+    padding: 8px 10px;
+  }
+}
+
+.demo-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .brand-name {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.2px;
+  }
+}
+
+.view-switcher {
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+}
+
+.switch-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 7px 14px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &.active {
+    background: #fff;
+    color: #0f1013;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .counter-badge {
+    background: #e74c3c;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-left: 2px;
+    animation: pulseBadge 1.5s infinite;
+  }
+}
+
+@keyframes pulseBadge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.demo-main {
+  flex: 1;
+}

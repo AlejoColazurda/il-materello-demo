@@ -1,0 +1,529 @@
+.admin-container {
+  min-height: 100vh;
+  background: #0f1013;
+  color: #fff;
+  padding: 24px 28px 60px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 16px 14px 40px;
+  }
+}
+
+.admin-header {
+  margin-bottom: 24px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  .icon {
+    font-size: 30px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &.active {
+    background: #fff;
+    color: #0f1013;
+    border-color: #fff;
+  }
+}
+
+.section-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .section-sub {
+    margin: 0;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #c0392b, #d35400);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(192, 57, 43, 0.4);
+  }
+}
+
+/* Formulario de Carga */
+.dish-form-card {
+  background: #181920;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  animation: slideDown 0.25s ease;
+
+  h4 {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: var(--accent-2, #f5c518);
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &.full-width {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  input, select, textarea {
+    background: #0f1013;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: #fff;
+    font-size: 13px;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-2, #f5c518);
+    }
+  }
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-save {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: #2ecc71;
+  }
+}
+
+/* Tablas */
+.dishes-table-wrap {
+  background: #181920;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+
+  th {
+    padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    vertical-align: middle;
+  }
+
+  tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.dish-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.table-thumb-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #25252b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.dish-name-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  strong {
+    color: #fff;
+  }
+
+  span {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11.5px;
+  }
+}
+
+.cat-pill {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.price-cell {
+  font-weight: 700;
+  color: var(--accent-2, #f5c518);
+}
+
+.meta-tag {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-right: 4px;
+}
+
+.stock-toggle-btn {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+
+  &.in-stock {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border-color: rgba(46, 204, 113, 0.4);
+  }
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* Roles */
+.roles-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.role-card {
+  background: #181920;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+
+  h4 {
+    margin: 8px 0 4px;
+    font-size: 14px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.4;
+  }
+}
+
+.role-badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 6px;
+
+  &.role-admin {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+  }
+  &.role-mozo {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+  }
+  &.role-cocina {
+    background: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+  }
+}
+
+.role-pill {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+
+  &.role-admin {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+  }
+  &.role-mozo {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+  }
+  &.role-cocina {
+    background: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+  }
+}
+
+.status-toggle-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.4);
+
+  &.active {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+  }
+}
+
+/* Fudo POS Section */
+.fudo-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(39, 174, 96, 0.15);
+  border: 1px solid rgba(39, 174, 96, 0.35);
+  color: #2ecc71;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+  }
+}
+
+.fudo-how-it-works {
+  background: #181920;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+
+  h4 {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: #fff;
+  }
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.step-card {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent-2, #f5c518);
+    color: #1a1a1a;
+    font-weight: 900;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h5 {
+    margin: 0;
+    font-size: 13.5px;
+    color: #fff;
+  }
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.4;
+  }
+}
+
+.fudo-config-card {
+  background: #181920;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+
+  h4 {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: var(--accent-2, #f5c518);
+  }
+}
+
+.fudo-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+
+  input {
+    width: 16px;
+    height: 16px;
+    accent-color: #27ae60;
+  }
+}
+
+.fudo-status-msg {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(39, 174, 96, 0.15);
+  border: 1px solid rgba(39, 174, 96, 0.35);
+  color: #2ecc71;
+  font-size: 12.5px;
+  font-weight: 600;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
