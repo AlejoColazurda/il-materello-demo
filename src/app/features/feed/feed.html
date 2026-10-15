@@ -1,0 +1,20 @@
+<div class="frame">
+  <div class="statusbar">
+    <span>9:41</span>
+    <span>Il Materello 🍝 · Carta Virtual</span>
+  </div>
+
+  <app-category-chip-bar
+    [categories]="categories()"
+    [activeCategoryId]="activeCategoryId()"
+    (categorySelected)="onCategorySelected($event)"
+  />
+
+  <div class="feed">
+    @for (dish of dishes(); track dish.id; let i = $index) {
+      <app-dish-card [dish]="dish" [dotIndex]="i" />
+    }
+  </div>
+
+  <app-order-drawer />
+</div>

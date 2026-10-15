@@ -1,0 +1,30 @@
+<div class="rail" [class.compact]="compact()">
+  <button type="button" class="rail-btn" [class.liked]="liked()" (click)="likeToggled.emit()">
+    <i class="ti ti-heart rail-icon"></i>
+    <span class="rail-count">{{ dish().likes }}</span>
+  </button>
+
+  <button type="button" class="rail-btn" (click)="commentsToggled.emit()">
+    <i class="ti ti-message-circle rail-icon"></i>
+    <span class="rail-count">{{ commentCount() }}</span>
+  </button>
+
+  @if (!compact()) {
+    <button type="button" class="rail-btn" (click)="shareRequested.emit()">
+      <i class="ti ti-share rail-icon"></i>
+      <span class="rail-count">{{ shareLabel() }}</span>
+    </button>
+
+    @if (dish().inStock) {
+      <button type="button" class="rail-btn" (click)="orderRequested.emit()">
+        <i class="ti ti-plus rail-icon"></i>
+        <span class="rail-count">Pedir</span>
+      </button>
+    } @else {
+      <button type="button" class="rail-btn" disabled>
+        <i class="ti ti-plus rail-icon"></i>
+        <span class="rail-count">Agotado</span>
+      </button>
+    }
+  }
+</div>

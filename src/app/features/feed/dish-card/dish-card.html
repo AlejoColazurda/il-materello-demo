@@ -1,0 +1,50 @@
+<div
+  class="card"
+  [class.show-comments]="commentsOpen"
+  [class.out-of-stock]="!dish().inStock"
+  [style.background-image]="dish().bgGradient"
+>
+  <div class="dish-info" [class.with-comments]="commentsOpen">
+    <div class="dish-tags">
+      @for (tag of dish().tags; track tag) {
+        <span class="tag" [class.tag-warning]="tag === 'Sin stock hoy'">{{ tag }}</span>
+      }
+    </div>
+    <h2 class="dish-name" [class.dimmed]="!dish().inStock">{{ dish().name }}</h2>
+    <span class="dish-price" [class.price-disabled]="!dish().inStock">
+      {{ dish().price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+    </span>
+    @if (dish().inStock) {
+      <p class="dish-desc">{{ dish().description }}</p>
+    }
+  </div>
+
+  <app-action-rail
+    [dish]="dish()"
+    [liked]="isLiked"
+    [commentCount]="commentCount"
+    [compact]="commentsOpen"
+    [shareLabel]="shareLabel"
+    (likeToggled)="toggleLike()"
+    (commentsToggled)="toggleComments()"
+    (orderRequested)="addToCart()"
+    (shareRequested)="shareDish()"
+  />
+
+  @if (commentsOpen) {
+    <app-comment-sheet
+      [comments]="comments"
+      (closed)="closeComments()"
+      (commentSubmitted)="submitComment($event)"
+    />
+  } @else {
+    <div class="bottomnav">
+      <div class="progress-dots">
+        @for (dot of dotIndices; track dot) {
+          <div class="dot" [class.active]="dot === dotIndex() % 4"></div>
+        }
+      </div>
+      <app-cart-fab />
+    </div>
+  }
+</div>

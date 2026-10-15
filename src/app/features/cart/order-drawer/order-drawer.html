@@ -1,0 +1,34 @@
+@if (isOpen()) {
+  <div class="drawer-backdrop" (click)="close()"></div>
+  <div class="order-drawer">
+    <div class="drawer-handle"></div>
+    <h3>Tu pedido</h3>
+
+    @if (lines().length === 0) {
+      <p class="empty">Todavía no agregaste platos.</p>
+    } @else {
+      <div class="lines">
+        @for (line of lines(); track line.dish.id) {
+          <div class="line">
+            <div class="line-info">
+              <span class="line-name">{{ line.dish.name }}</span>
+              <span class="line-price">{{ line.dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</span>
+            </div>
+            <div class="line-qty">
+              <button type="button" (click)="remove(line.dish.id)">−</button>
+              <span>{{ line.quantity }}</span>
+              <button type="button" (click)="add(line.dish.id)">+</button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="total">
+        <span>Total</span>
+        <strong>{{ totalPrice() | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</strong>
+      </div>
+    }
+
+    <button type="button" class="close-btn" (click)="close()">Cerrar</button>
+  </div>
+}

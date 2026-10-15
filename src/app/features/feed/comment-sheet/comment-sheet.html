@@ -1,0 +1,27 @@
+<div
+  class="comment-sheet"
+  [style.transform]="'translateX(' + dragOffsetX() + 'px)'"
+  (pointerdown)="onPointerDown($event)"
+  (pointermove)="onPointerMove($event)"
+  (pointerup)="onPointerUp()"
+  (pointercancel)="onPointerUp()"
+>
+  <h4>Comentarios ({{ comments().length }})</h4>
+
+  @for (comment of comments(); track comment.id) {
+    <div class="comment-row">
+      <div class="avatar"></div>
+      <div><b>{{ comment.author }}</b><br />{{ comment.text }}</div>
+    </div>
+  }
+
+  <div class="comment-input">
+    <input
+      placeholder="Dejá tu comentario..."
+      [value]="draftText()"
+      (input)="draftText.set($any($event.target).value)"
+      (keyup.enter)="submit()"
+    />
+    <i class="ti ti-send" (click)="submit()"></i>
+  </div>
+</div>

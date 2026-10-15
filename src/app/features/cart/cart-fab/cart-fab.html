@@ -1,0 +1,7 @@
+<button type="button" class="cart-fab" (click)="open()">
+  <i class="ti ti-shopping-cart"></i>
+  Tu pedido
+  @if (itemCount() > 0) {
+    <span class="cart-badge">{{ itemCount() }}</span>
+  }
+</button>

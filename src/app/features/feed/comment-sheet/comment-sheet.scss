@@ -1,0 +1,57 @@
+.comment-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  background: #17171a;
+  border-radius: 20px 20px 0 0;
+  height: 46%;
+  padding: 14px 16px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  touch-action: pan-y;
+
+  h4 {
+    margin: 0 0 10px;
+    font-size: 15px;
+  }
+}
+
+.comment-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #444;
+  flex: 0 0 28px;
+}
+
+.comment-input {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  input {
+    flex: 1;
+    background: #232327;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 13px;
+  }
+
+  i {
+    cursor: pointer;
+    font-size: 20px;
+  }
+}

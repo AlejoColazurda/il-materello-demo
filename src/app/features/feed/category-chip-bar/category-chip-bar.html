@@ -1,0 +1,12 @@
+<div class="chipbar">
+  @for (category of categories(); track category.id) {
+    <button
+      type="button"
+      class="chip"
+      [class.active]="category.id === activeCategoryId()"
+      (click)="selectCategory(category.id)"
+    >
+      {{ category.label }}
+    </button>
+  }
+</div>

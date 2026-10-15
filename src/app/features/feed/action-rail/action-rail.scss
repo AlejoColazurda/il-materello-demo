@@ -1,0 +1,53 @@
+.rail {
+  position: absolute;
+  right: 10px;
+  bottom: 120px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+
+  &.compact {
+    bottom: 46%;
+  }
+}
+
+.rail-btn {
+  width: 48px;
+  height: 48px;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &.liked .rail-icon {
+    color: var(--accent);
+  }
+}
+
+.rail-icon {
+  font-size: 26px;
+  color: currentColor;
+  line-height: 1;
+}
+
+.rail-count {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
