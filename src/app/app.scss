@@ -15,15 +15,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 12px;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 
-  @media (max-width: 600px) {
-    padding: 8px 10px;
+  @media (max-width: 680px) {
+    padding: 6px 10px;
+    gap: 8px;
   }
 }
 
@@ -31,9 +31,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 
   .logo {
-    font-size: 20px;
+    font-size: 18px;
+    color: #f5c518;
   }
 
   .brand-name {
@@ -41,34 +43,50 @@
     font-weight: 800;
     color: #fff;
     letter-spacing: 0.2px;
+
+    @media (max-width: 520px) {
+      display: none;
+    }
   }
 }
 
 .view-switcher {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   background: rgba(0, 0, 0, 0.35);
   padding: 4px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .switch-btn {
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.65);
-  padding: 7px 14px;
+  padding: 6px 12px;
   border-radius: 10px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.15s ease;
+
+  @media (max-width: 480px) {
+    padding: 6px 9px;
+    font-size: 11px;
+  }
 
   &:hover {
     color: #fff;

@@ -7,16 +7,13 @@
 
 .card {
   position: relative;
-  height: 844px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
   user-select: none;
-
-  @media (max-width: 480px) {
-    height: 100dvh;
-  }
 
   &.out-of-stock {
     .bg-media-img {
