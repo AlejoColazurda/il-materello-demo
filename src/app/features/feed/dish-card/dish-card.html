@@ -2,23 +2,78 @@
   class="card"
   [class.show-comments]="commentsOpen"
   [class.out-of-stock]="!dish().inStock"
-  [style.background-image]="dish().bgGradient"
+  (click)="onCardClick($event)"
 >
+  <!-- Imagen de fondo con overlay cinematográfico -->
+  <div class="media-container" [style.background-image]="dish().bgGradient">
+    @if (dish().imageUrl) {
+      <img
+        class="bg-media-img"
+        [src]="dish().imageUrl"
+        [alt]="dish().name"
+        loading="lazy"
+      />
+    }
+    <div class="media-overlay"></div>
+  </div>
+
+  <!-- Corazón gigante emergente con animación de doble tap (Instagram Reels) -->
+  @if (heartBurstActive()) {
+    <div class="heart-burst-container">
+      <svg class="heart-burst-svg" viewBox="0 0 24 24">
+        <path
+          fill="#ff2d55"
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+      </svg>
+    </div>
+  }
+
+  <!-- Información del plato y creador estilo Instagram Reels -->
   <div class="dish-info" [class.with-comments]="commentsOpen">
+    <!-- Fila del creador: @il_materello • Seguir -->
+    <div class="creator-header">
+      <div class="creator-avatar">🍝</div>
+      <div class="creator-meta">
+        <span class="creator-handle">il_materello</span>
+        <span class="verified-badge" title="Verificado">✓</span>
+      </div>
+      <span class="meta-dot">•</span>
+      <span class="creator-badge">Carta Virtual</span>
+    </div>
+
+    <!-- Tags / Etiquetas nutricionales o de categoría -->
     <div class="dish-tags">
       @for (tag of dish().tags; track tag) {
         <span class="tag" [class.tag-warning]="tag === 'Sin stock hoy'">{{ tag }}</span>
       }
     </div>
-    <h2 class="dish-name" [class.dimmed]="!dish().inStock">{{ dish().name }}</h2>
-    <span class="dish-price" [class.price-disabled]="!dish().inStock">
-      {{ dish().price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
-    </span>
+
+    <!-- Título del plato y Precio destacado -->
+    <div class="title-price-row">
+      <h2 class="dish-name" [class.dimmed]="!dish().inStock">{{ dish().name }}</h2>
+      <span class="dish-price" [class.price-disabled]="!dish().inStock">
+        {{ dish().price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+      </span>
+    </div>
+
+    <!-- Descripción del plato -->
     @if (dish().inStock) {
       <p class="dish-desc">{{ dish().description }}</p>
     }
+
+    <!-- Ticker de Audio / Ambiente de la casa -->
+    <div class="audio-ticker">
+      <svg class="note-icon" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+      <div class="ticker-marquee">
+        <span>Audio original · Il Materello — Pasta Fresca Tradicional</span>
+      </div>
+    </div>
   </div>
 
+  <!-- Barra de acciones lateral estilo Instagram Reels -->
   <app-action-rail
     [dish]="dish()"
     [liked]="isLiked"
@@ -28,9 +83,10 @@
     (likeToggled)="toggleLike()"
     (commentsToggled)="toggleComments()"
     (orderRequested)="addToCart()"
-    (shareRequested)="shareDish()"
+    (shareRequested)="openShareModal()"
   />
 
+  <!-- Hoja de comentarios desplegable -->
   @if (commentsOpen) {
     <app-comment-sheet
       [comments]="comments"
@@ -45,6 +101,65 @@
         }
       </div>
       <app-cart-fab />
+    </div>
+  }
+
+  <!-- Modal de compartir estilo Instagram -->
+  @if (shareModalOpen()) {
+    <div class="share-backdrop" (click)="closeShareModal()">
+      <div class="share-sheet" (click)="$event.stopPropagation()">
+        <div class="share-handle"></div>
+        <div class="share-header">
+          <h3>Compartir plato</h3>
+          <button type="button" class="close-share-btn" (click)="closeShareModal()">✕</button>
+        </div>
+
+        <div class="dish-preview-row">
+          @if (dish().imageUrl) {
+            <img class="share-dish-thumb" [src]="dish().imageUrl" [alt]="dish().name" />
+          }
+          <div class="share-dish-info">
+            <strong>{{ dish().name }}</strong>
+            <span>{{ dish().price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</span>
+          </div>
+        </div>
+
+        <div class="share-actions-grid">
+          <button type="button" class="share-action-btn wa-btn" (click)="shareViaWhatsApp()">
+            <div class="share-action-icon wa-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+              </svg>
+            </div>
+            <span>WhatsApp</span>
+          </button>
+
+          <button type="button" class="share-action-btn copy-btn" (click)="copyShareLink()">
+            <div class="share-action-icon copy-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+            </div>
+            <span>{{ copyFeedback() ?? 'Copiar link' }}</span>
+          </button>
+
+          @if (hasNativeShare) {
+            <button type="button" class="share-action-btn native-btn" (click)="shareViaNative()">
+              <div class="share-action-icon native-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+              </div>
+              <span>Más apps</span>
+            </button>
+          }
+        </div>
+      </div>
     </div>
   }
 </div>

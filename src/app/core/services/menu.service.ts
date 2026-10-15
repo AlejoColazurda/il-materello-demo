@@ -57,7 +57,15 @@ export class MenuService {
     }
     this.commentsSignal.update((comments) => [
       ...comments,
-      { id: `local-${Date.now()}`, dishId, author: '@vos', text: trimmed },
+      {
+        id: `local-${Date.now()}`,
+        dishId,
+        author: 'vos',
+        text: trimmed,
+        avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80',
+        timeAgo: 'ahora',
+        likes: 0,
+      },
     ]);
   }
 

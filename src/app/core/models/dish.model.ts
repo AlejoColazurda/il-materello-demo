@@ -8,4 +8,6 @@ export interface Dish {
   inStock: boolean;
   likes: number;
   bgGradient: string;
+  imageUrl?: string;
+  shares?: number;
 }

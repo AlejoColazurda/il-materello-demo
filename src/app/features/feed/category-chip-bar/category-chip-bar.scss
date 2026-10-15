@@ -29,9 +29,13 @@
   font-family: inherit;
   cursor: pointer;
 
+  transition: all 0.2s ease;
+
   &.active {
-    background: var(--accent-2);
+    background: var(--accent-2, #f5c518);
     color: #1a1a1a;
-    border-color: var(--accent-2);
+    border-color: var(--accent-2, #f5c518);
+    box-shadow: 0 2px 10px rgba(245, 197, 24, 0.45);
+    transform: scale(1.03);
   }
 }

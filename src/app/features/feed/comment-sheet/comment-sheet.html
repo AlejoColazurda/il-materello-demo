@@ -1,27 +1,75 @@
 <div
-  class="comment-sheet"
-  [style.transform]="'translateX(' + dragOffsetX() + 'px)'"
-  (pointerdown)="onPointerDown($event)"
-  (pointermove)="onPointerMove($event)"
-  (pointerup)="onPointerUp()"
-  (pointercancel)="onPointerUp()"
+  class="comment-backdrop"
+  (click)="closed.emit()"
 >
-  <h4>Comentarios ({{ comments().length }})</h4>
+  <div
+    class="comment-sheet"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="sheet-handle"></div>
 
-  @for (comment of comments(); track comment.id) {
-    <div class="comment-row">
-      <div class="avatar"></div>
-      <div><b>{{ comment.author }}</b><br />{{ comment.text }}</div>
+    <div class="sheet-header">
+      <span class="header-spacer"></span>
+      <h4>Comentarios ({{ comments().length }})</h4>
+      <button type="button" class="close-btn" (click)="closed.emit()">✕</button>
     </div>
-  }
 
-  <div class="comment-input">
-    <input
-      placeholder="Dejá tu comentario..."
-      [value]="draftText()"
-      (input)="draftText.set($any($event.target).value)"
-      (keyup.enter)="submit()"
-    />
-    <i class="ti ti-send" (click)="submit()"></i>
+    <!-- Lista de comentarios con scroll -->
+    <div class="comments-scroll">
+      @if (comments().length === 0) {
+        <div class="empty-comments">
+          <p>Todavía no hay comentarios.</p>
+          <span>¡Sé el primero en comentar sobre este plato! 💬</span>
+        </div>
+      } @else {
+        @for (comment of comments(); track comment.id) {
+          <div class="comment-row">
+            @if (comment.avatar) {
+              <img class="avatar-img" [src]="comment.avatar" [alt]="comment.author" />
+            } @else {
+              <div class="avatar-placeholder">{{ comment.author.charAt(0).toUpperCase() }}</div>
+            }
+
+            <div class="comment-content">
+              <div class="comment-meta">
+                <span class="author-name">{{ comment.author }}</span>
+                <span class="comment-time">{{ comment.timeAgo ?? 'reciente' }}</span>
+              </div>
+              <p class="comment-body">{{ comment.text }}</p>
+            </div>
+
+            <button type="button" class="comment-like-btn" title="Me gusta">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+              @if (comment.likes && comment.likes > 0) {
+                <span class="comment-like-count">{{ comment.likes }}</span>
+              }
+            </button>
+          </div>
+        }
+      }
+    </div>
+
+    <!-- Input fijo en la parte inferior estilo Instagram -->
+    <div class="comment-input-bar">
+      <div class="my-avatar">🍝</div>
+      <input
+        type="text"
+        placeholder="Añade un comentario..."
+        [value]="draftText()"
+        (input)="draftText.set($any($event.target).value)"
+        (keyup.enter)="submit()"
+      />
+      <button
+        type="button"
+        class="post-btn"
+        [class.active]="draftText().trim().length > 0"
+        [disabled]="!draftText().trim().length"
+        (click)="submit()"
+      >
+        Publicar
+      </button>
+    </div>
   </div>
 </div>

@@ -27,4 +27,21 @@ export class OrderDrawer {
   remove(dishId: string): void {
     this.cartService.remove(dishId);
   }
+
+  checkoutWhatsApp(): void {
+    const lines = this.lines();
+    if (lines.length === 0) {
+      return;
+    }
+
+    let msg = '¡Hola Il Materello! 🍝 Me gustaría encargar este pedido desde la Carta Virtual:\n\n';
+    lines.forEach((line) => {
+      msg += `• ${line.quantity}x ${line.dish.name} ($${(line.dish.price * line.quantity).toLocaleString('es-AR')})\n`;
+    });
+    msg += `\n*Total estimado: $${this.totalPrice().toLocaleString('es-AR')}*\n`;
+    msg += '\n¿Me confirman la demora y si están tomando pedidos? ¡Muchas gracias!';
+
+    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+  }
 }

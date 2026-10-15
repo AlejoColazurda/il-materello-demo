@@ -10,7 +10,7 @@ export interface CartLine {
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private readonly quantitiesSignal = signal<ReadonlyMap<string, number>>(
-    new Map([['pizza-napoletana', 1], ['tiramisu', 1]]),
+    new Map(),
   );
   private readonly drawerOpenSignal = signal(false);
 

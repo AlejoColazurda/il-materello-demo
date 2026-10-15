@@ -1,13 +1,22 @@
 .frame {
   width: 390px;
   height: 844px;
-  margin: 40px auto;
+  margin: 30px auto;
   position: relative;
   background: var(--bg);
-  border-radius: 40px;
+  border-radius: 44px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  border: 8px solid #000;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(192, 57, 43, 0.15);
+  border: 10px solid #1c1c1e;
+
+  @media (max-width: 480px) {
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 .statusbar {
@@ -21,9 +30,15 @@
   justify-content: space-between;
   padding: 0 20px;
   font-size: 13px;
+  font-weight: 600;
   z-index: 30;
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+
+  @media (max-width: 480px) {
+    padding-top: env(safe-area-inset-top, 0);
+  }
 }
 
 .feed {

@@ -23,11 +23,11 @@ export class DishCard {
 
   readonly dotIndices = [0, 1, 2, 3];
 
-  private readonly shareFeedback = signal<string | null>(null);
+  readonly heartBurstActive = signal(false);
+  readonly shareModalOpen = signal(false);
+  readonly copyFeedback = signal<string | null>(null);
 
-  get shareLabel(): string {
-    return this.shareFeedback() ?? 'Compartir';
-  }
+  private lastTap = 0;
 
   get isLiked(): boolean {
     return this.menuService.isLiked(this.dish().id);
@@ -43,6 +43,46 @@ export class DishCard {
 
   get commentsOpen(): boolean {
     return this.menuService.openCommentSheetId() === this.dish().id;
+  }
+
+  get hasNativeShare(): boolean {
+    return typeof navigator !== 'undefined' && !!navigator.share;
+  }
+
+  get shareLabel(): string {
+    return `${this.dish().shares ?? 24}`;
+  }
+
+  /**
+   * Doble tap estilo Instagram Reels para dar like con animación en el centro
+   */
+  onCardClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    // Si el clic fue en un botón, input o enlace, ignorar para no interferir con clicks normales
+    if (target.closest('button, input, a, .comment-sheet, .share-sheet')) {
+      return;
+    }
+
+    const now = Date.now();
+    const delay = now - this.lastTap;
+
+    if (delay < 320 && delay > 40) {
+      // Doble tap detectado
+      this.triggerHeartBurst();
+      if (!this.isLiked) {
+        this.menuService.toggleLike(this.dish().id);
+      }
+      this.lastTap = 0;
+    } else {
+      this.lastTap = now;
+    }
+  }
+
+  private triggerHeartBurst(): void {
+    this.heartBurstActive.set(true);
+    setTimeout(() => {
+      this.heartBurstActive.set(false);
+    }, 850);
   }
 
   toggleLike(): void {
@@ -65,29 +105,56 @@ export class DishCard {
     this.cartService.add(this.dish().id);
   }
 
-  async shareDish(): Promise<void> {
+  openShareModal(): void {
+    this.shareModalOpen.set(true);
+  }
+
+  closeShareModal(): void {
+    this.shareModalOpen.set(false);
+  }
+
+  shareViaWhatsApp(): void {
+    const dish = this.dish();
+    const url = `${window.location.origin}${window.location.pathname}#${dish.id}`;
+    const text = `¡Mirá este plato de Il Materello! 🍝\n*${dish.name}* - $${dish.price.toLocaleString('es-AR')}\n"${dish.description}"\n\nPodés verlo acá: ${url}`;
+    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank');
+    this.closeShareModal();
+  }
+
+  async copyShareLink(): Promise<void> {
+    const dish = this.dish();
+    const url = `${window.location.origin}${window.location.pathname}#${dish.id}`;
+    const text = `${dish.name} — Il Materello, Carta Virtual: ${url}`;
+
+    try {
+      await navigator.clipboard.writeText(text);
+      this.copyFeedback.set('¡Copiado! ✓');
+    } catch {
+      this.copyFeedback.set('Copiado');
+    }
+
+    setTimeout(() => {
+      this.copyFeedback.set(null);
+      this.closeShareModal();
+    }, 1200);
+  }
+
+  async shareViaNative(): Promise<void> {
     const dish = this.dish();
     const shareData = {
-      title: dish.name,
-      text: `${dish.name} — Il Materello, Carta Virtual`,
-      url: `${location.origin}${location.pathname}#${dish.id}`,
+      title: `${dish.name} — Il Materello`,
+      text: `${dish.name}: ${dish.description}`,
+      url: `${window.location.origin}${window.location.pathname}#${dish.id}`,
     };
 
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-        return;
+        this.closeShareModal();
       } catch {
-        return;
+        // Usuario canceló compartir
       }
     }
-
-    try {
-      await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
-      this.shareFeedback.set('¡Copiado!');
-    } catch {
-      this.shareFeedback.set('No disponible');
-    }
-    setTimeout(() => this.shareFeedback.set(null), 2000);
   }
 }
