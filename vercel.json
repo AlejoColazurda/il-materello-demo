@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build:demo",
+  "outputDirectory": "dist/il-materello-demo/browser",
+  "rewrites": [
+    { "source": "/web/il-matterello", "destination": "/index.html" },
+    { "source": "/web/il-matterello/", "destination": "/index.html" },
+    { "source": "/web/il-matterello/:path*", "destination": "/:path*" }
+  ],
+  "redirects": [
+    { "source": "/", "destination": "/web/il-matterello/", "permanent": false }
+  ]
+}

@@ -44,3 +44,6 @@ verify-*.png
 .DS_Store
 Thumbs.db
 powershell.cmd
+
+# Vercel
+.vercel

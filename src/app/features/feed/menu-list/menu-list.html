@@ -1,0 +1,82 @@
+<div class="scroller" #scroller (scroll)="onScroll()">
+  <div class="search">
+    <i class="ti ti-search"></i>
+    <input
+      type="search"
+      placeholder="Buscar un plato o ingrediente"
+      [value]="query()"
+      (input)="setQuery($any($event.target).value)"
+      aria-label="Buscar en la carta"
+    />
+    @if (query()) {
+      <button type="button" class="clear" (click)="clearQuery()" aria-label="Borrar búsqueda">
+        <i class="ti ti-x"></i>
+      </button>
+    }
+  </div>
+
+  @if (query() && resultCount() > 0) {
+    <p class="result-count">
+      {{ resultCount() }} {{ resultCount() === 1 ? 'plato encontrado' : 'platos encontrados' }}
+    </p>
+  }
+
+  @for (section of sections(); track section.category.id) {
+    <section class="section" [attr.data-category]="section.category.id">
+      <h2 class="section-title">
+        @if (section.category.icon) {
+          <i class="ti ti-{{ section.category.icon }}"></i>
+        }
+        {{ section.category.label }}
+        <span class="section-count">{{ section.dishes.length }}</span>
+      </h2>
+
+      <ul class="dish-list">
+        @for (dish of section.dishes; track dish.id) {
+          <li class="dish" [class.sold-out]="!dish.inStock">
+            <button
+              type="button"
+              class="dish-main"
+              (click)="dishOpened.emit(dish.id)"
+              [attr.aria-label]="'Ver ' + dish.name + ' en grande'"
+            >
+              <span class="dish-text">
+                <span class="dish-name">{{ dish.name }}</span>
+                @if (dish.description) {
+                  <span class="dish-desc">{{ dish.description }}</span>
+                }
+                <span class="dish-meta">
+                  <span class="dish-price">
+                    {{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+                  </span>
+                  @for (tag of dish.tags; track tag) {
+                    @if (cleanTag(tag) !== 'Sin stock hoy') {
+                      <span class="dish-tag">{{ cleanTag(tag) }}</span>
+                    }
+                  }
+                </span>
+              </span>
+
+              <span class="thumb" [style.background-image]="dish.bgGradient">
+                @if (dish.imageUrl) {
+                  <img [src]="dish.imageUrl" [alt]="dish.name" loading="lazy" />
+                  <span class="thumb-play"><i class="ti ti-player-play-filled"></i></span>
+                } @else {
+                  <i class="ti ti-tools-kitchen-2 thumb-fallback"></i>
+                }
+              </span>
+            </button>
+
+            <app-add-button class="add" [dish]="dish" variant="compact" />
+          </li>
+        }
+      </ul>
+    </section>
+  } @empty {
+    <div class="empty">
+      <i class="ti ti-mood-empty"></i>
+      <p>No encontramos platos con "{{ query() }}".</p>
+      <button type="button" (click)="clearQuery()">Ver toda la carta</button>
+    </div>
+  }
+</div>

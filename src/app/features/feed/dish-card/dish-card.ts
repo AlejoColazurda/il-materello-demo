@@ -1,28 +1,22 @@
 import { CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
-import { CartService } from '../../../core/services/cart.service';
 import { MenuService } from '../../../core/services/menu.service';
 import { Dish } from '../../../core/models/dish.model';
 import { ActionRail } from '../action-rail/action-rail';
-import { CartFab } from '../../cart/cart-fab/cart-fab';
+import { AddButton } from '../../cart/add-button/add-button';
 import { CommentSheet } from '../comment-sheet/comment-sheet';
 
 @Component({
   selector: 'app-dish-card',
-  imports: [CurrencyPipe, ActionRail, CartFab, CommentSheet],
+  imports: [CurrencyPipe, ActionRail, AddButton, CommentSheet],
   templateUrl: './dish-card.html',
   styleUrl: './dish-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishCard {
   private readonly menuService = inject(MenuService);
-  private readonly cartService = inject(CartService);
 
   readonly dish = input.required<Dish>();
-  readonly dotIndex = input(0);
-
-  readonly dotIndices = [0, 1, 2, 3];
-
   readonly heartBurstActive = signal(false);
   readonly shareModalOpen = signal(false);
   readonly copyFeedback = signal<string | null>(null);
@@ -99,10 +93,6 @@ export class DishCard {
 
   submitComment(text: string): void {
     this.menuService.addComment(this.dish().id, text);
-  }
-
-  addToCart(): void {
-    this.cartService.add(this.dish().id);
   }
 
   openShareModal(): void {

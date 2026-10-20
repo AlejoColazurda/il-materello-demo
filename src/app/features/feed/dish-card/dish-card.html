@@ -36,21 +36,10 @@
 
   <!-- Información del plato y creador estilo Instagram Reels -->
   <div class="dish-info" [class.with-comments]="commentsOpen">
-    <!-- Fila del creador: @il_materello • Seguir -->
-    <div class="creator-header">
-      <div class="creator-avatar"><i class="ti ti-tools-kitchen-2"></i></div>
-      <div class="creator-meta">
-        <span class="creator-handle">il_materello</span>
-        <i class="ti ti-badge-check verified-badge" title="Verificado"></i>
-      </div>
-      <span class="meta-dot">•</span>
-      <span class="creator-badge">Carta Virtual</span>
-    </div>
-
     <!-- Tags / Etiquetas nutricionales o de categoría -->
     <div class="dish-tags">
       @for (tag of dish().tags; track tag) {
-        <span class="tag" [class.tag-warning]="tag === 'Sin stock hoy'">{{ tag }}</span>
+        <span class="tag" [class.tag-warning]="tag.trim() === 'Sin stock hoy'">{{ tag.trim() }}</span>
       }
     </div>
 
@@ -63,19 +52,12 @@
     </div>
 
     <!-- Descripción del plato -->
-    @if (dish().inStock) {
+    @if (dish().description) {
       <p class="dish-desc">{{ dish().description }}</p>
     }
 
-    <!-- Ticker de Audio / Ambiente de la casa -->
-    <div class="audio-ticker">
-      <svg class="note-icon" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
-        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-      </svg>
-      <div class="ticker-marquee">
-        <span>Audio original · Il Materello — Pasta Fresca Tradicional</span>
-      </div>
-    </div>
+    <!-- Acción principal: agregar al pedido -->
+    <app-add-button class="primary-action" [dish]="dish()" variant="wide" />
   </div>
 
   <!-- Barra de acciones lateral estilo Instagram Reels -->
@@ -87,7 +69,6 @@
     [shareLabel]="shareLabel"
     (likeToggled)="toggleLike()"
     (commentsToggled)="toggleComments()"
-    (orderRequested)="addToCart()"
     (shareRequested)="openShareModal()"
   />
 
@@ -98,15 +79,6 @@
       (closed)="closeComments()"
       (commentSubmitted)="submitComment($event)"
     />
-  } @else {
-    <div class="bottomnav">
-      <div class="progress-dots">
-        @for (dot of dotIndices; track dot) {
-          <div class="dot" [class.active]="dot === dotIndex() % 4"></div>
-        }
-      </div>
-      <app-cart-fab />
-    </div>
   }
 
   <!-- Modal de compartir estilo Instagram -->

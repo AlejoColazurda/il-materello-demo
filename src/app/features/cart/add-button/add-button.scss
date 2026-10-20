@@ -1,0 +1,142 @@
+:host {
+  display: inline-flex;
+}
+
+.add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 14px;
+  background: var(--accent-2);
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s ease, filter 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  i {
+    font-size: 18px;
+  }
+
+  &:hover {
+    filter: brightness(1.06);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &.compact {
+    width: 36px;
+    min-height: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 46px;
+  padding: 4px;
+  border-radius: 14px;
+  background: #fff;
+  color: #1a1a1a;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+  .step {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.07);
+    color: #1a1a1a;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      transform: scale(0.92);
+    }
+  }
+
+  .qty {
+    min-width: 44px;
+    padding: 0 6px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.05;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    small {
+      font-size: 10px;
+      font-weight: 600;
+      opacity: 0.6;
+      white-space: nowrap;
+    }
+  }
+
+  &.compact {
+    min-height: 36px;
+    padding: 2px;
+    border-radius: 18px;
+    gap: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+
+    .step {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: transparent;
+      font-size: 16px;
+    }
+
+    .qty {
+      min-width: 20px;
+      padding: 0;
+      font-size: 14px;
+    }
+  }
+}
+
+.sold-out {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 700;
+
+  &.compact {
+    min-height: 26px;
+    padding: 0 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    background: rgba(0, 0, 0, 0.65);
+  }
+}

@@ -7,11 +7,11 @@
       <!-- Pantalla de confirmación de Comanda Enviada -->
       <div class="order-success-view">
         <div class="success-icon-wrap"><i class="ti ti-check"></i></div>
-        <h3>¡Comanda Enviada al Mozo!</h3>
+        <h3>¡Pedido enviado!</h3>
         <span class="ticket-id">{{ order.id }} · {{ order.table }}</span>
 
         <p class="success-desc">
-          La cocina y el personal de salón ya recibieron tu pedido en su pantalla.
+          El mozo y la cocina ya lo recibieron. Te avisamos cuando esté listo.
         </p>
 
         <div class="confirmed-summary">
@@ -59,7 +59,7 @@
 
       <!-- Selector de Mesa -->
       <div class="table-selector-row">
-        <span class="table-label">Tu Ubicación / Mesa:</span>
+        <span class="table-label">¿En qué mesa estás?</span>
         <div class="table-chips">
           @for (table of tables; track table) {
             <button
@@ -78,7 +78,7 @@
         <div class="empty-wrap">
           <i class="ti ti-tools-kitchen-2 empty-icon"></i>
           <p class="empty">Todavía no agregaste platos a tu pedido.</p>
-          <span class="empty-sub">Navegá por los reels y tocá "Pedir" en los platos que te gusten.</span>
+          <span class="empty-sub">Tocá "Agregar al pedido" (o el botón + en la lista) en los platos que quieras.</span>
         </div>
       } @else {
         <div class="lines">
@@ -101,21 +101,21 @@
         <div class="notes-input-wrap">
           <input
             type="text"
-            placeholder="Aclaración especial para la cocina (opcional)..."
+            placeholder="¿Alguna aclaración? Ej: sin sal, bien cocido (opcional)"
             [value]="orderNotes()"
             (input)="orderNotes.set($any($event.target).value)"
           />
         </div>
 
         <div class="total">
-          <span>Total a pagar</span>
+          <span>Total</span>
           <strong class="total-amount">{{ totalPrice() | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</strong>
         </div>
 
         <!-- Botón Principal: Enviar comanda al mozo -->
         <button type="button" class="submit-order-btn" (click)="submitOrderToStaff()">
           <span class="btn-icon"><i class="ti ti-bell-ringing"></i></span>
-          <span>Enviar Comanda al Mozo ({{ selectedTable() }})</span>
+          <span>Enviar pedido · {{ selectedTable() }}</span>
         </button>
 
         <!-- Botón Secundario: WhatsApp -->

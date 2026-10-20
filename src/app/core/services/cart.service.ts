@@ -1,6 +1,6 @@
-import { Injectable, computed, signal } from '@angular/core';
-import { DISHES_MOCK } from '../../../assets/mock/dishes.mock';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { Dish } from '../models/dish.model';
+import { MenuService } from './menu.service';
 
 export interface CartLine {
   dish: Dish;
@@ -9,19 +9,28 @@ export interface CartLine {
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
+  private readonly menuService = inject(MenuService);
+
   private readonly quantitiesSignal = signal<ReadonlyMap<string, number>>(
     new Map(),
   );
   private readonly drawerOpenSignal = signal(false);
+  private readonly lastAddedSignal = signal<{ dish: Dish; at: number } | null>(null);
 
   readonly isDrawerOpen = this.drawerOpenSignal.asReadonly();
+  readonly quantities = this.quantitiesSignal.asReadonly();
+  /** Último plato agregado (para mostrar el toast de confirmación). */
+  readonly lastAdded = this.lastAddedSignal.asReadonly();
 
   readonly lines = computed<CartLine[]>(() => {
     const quantities = this.quantitiesSignal();
-    return DISHES_MOCK.filter((dish) => (quantities.get(dish.id) ?? 0) > 0).map((dish) => ({
-      dish,
-      quantity: quantities.get(dish.id) ?? 0,
-    }));
+    return this.menuService
+      .dishes()
+      .filter((dish) => (quantities.get(dish.id) ?? 0) > 0)
+      .map((dish) => ({
+        dish,
+        quantity: quantities.get(dish.id) ?? 0,
+      }));
   });
 
   readonly itemCount = computed(() =>
@@ -32,10 +41,19 @@ export class CartService {
     this.lines().reduce((total, line) => total + line.dish.price * line.quantity, 0),
   );
 
+  quantityOf(dishId: string): number {
+    return this.quantitiesSignal().get(dishId) ?? 0;
+  }
+
   add(dishId: string): void {
     const current = new Map(this.quantitiesSignal());
     current.set(dishId, (current.get(dishId) ?? 0) + 1);
     this.quantitiesSignal.set(current);
+
+    const dish = this.menuService.dishes().find((d) => d.id === dishId);
+    if (dish) {
+      this.lastAddedSignal.set({ dish, at: Date.now() });
+    }
   }
 
   remove(dishId: string): void {
@@ -47,6 +65,10 @@ export class CartService {
       current.set(dishId, quantity - 1);
     }
     this.quantitiesSignal.set(current);
+  }
+
+  clear(): void {
+    this.quantitiesSignal.set(new Map());
   }
 
   openDrawer(): void {

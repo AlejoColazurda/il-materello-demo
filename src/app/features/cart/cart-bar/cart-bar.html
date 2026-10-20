@@ -1,0 +1,14 @@
+@if (toastText(); as name) {
+  <div class="toast" role="status">
+    <i class="ti ti-circle-check-filled"></i>
+    <span>Agregaste <strong>{{ name }}</strong></span>
+  </div>
+}
+
+@if (itemCount() > 0) {
+  <button type="button" class="cart-bar" (click)="open()">
+    <span class="count">{{ itemCount() }}</span>
+    <span class="label">Ver mi pedido</span>
+    <span class="total">{{ totalPrice() | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</span>
+  </button>
+}

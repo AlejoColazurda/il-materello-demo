@@ -136,72 +136,20 @@
 .dish-info {
   position: relative;
   z-index: 10;
-  padding: 0 76px 95px 16px; /* 76px a la derecha para no tapar los botones de acción */
+  /* 72px a la derecha para no tapar los botones de acción; abajo, lugar para la barra de pedido */
+  padding: 0 72px 84px 16px;
 
   &.with-comments {
     padding-bottom: 30px;
+
+    .primary-action {
+      display: none;
+    }
   }
 }
 
-/* Creador estilo Instagram */
-.creator-header {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-bottom: 8px;
-}
-
-.creator-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #c0392b, #f39c12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-.creator-meta {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.creator-handle {
-  font-weight: 700;
-  font-size: 13.5px;
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-}
-
-.verified-badge {
-  background: #3897f0;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 900;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.meta-dot {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 11px;
-}
-
-.creator-badge {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-  padding: 2px 7px;
-  border-radius: 10px;
+.primary-action {
+  margin-top: 12px;
 }
 
 /* Tags */
@@ -239,7 +187,7 @@
 }
 
 .dish-name {
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.2;
   margin: 0;
@@ -267,71 +215,11 @@
 }
 
 .dish-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.88);
   line-height: 1.38;
-  margin: 0 0 8px;
+  margin: 0;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-}
-
-/* Audio Marquee Ticker */
-.audio-ticker {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-  max-width: 250px;
-}
-
-.note-icon {
-  flex-shrink: 0;
-  opacity: 0.9;
-}
-
-.ticker-marquee {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Bottom Navigation */
-.bottomnav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 20;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px 16px;
-  pointer-events: none;
-}
-
-.bottomnav > * {
-  pointer-events: auto;
-}
-
-.progress-dots {
-  display: flex;
-  gap: 5px;
-}
-
-.dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  transition: all 0.25s ease;
-
-  &.active {
-    background: #fff;
-    width: 16px;
-    border-radius: 3px;
-  }
 }
 
 /* Share Modal / Bottom Sheet */

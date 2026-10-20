@@ -1,20 +1,44 @@
-<div class="frame">
-  <div class="statusbar">
-    <span>9:41</span>
+<div class="frame" [class.mode-lista]="viewMode() === 'lista'">
+  <header class="menu-header">
+    <div class="mode-toggle" role="tablist" aria-label="Cómo ver la carta">
+      <button
+        type="button"
+        role="tab"
+        class="mode-btn"
+        [class.active]="viewMode() === 'reels'"
+        [attr.aria-selected]="viewMode() === 'reels'"
+        (click)="setViewMode('reels')"
+      >
+        <i class="ti ti-player-play"></i>
+        <span>Reels</span>
+      </button>
+      <button
+        type="button"
+        role="tab"
+        class="mode-btn"
+        [class.active]="viewMode() === 'lista'"
+        [attr.aria-selected]="viewMode() === 'lista'"
+        (click)="setViewMode('lista')"
+      >
+        <i class="ti ti-list"></i>
+        <span>Lista</span>
+      </button>
+    </div>
+
     <button
       type="button"
-      class="statusbar-profile-btn"
+      class="profile-btn"
       (click)="openProfileRequested.emit()"
-      title="Mi Perfil"
+      title="Mi perfil"
+      aria-label="Mi perfil"
     >
       @if (userProfile().avatar) {
-        <img class="statusbar-avatar" [src]="userProfile().avatar" alt="Avatar" />
+        <img class="profile-avatar" [src]="userProfile().avatar" alt="" />
       } @else {
-        <div class="statusbar-avatar-fallback"><i class="ti ti-user"></i></div>
+        <span class="profile-avatar-fallback"><i class="ti ti-user"></i></span>
       }
-      <span class="statusbar-nickname">&#64;{{ userProfile().nickname }}</span>
     </button>
-  </div>
+  </header>
 
   <app-category-chip-bar
     [categories]="categories()"
@@ -22,11 +46,32 @@
     (categorySelected)="onCategorySelected($event)"
   />
 
-  <div class="feed">
-    @for (dish of dishes(); track dish.id; let i = $index) {
-      <app-dish-card [dish]="dish" [dotIndex]="i" />
+  <!-- Vista Reels: un plato por pantalla, se desliza hacia arriba -->
+  <div class="feed" #feed [hidden]="viewMode() !== 'reels'" (scroll)="onFeedScroll()">
+    @for (dish of dishes(); track dish.id) {
+      <app-dish-card [dish]="dish" />
     }
   </div>
+
+  @if (viewMode() === 'reels' && showSwipeHint()) {
+    <button type="button" class="swipe-hint" (click)="dismissSwipeHint()">
+      <i class="ti ti-chevron-up"></i>
+      <span>Deslizá para ver más platos</span>
+    </button>
+  }
+
+  <!-- Vista Lista: carta clásica por secciones -->
+  @if (viewMode() === 'lista') {
+    <app-menu-list
+      [categories]="categories()"
+      [dishes]="dishes()"
+      (dishOpened)="openDishInReels($event)"
+    />
+  }
+
+  @if (!commentsOpen()) {
+    <app-cart-bar />
+  }
 
   <app-order-drawer />
 </div>

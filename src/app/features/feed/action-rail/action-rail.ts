@@ -16,6 +16,5 @@ export class ActionRail {
 
   readonly likeToggled = output<void>();
   readonly commentsToggled = output<void>();
-  readonly orderRequested = output<void>();
   readonly shareRequested = output<void>();
 }

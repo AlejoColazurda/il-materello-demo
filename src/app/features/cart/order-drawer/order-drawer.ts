@@ -62,11 +62,7 @@ export class OrderDrawer {
     this.submittedOrder.set(order);
 
     // Vaciar el carrito tras confirmar la comanda
-    lines.forEach((l) => {
-      for (let i = 0; i < l.quantity; i++) {
-        this.cartService.remove(l.dish.id);
-      }
-    });
+    this.cartService.clear();
   }
 
   /**
