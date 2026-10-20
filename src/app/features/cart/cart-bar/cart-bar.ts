@@ -10,8 +10,8 @@ import {
 import { CartService } from '../../../core/services/cart.service';
 
 /**
- * Barra fija inferior "Ver mi pedido" + aviso breve cada vez que se agrega un plato.
- * Solo aparece cuando hay algo en el pedido.
+ * Barra fija inferior "Ver mi pedido". Solo aparece cuando hay algo en el pedido
+ * y "rebota" cada vez que se agrega un plato, sin tapar los botones de la carta.
  */
 @Component({
   selector: 'app-cart-bar',
@@ -25,9 +25,9 @@ export class CartBar {
 
   readonly itemCount = this.cartService.itemCount;
   readonly totalPrice = this.cartService.totalPrice;
-  readonly toastText = signal<string | null>(null);
+  readonly bump = signal(false);
 
-  private toastTimer: ReturnType<typeof setTimeout> | undefined;
+  private bumpTimer: ReturnType<typeof setTimeout> | undefined;
   private readonly mountedAt = Date.now();
 
   constructor() {
@@ -37,12 +37,14 @@ export class CartBar {
       if (!last || last.at < this.mountedAt) {
         return;
       }
-      this.toastText.set(last.dish.name);
-      clearTimeout(this.toastTimer);
-      this.toastTimer = setTimeout(() => this.toastText.set(null), 1800);
+      // Reiniciar la animación aunque se agreguen platos seguidos
+      this.bump.set(false);
+      clearTimeout(this.bumpTimer);
+      requestAnimationFrame(() => this.bump.set(true));
+      this.bumpTimer = setTimeout(() => this.bump.set(false), 450);
     });
 
-    inject(DestroyRef).onDestroy(() => clearTimeout(this.toastTimer));
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.bumpTimer));
   }
 
   open(): void {
