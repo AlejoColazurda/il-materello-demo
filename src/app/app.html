@@ -1,11 +1,12 @@
 <div class="app-layout">
-  <!-- Barra Superior de Demostración y Roles (Ideal para vender y presentar a clientes) -->
+  <!-- Barra Superior Principal -->
   <header class="demo-topbar">
-    <div class="demo-brand">
+    <div class="demo-brand" (click)="setView('cliente')">
       <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
-      <span class="brand-name">Il Matterello · Suite Gastronómica</span>
+      <span class="brand-name">Il Matterello · Palermo</span>
     </div>
 
+    <!-- Navegación central / switch de vistas -->
     <div class="view-switcher">
       <button
         type="button"
@@ -14,7 +15,7 @@
         (click)="setView('cliente')"
       >
         <span class="icon"><i class="ti ti-device-mobile"></i></span>
-        <span>Cliente (Carta Reels)</span>
+        <span>Carta Reels</span>
       </button>
 
       <button
@@ -24,7 +25,7 @@
         (click)="setView('mozos')"
       >
         <span class="icon"><i class="ti ti-bell-ringing"></i></span>
-        <span>Panel Mozos (Comandas)</span>
+        <span>Panel Mozos</span>
         @if (pendingOrdersCount() > 0) {
           <span class="counter-badge">{{ pendingOrdersCount() }}</span>
         }
@@ -50,13 +51,68 @@
         <span>+ Subir Reel</span>
       </button>
     </div>
+
+    <!-- Acciones de Usuario y Personal a la derecha -->
+    <div class="topbar-user-actions">
+      <!-- Botón de Mi Perfil (Instagram style): disponible para comensales y empleados -->
+      <button
+        type="button"
+        class="btn-profile-topbar"
+        (click)="openProfileModal()"
+        title="Mi Perfil · Cambiar foto y apodo"
+      >
+        <div class="profile-thumb-ring">
+          @if (staffUser()?.avatar || userProfile().avatar) {
+            <img
+              class="thumb-img"
+              [src]="staffUser()?.avatar || userProfile().avatar"
+              alt="Avatar"
+            />
+          } @else {
+            <div class="thumb-fallback"><i class="ti ti-user"></i></div>
+          }
+        </div>
+        <div class="profile-meta-text">
+          <span class="profile-handle">&#64;{{ staffUser()?.nickname || userProfile().nickname }}</span>
+          <span class="profile-hint">Mi Perfil</span>
+        </div>
+      </button>
+
+      <!-- Estado de Personal: Sesión activa o Botón de Acceso -->
+      @if (staffUser(); as staff) {
+        <div class="staff-logged-badge">
+          <span class="role-pill" [class]="'role-' + staff.roleId">
+            {{ staff.roleId | uppercase }}
+          </span>
+          <button
+            type="button"
+            class="btn-logout"
+            (click)="logoutStaff()"
+            title="Cerrar sesión de personal"
+          >
+            <i class="ti ti-logout"></i>
+            <span class="btn-text-logout">Salir</span>
+          </button>
+        </div>
+      } @else {
+        <button
+          type="button"
+          class="btn-staff-access"
+          (click)="openStaffAuth()"
+          title="Acceso para mozos, cocina y administración"
+        >
+          <i class="ti ti-lock"></i>
+          <span>Personal</span>
+        </button>
+      }
+    </div>
   </header>
 
   <!-- Contenido según la vista seleccionada -->
   <main class="demo-main">
     @switch (currentView()) {
       @case ('cliente') {
-        <app-feed />
+        <app-feed (openProfileRequested)="openProfileModal()" />
       }
       @case ('mozos') {
         <app-waiter-panel />
@@ -67,7 +123,21 @@
     }
   </main>
 
-  <!-- Modal estilo Instagram para subir nuevos Reels -->
+  <!-- Modales del sistema -->
+  <!-- 1. Modal Mi Perfil (Cargar foto desde celular/PC + Apodo) -->
+  <app-profile-modal
+    [isOpen]="isProfileModalOpen()"
+    (closed)="closeProfileModal()"
+  />
+
+  <!-- 2. Modal de Autenticación de Personal (Login con ojo, registro, recuperar y demos) -->
+  <app-staff-auth-modal
+    [isOpen]="isStaffAuthOpen()"
+    (closed)="closeStaffAuth()"
+    (loginSuccess)="onStaffLoginSuccess()"
+  />
+
+  <!-- 3. Modal estilo Instagram para subir nuevos Reels -->
   <app-reel-composer
     [isOpen]="isReelComposerOpen()"
     (closed)="closeReelComposer()"

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
 import { Comment } from '../../../core/models/comment.model';
+import { ProfileService } from '../../../core/services/profile.service';
 
 const SWIPE_CLOSE_THRESHOLD_PX = 80;
 
@@ -10,10 +11,13 @@ const SWIPE_CLOSE_THRESHOLD_PX = 80;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentSheet {
+  private readonly profileService = inject(ProfileService);
+
   readonly comments = input.required<Comment[]>();
   readonly closed = output<void>();
   readonly commentSubmitted = output<string>();
 
+  readonly currentProfile = this.profileService.profile;
   readonly draftText = signal('');
   readonly dragOffsetX = signal(0);
 

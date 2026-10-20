@@ -1,0 +1,140 @@
+@if (isOpen()) {
+  <div class="profile-backdrop" (click)="close()">
+    <div class="profile-card" (click)="$event.stopPropagation()">
+      <header class="profile-header">
+        <button type="button" class="btn-close-header" (click)="close()" title="Cerrar">
+          <i class="ti ti-x"></i>
+        </button>
+        <h3>Mi Perfil</h3>
+        <button type="button" class="btn-save-header" (click)="saveProfile()">
+          Guardar
+        </button>
+      </header>
+
+      <div class="profile-body">
+        <!-- Fila de Avatar estilo Instagram con selección directa de archivo -->
+        <div class="avatar-section">
+          <div
+            class="avatar-ring"
+            (click)="avatarFileInput.click()"
+            title="Toca para elegir una foto de tu celular o computadora"
+            role="button"
+            tabindex="0"
+          >
+            @if (previewAvatar()) {
+              <img class="avatar-image" [src]="previewAvatar()" alt="Foto de perfil" />
+            } @else {
+              <div class="avatar-fallback">
+                <i class="ti ti-user"></i>
+              </div>
+            }
+
+            <div class="camera-btn" title="Subir foto">
+              <i class="ti" [class.ti-loader]="isProcessingImage()" [class.ti-camera]="!isProcessingImage()"></i>
+            </div>
+          </div>
+
+          <!-- Botones de acción para foto personal -->
+          <div class="avatar-actions">
+            <button
+              type="button"
+              class="btn-select-device"
+              (click)="avatarFileInput.click()"
+            >
+              <i class="ti ti-photo-up"></i>
+              <span>Elegir foto de mi dispositivo</span>
+            </button>
+
+            @if (previewAvatar()) {
+              <button
+                type="button"
+                class="btn-remove-photo"
+                (click)="removePhoto()"
+                title="Quitar foto actual"
+              >
+                <i class="ti ti-trash"></i>
+                <span>Quitar foto</span>
+              </button>
+            }
+          </div>
+
+          <!-- Input nativo de archivos oculto (soporta cámara y galería en celulares y explorador de archivos en PC) -->
+          <input
+            #avatarFileInput
+            type="file"
+            class="hidden-file-input"
+            accept="image/*"
+            (change)="onAvatarSelected($event)"
+          />
+
+          <!-- Avatares predeterminados rápidos si el usuario no desea subir una propia -->
+          <div class="presets-section">
+            <span class="presets-label">O elegí un avatar rápido:</span>
+            <div class="presets-row">
+              @for (preset of presetAvatars; track preset.url) {
+                <button
+                  type="button"
+                  class="preset-btn"
+                  [class.active]="previewAvatar() === preset.url"
+                  (click)="selectPreset(preset.url)"
+                  [title]="preset.label"
+                >
+                  <img [src]="preset.url" [alt]="preset.label" />
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Campos de información del perfil -->
+        <div class="form-fields">
+          <div class="field-row">
+            <label>Apodo / Usuario en la app:</label>
+            <div class="input-with-prefix">
+              <span class="prefix">@</span>
+              <input
+                type="text"
+                placeholder="tu_apodo"
+                [value]="draftNickname()"
+                (input)="draftNickname.set($any($event.target).value)"
+              />
+            </div>
+            <span class="field-hint">Este apodo aparecerá al dar likes, comentar reels y enviar comandas.</span>
+          </div>
+
+          <div class="field-row">
+            <label>Nombre y Apellido:</label>
+            <input
+              type="text"
+              placeholder="Ej: Sofía Martínez"
+              [value]="draftName()"
+              (input)="draftName.set($any($event.target).value)"
+            />
+          </div>
+
+          @if (staffUser(); as staff) {
+            <div class="staff-info-badge">
+              <i class="ti ti-shield-check"></i>
+              <div>
+                <strong>Sesión de Personal Activa</strong>
+                <span>Rol: {{ staff.roleId | uppercase }} · {{ staff.email }}</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        @if (saveFeedback()) {
+          <div class="save-toast">
+            <i class="ti ti-circle-check"></i>
+            <span>{{ saveFeedback() }}</span>
+          </div>
+        }
+      </div>
+
+      <footer class="profile-footer">
+        <button type="button" class="btn-cancel" (click)="close()">Cancelar</button>
+        <button type="button" class="btn-confirm" (click)="saveProfile()">Guardar Cambios</button>
+      </footer>
+    </div>
+  </div>
+}

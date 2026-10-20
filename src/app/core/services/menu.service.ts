@@ -1,8 +1,9 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { CATEGORIES_MOCK, COMMENTS_MOCK, DISHES_MOCK } from '../../../assets/mock/dishes.mock';
 import { Category } from '../models/category.model';
 import { Comment } from '../models/comment.model';
 import { Dish } from '../models/dish.model';
+import { ProfileService } from './profile.service';
 
 /**
  * Store de catálogo basado en Signals. El mock hoy vive en memoria;
@@ -10,6 +11,8 @@ import { Dish } from '../models/dish.model';
  */
 @Injectable({ providedIn: 'root' })
 export class MenuService {
+  private readonly profileService = inject(ProfileService);
+
   private readonly dishesSignal = signal<Dish[]>(DISHES_MOCK);
   private readonly commentsSignal = signal<Comment[]>(COMMENTS_MOCK);
   private readonly likedDishIdsSignal = signal<ReadonlySet<string>>(new Set(['sorrentinos-osobuco']));
@@ -55,14 +58,15 @@ export class MenuService {
     if (!trimmed) {
       return;
     }
+    const profile = this.profileService.profile();
     this.commentsSignal.update((comments) => [
       ...comments,
       {
         id: `local-${Date.now()}`,
         dishId,
-        author: 'vos',
+        author: `@${profile.nickname}`,
         text: trimmed,
-        avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80',
+        avatar: profile.avatar || undefined,
         timeAgo: 'ahora',
         likes: 0,
       },

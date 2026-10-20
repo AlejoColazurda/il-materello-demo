@@ -2,8 +2,7 @@ import { CurrencyPipe, SlicePipe, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
 import { AuthService } from '../../core/services/auth.service';
-import { Dish } from '../../core/models/dish.model';
-import { Role } from '../../core/models/user.model';
+import { CustomRole, RolePermissions, StaffUser } from '../../core/models/user.model';
 
 @Component({
   selector: 'app-admin-panel',
@@ -18,14 +17,15 @@ export class AdminPanel {
 
   readonly openComposerRequested = output<void>();
 
-  readonly activeTab = signal<'dishes' | 'users' | 'fudo'>('dishes');
+  readonly activeTab = signal<'dishes' | 'users' | 'roles' | 'fudo'>('dishes');
 
   readonly categories = this.menuService.categories;
   readonly dishes = this.menuService.dishes;
-  readonly users = this.authService.users;
+  readonly staffUsers = this.authService.staffUsers;
+  readonly roles = this.authService.roles;
   readonly permissions = this.authService.permissions;
 
-  // Formulario nuevo plato
+  // Formulario nuevo plato (rápido)
   readonly newDishName = signal('');
   readonly newDishCategory = signal('pastas');
   readonly newDishPrice = signal<number>(8500);
@@ -36,9 +36,33 @@ export class AdminPanel {
 
   // Formulario nuevo usuario
   readonly newUserName = signal('');
-  readonly newUserRole = signal<Role>('mozo');
+  readonly newUserNickname = signal('');
+  readonly newUserEmail = signal('');
+  readonly newUserRole = signal('mozo');
   readonly newUserPin = signal('1122');
   readonly showUserForm = signal(false);
+
+  // Formulario nuevo rol
+  readonly showRoleForm = signal(false);
+  readonly newRoleName = signal('');
+  readonly newRoleDesc = signal('');
+  readonly newRoleBadge = signal('role-custom');
+  readonly rolePermissionsState = signal<RolePermissions>({
+    canCreateDishes: false,
+    canEditDishes: false,
+    canEditPrices: false,
+    canToggleStock: true,
+    canDeleteDishes: false,
+    canViewOrders: true,
+    canAdvanceOrderStatus: true,
+    canCancelOrders: false,
+    canCloseTables: false,
+    canViewKitchenKDS: false,
+    canAlertKitchenStock: false,
+    canManageStaff: false,
+    canManageRoles: false,
+    canConfigurePOS: false,
+  });
 
   // Estado Fudo POS
   readonly fudoApiKey = signal('fudo_live_79a2b8e3914fc019');
@@ -47,7 +71,7 @@ export class AdminPanel {
   readonly fudoAutoPushOrders = signal(true);
   readonly fudoSyncStatus = signal<string | null>(null);
 
-  setTab(tab: 'dishes' | 'users' | 'fudo'): void {
+  setTab(tab: 'dishes' | 'users' | 'roles' | 'fudo'): void {
     this.activeTab.set(tab);
   }
 
@@ -81,7 +105,6 @@ export class AdminPanel {
       bgGradient: 'linear-gradient(160deg,#2a1f1a,#140e0a 70%)',
     });
 
-    // Reset form
     this.newDishName.set('');
     this.newDishDesc.set('');
     this.showDishForm.set(false);
@@ -91,13 +114,78 @@ export class AdminPanel {
     this.authService.toggleUserActive(userId);
   }
 
+  deleteUser(userId: string): void {
+    if (confirm('¿Eliminar este empleado del sistema?')) {
+      this.authService.deleteUser(userId);
+    }
+  }
+
   createUser(): void {
     const name = this.newUserName().trim();
+    const email = this.newUserEmail().trim() || `${name.toLowerCase().replace(/\s+/g, '')}@ilmaterello.com`;
     if (!name) return;
 
-    this.authService.addUser(name, this.newUserRole(), this.newUserPin());
+    this.authService.registerStaff({
+      name,
+      nickname: this.newUserNickname().trim() || name.toLowerCase().replace(/\s+/g, '_'),
+      email,
+      roleId: this.newUserRole(),
+      pin: this.newUserPin().trim() || '1234',
+    });
+
     this.newUserName.set('');
+    this.newUserNickname.set('');
+    this.newUserEmail.set('');
     this.showUserForm.set(false);
+  }
+
+  // ROLES
+  toggleRolePermission(key: keyof RolePermissions): void {
+    this.rolePermissionsState.update((curr) => ({
+      ...curr,
+      [key]: !curr[key],
+    }));
+  }
+
+  createRole(): void {
+    const name = this.newRoleName().trim();
+    if (!name) return;
+
+    this.authService.createRole({
+      name,
+      description: this.newRoleDesc().trim() || 'Rol personalizado para el salón o cocina.',
+      badgeClass: 'role-custom',
+      permissions: { ...this.rolePermissionsState() },
+    });
+
+    this.newRoleName.set('');
+    this.newRoleDesc.set('');
+    this.showRoleForm.set(false);
+  }
+
+  deleteRole(roleId: string): void {
+    if (confirm('¿Deseas eliminar este rol?')) {
+      const ok = this.authService.deleteRole(roleId);
+      if (!ok) {
+        alert('Los roles pre-cargados del sistema no pueden eliminarse.');
+      }
+    }
+  }
+
+  getRole(roleId: string): CustomRole | undefined {
+    return this.roles().find((r) => r.id === roleId);
+  }
+
+  getRoleName(roleId: string): string {
+    return this.getRole(roleId)?.name || roleId;
+  }
+
+  getRoleBadgeClass(roleId: string): string {
+    return this.getRole(roleId)?.badgeClass || 'role-custom';
+  }
+
+  getUserCountForRole(roleId: string): number {
+    return this.staffUsers().filter((u) => u.roleId === roleId).length;
   }
 
   openReelComposer(): void {

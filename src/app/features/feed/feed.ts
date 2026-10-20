@@ -5,9 +5,11 @@ import {
   ElementRef,
   afterNextRender,
   inject,
+  output,
   viewChildren,
 } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
+import { ProfileService } from '../../core/services/profile.service';
 import { CategoryChipBar } from './category-chip-bar/category-chip-bar';
 import { DishCard } from './dish-card/dish-card';
 import { OrderDrawer } from '../cart/order-drawer/order-drawer';
@@ -21,13 +23,17 @@ import { OrderDrawer } from '../cart/order-drawer/order-drawer';
 })
 export class Feed {
   private readonly menuService = inject(MenuService);
+  private readonly profileService = inject(ProfileService);
   private readonly destroyRef = inject(DestroyRef);
+
+  readonly openProfileRequested = output<void>();
 
   private readonly dishCardElements = viewChildren(DishCard, { read: ElementRef });
 
   readonly categories = this.menuService.categories;
   readonly dishes = this.menuService.dishes;
   readonly activeCategoryId = this.menuService.activeCategoryId;
+  readonly userProfile = this.profileService.profile;
 
   private isAutoScrolling = false;
 

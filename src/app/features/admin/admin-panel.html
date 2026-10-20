@@ -4,7 +4,7 @@
       <span class="icon"><i class="ti ti-settings"></i></span>
       <div>
         <h2>Backoffice & Administración</h2>
-        <span class="sub">Il Matterello · Carga de Carta, Personal y Conexión POS</span>
+        <span class="sub">Il Matterello · Carga de Carta, Personal, Roles y Conexión POS</span>
       </div>
     </div>
 
@@ -19,6 +19,7 @@
         <i class="ti ti-tools-kitchen-2"></i>
         <span>Carta y Platos ({{ dishes().length }})</span>
       </button>
+
       <button
         type="button"
         class="tab-btn"
@@ -26,8 +27,19 @@
         (click)="setTab('users')"
       >
         <i class="ti ti-users"></i>
-        <span>Usuarios y Roles ({{ users().length }})</span>
+        <span>Personal ({{ staffUsers().length }})</span>
       </button>
+
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="activeTab() === 'roles'"
+        (click)="setTab('roles')"
+      >
+        <i class="ti ti-shield-lock"></i>
+        <span>Roles & Permisos ({{ roles().length }})</span>
+      </button>
+
       <button
         type="button"
         class="tab-btn"
@@ -59,82 +71,6 @@
           </button>
         </div>
       </div>
-
-      <!-- Formulario para agregar nuevo plato -->
-      @if (showDishForm()) {
-        <div class="dish-form-card">
-          <h4>Nuevo Plato para la Carta</h4>
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Nombre del plato:</label>
-              <input
-                type="text"
-                placeholder="Ej: Ravioles de Ricota y Nuez"
-                [value]="newDishName()"
-                (input)="newDishName.set($any($event.target).value)"
-              />
-            </div>
-
-            <div class="form-group">
-              <label>Categoría:</label>
-              <select
-                [value]="newDishCategory()"
-                (change)="newDishCategory.set($any($event.target).value)"
-              >
-                @for (cat of categories(); track cat.id) {
-                  <option [value]="cat.id">{{ cat.label }}</option>
-                }
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Precio ($ ARS):</label>
-              <input
-                type="number"
-                placeholder="Ej: 8500"
-                [value]="newDishPrice()"
-                (input)="newDishPrice.set($any($event.target).value)"
-              />
-            </div>
-
-            <div class="form-group">
-              <label>Etiquetas (separadas por coma):</label>
-              <input
-                type="text"
-                placeholder="Ej: Vegetariano, Recomendado"
-                [value]="newDishTags()"
-                (input)="newDishTags.set($any($event.target).value)"
-              />
-            </div>
-
-            <div class="form-group full-width">
-              <label>URL de Foto / Video:</label>
-              <input
-                type="text"
-                placeholder="https://..."
-                [value]="newDishImageUrl()"
-                (input)="newDishImageUrl.set($any($event.target).value)"
-              />
-            </div>
-
-            <div class="form-group full-width">
-              <label>Descripción detallada:</label>
-              <textarea
-                rows="2"
-                placeholder="Describí los ingredientes, preparación o historia del plato..."
-                [value]="newDishDesc()"
-                (input)="newDishDesc.set($any($event.target).value)"
-              ></textarea>
-            </div>
-          </div>
-
-          <div class="form-buttons">
-            <button type="button" class="btn-save" (click)="createDish()">
-              Guardar y Publicar en la Carta
-            </button>
-          </div>
-        </div>
-      }
 
       <!-- Listado de platos -->
       <div class="dishes-table-wrap">
@@ -198,13 +134,13 @@
     </section>
   }
 
-  <!-- PESTAÑA 2: USUARIOS Y ROLES GRANULADOS -->
+  <!-- PESTAÑA 2: PERSONAL (USUARIOS DE TRABAJO) -->
   @if (activeTab() === 'users') {
     <section class="tab-content">
       <div class="section-actions">
         <div>
-          <h3>Personal y Roles de Acceso</h3>
-          <p class="section-sub">Control granular por perfil de empleado (Admin, Mozo, Cocina).</p>
+          <h3>Equipo de Salón y Cocina</h3>
+          <p class="section-sub">Administrá las cuentas de los empleados con acceso al portal.</p>
         </div>
         <button
           type="button"
@@ -216,28 +152,9 @@
         </button>
       </div>
 
-      <!-- Matriz explicativa de roles -->
-      <div class="roles-guide-grid">
-        <div class="role-card">
-          <div class="role-badge role-admin">ADMIN</div>
-          <h4>Gerencia / Encargado</h4>
-          <p>Control total: puede modificar precios, fotos, crear usuarios y configurar integraciones.</p>
-        </div>
-        <div class="role-card">
-          <div class="role-badge role-mozo">MOZO / SALÓN</div>
-          <h4>Personal de Salón</h4>
-          <p>Ve comandas entrantes, estado de mesas, avisa platos sin stock y cobra la cuenta.</p>
-        </div>
-        <div class="role-card">
-          <div class="role-badge role-cocina">COCINA</div>
-          <h4>Jefe de Cocina / KDS</h4>
-          <p>Visualiza pedidos en preparación, cronómetro de tiempos y alerta faltantes de insumos.</p>
-        </div>
-      </div>
-
       @if (showUserForm()) {
         <div class="dish-form-card">
-          <h4>Dar de alta personal</h4>
+          <h4>Dar de alta empleado</h4>
           <div class="form-grid">
             <div class="form-group">
               <label>Nombre y Apellido:</label>
@@ -250,14 +167,34 @@
             </div>
 
             <div class="form-group">
+              <label>Apodo / Usuario (@):</label>
+              <input
+                type="text"
+                placeholder="ej: sofia_salon"
+                [value]="newUserNickname()"
+                (input)="newUserNickname.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Email de acceso:</label>
+              <input
+                type="email"
+                placeholder="sofia@ilmaterello.com"
+                [value]="newUserEmail()"
+                (input)="newUserEmail.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group">
               <label>Rol asignado:</label>
               <select
                 [value]="newUserRole()"
                 (change)="newUserRole.set($any($event.target).value)"
               >
-                <option value="mozo">Mozo / Salón</option>
-                <option value="cocina">Cocina / KDS</option>
-                <option value="admin">Administrador / Gerente</option>
+                @for (role of roles(); track role.id) {
+                  <option [value]="role.id">{{ role.name }}</option>
+                }
               </select>
             </div>
 
@@ -285,24 +222,35 @@
         <table class="admin-table">
           <thead>
             <tr>
-              <th>Nombre</th>
+              <th>Personal</th>
               <th>Rol Asignado</th>
+              <th>Email</th>
               <th>PIN</th>
-              <th>Zona / Mesas</th>
               <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            @for (user of users(); track user.id) {
+            @for (user of staffUsers(); track user.id) {
               <tr>
-                <td><strong>{{ user.name }}</strong></td>
+                <td class="user-cell">
+                  @if (user.avatar) {
+                    <img class="user-avatar-mini" [src]="user.avatar" [alt]="user.name" />
+                  } @else {
+                    <div class="user-avatar-fallback"><i class="ti ti-user"></i></div>
+                  }
+                  <div class="user-name-box">
+                    <strong>{{ user.name }}</strong>
+                    <span class="user-sub">&#64;{{ user.nickname }}</span>
+                  </div>
+                </td>
                 <td>
-                  <span class="role-pill" [class]="'role-' + user.role">
-                    {{ user.role | uppercase }}
+                  <span class="role-pill" [class]="getRoleBadgeClass(user.roleId)">
+                    {{ getRoleName(user.roleId) }}
                   </span>
                 </td>
+                <td><code>{{ user.email }}</code></td>
                 <td><code>{{ user.pin ?? '----' }}</code></td>
-                <td>{{ user.tableAssigned ?? 'Salón General' }}</td>
                 <td>
                   <button
                     type="button"
@@ -314,6 +262,16 @@
                     <span>{{ user.active ? 'Activo' : 'Inactivo' }}</span>
                   </button>
                 </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn-delete"
+                    (click)="deleteUser(user.id)"
+                    title="Eliminar empleado"
+                  >
+                    <i class="ti ti-trash"></i>
+                  </button>
+                </td>
               </tr>
             }
           </tbody>
@@ -322,7 +280,227 @@
     </section>
   }
 
-  <!-- PESTAÑA 3: INTEGRACIÓN FUDO POS -->
+  <!-- PESTAÑA 3: GESTOR DE ROLES Y PERMISOS GRANULARES -->
+  @if (activeTab() === 'roles') {
+    <section class="tab-content">
+      <div class="section-actions">
+        <div>
+          <h3>Roles y Permisos del Sistema</h3>
+          <p class="section-sub">Roles pre-cargados listos para usar y creador simple de nuevos perfiles.</p>
+        </div>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="showRoleForm.set(!showRoleForm())"
+        >
+          <i class="ti" [class.ti-x]="showRoleForm()" [class.ti-plus]="!showRoleForm()"></i>
+          <span>{{ showRoleForm() ? 'Cancelar' : 'Crear Nuevo Rol' }}</span>
+        </button>
+      </div>
+
+      <!-- Formulario para Crear Nuevo Rol -->
+      @if (showRoleForm()) {
+        <div class="dish-form-card">
+          <h4>Crear Nuevo Perfil / Rol</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nombre del Rol:</label>
+              <input
+                type="text"
+                placeholder="Ej: Encargado de Barra / Sommelier"
+                [value]="newRoleName()"
+                (input)="newRoleName.set($any($event.target).value)"
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label>Descripción del perfil:</label>
+              <input
+                type="text"
+                placeholder="Ej: Control de stock de vinos, bebidas y despacho en salón."
+                [value]="newRoleDesc()"
+                (input)="newRoleDesc.set($any($event.target).value)"
+              />
+            </div>
+          </div>
+
+          <!-- Matriz Simple de Permisos por Switches -->
+          <div class="permissions-matrix-wrap">
+            <h5>Permisos asignados a este rol:</h5>
+
+            <div class="perm-category-group">
+              <h6><i class="ti ti-tools-kitchen-2"></i> Carta & Catálogo</h6>
+              <div class="perm-switches-grid">
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canCreateDishes"
+                    (change)="toggleRolePermission('canCreateDishes')"
+                  />
+                  <span>Crear platos y reels</span>
+                </label>
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canEditPrices"
+                    (change)="toggleRolePermission('canEditPrices')"
+                  />
+                  <span>Modificar precios</span>
+                </label>
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canToggleStock"
+                    (change)="toggleRolePermission('canToggleStock')"
+                  />
+                  <span>Pausar stock en vivo</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="perm-category-group">
+              <h6><i class="ti ti-bell-ringing"></i> Salón & Comandas</h6>
+              <div class="perm-switches-grid">
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canViewOrders"
+                    (change)="toggleRolePermission('canViewOrders')"
+                  />
+                  <span>Ver comandas de salón</span>
+                </label>
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canAdvanceOrderStatus"
+                    (change)="toggleRolePermission('canAdvanceOrderStatus')"
+                  />
+                  <span>Avanzar pedidos</span>
+                </label>
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canCloseTables"
+                    (change)="toggleRolePermission('canCloseTables')"
+                  />
+                  <span>Cobrar y cerrar mesa</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="perm-category-group">
+              <h6><i class="ti ti-flame"></i> Cocina (KDS)</h6>
+              <div class="perm-switches-grid">
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canViewKitchenKDS"
+                    (change)="toggleRolePermission('canViewKitchenKDS')"
+                  />
+                  <span>Ver pantalla de cocina KDS</span>
+                </label>
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canAlertKitchenStock"
+                    (change)="toggleRolePermission('canAlertKitchenStock')"
+                  />
+                  <span>Alertar falta de insumos</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="perm-category-group">
+              <h6><i class="ti ti-shield"></i> Administración & Seguridad</h6>
+              <div class="perm-switches-grid">
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canManageStaff"
+                    (change)="toggleRolePermission('canManageStaff')"
+                  />
+                  <span>Administrar empleados</span>
+                </label>
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canManageRoles"
+                    (change)="toggleRolePermission('canManageRoles')"
+                  />
+                  <span>Modificar roles y accesos</span>
+                </label>
+                <label class="perm-switch-label">
+                  <input
+                    type="checkbox"
+                    [checked]="rolePermissionsState().canConfigurePOS"
+                    (change)="toggleRolePermission('canConfigurePOS')"
+                  />
+                  <span>Configurar Fudo POS</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-buttons">
+            <button type="button" class="btn-save" (click)="createRole()">
+              Guardar y Habilitar Rol
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Cuadrícula de Roles Pre-cargados y Personalizados -->
+      <div class="roles-cards-grid">
+        @for (role of roles(); track role.id) {
+          <div class="role-overview-card" [class.is-system]="role.isSystem">
+            <div class="role-card-top">
+              <span class="role-badge" [class]="role.badgeClass">
+                {{ role.name | uppercase }}
+              </span>
+              @if (role.isSystem) {
+                <span class="system-tag" title="Rol pre-cargado del sistema">Pre-cargado</span>
+              } @else {
+                <button
+                  type="button"
+                  class="btn-delete-role"
+                  (click)="deleteRole(role.id)"
+                  title="Eliminar rol"
+                >
+                  <i class="ti ti-trash"></i>
+                </button>
+              }
+            </div>
+
+            <h4>{{ role.name }}</h4>
+            <p class="role-desc-text">{{ role.description }}</p>
+
+            <div class="role-stats-row">
+              <span class="stat-pill">
+                <i class="ti ti-users"></i>
+                <span>{{ getUserCountForRole(role.id) }} empleados</span>
+              </span>
+            </div>
+
+            <div class="role-perms-preview">
+              <span class="perms-label">Permisos activos:</span>
+              <div class="perms-chips-row">
+                @if (role.permissions.canCreateDishes) { <span class="perm-chip">Crear platos</span> }
+                @if (role.permissions.canEditPrices) { <span class="perm-chip">Editar precios</span> }
+                @if (role.permissions.canToggleStock) { <span class="perm-chip">Pausar stock</span> }
+                @if (role.permissions.canViewOrders) { <span class="perm-chip">Ver comandas</span> }
+                @if (role.permissions.canCloseTables) { <span class="perm-chip">Cobrar mesas</span> }
+                @if (role.permissions.canViewKitchenKDS) { <span class="perm-chip">Cocina KDS</span> }
+                @if (role.permissions.canManageStaff) { <span class="perm-chip">Gestión personal</span> }
+                @if (role.permissions.canConfigurePOS) { <span class="perm-chip">Fudo POS</span> }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- PESTAÑA 4: INTEGRACIÓN FUDO POS -->
   @if (activeTab() === 'fudo') {
     <section class="tab-content fudo-section">
       <div class="section-actions">

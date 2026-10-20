@@ -53,7 +53,13 @@
 
     <!-- Input fijo en la parte inferior estilo Instagram -->
     <div class="comment-input-bar">
-      <div class="my-avatar"><i class="ti ti-user"></i></div>
+      <div class="my-avatar">
+        @if (currentProfile().avatar) {
+          <img class="my-avatar-img" [src]="currentProfile().avatar" alt="Mi avatar" />
+        } @else {
+          <i class="ti ti-user"></i>
+        }
+      </div>
       <input
         type="text"
         placeholder="Añade un comentario..."
