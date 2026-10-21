@@ -2,6 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CartService } from '../../../core/services/cart.service';
 import { OrderService } from '../../../core/services/order.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { Order } from '../../../core/models/order.model';
 
 @Component({
@@ -14,6 +15,7 @@ import { Order } from '../../../core/models/order.model';
 export class OrderDrawer {
   private readonly cartService = inject(CartService);
   private readonly orderService = inject(OrderService);
+  private readonly authService = inject(AuthService);
 
   readonly isOpen = this.cartService.isDrawerOpen;
   readonly lines = this.cartService.lines;
@@ -57,38 +59,12 @@ export class OrderDrawer {
       lines,
       this.customerName().trim() || undefined,
       this.orderNotes().trim() || undefined,
+      this.authService.currentStaffUser()?.name,
     );
 
     this.submittedOrder.set(order);
 
     // Vaciar el carrito tras confirmar la comanda
     this.cartService.clear();
-  }
-
-  /**
-   * Opcional: Enviar copia por WhatsApp
-   */
-  checkoutWhatsApp(): void {
-    const order = this.submittedOrder();
-    let msg = '';
-
-    if (order) {
-      msg = `¡Hola Il Materello! Acabo de enviar la comanda *${order.id}* desde la *${order.table}*:\n\n`;
-      order.lines.forEach((line) => {
-        msg += `• ${line.quantity}x ${line.dish.name} ($${(line.dish.price * line.quantity).toLocaleString('es-AR')})\n`;
-      });
-      msg += `\n*Total: $${order.totalPrice.toLocaleString('es-AR')}*`;
-    } else {
-      const lines = this.lines();
-      if (lines.length === 0) return;
-      msg = `¡Hola Il Materello! Quiero pedir para la *${this.selectedTable()}*:\n\n`;
-      lines.forEach((line) => {
-        msg += `• ${line.quantity}x ${line.dish.name} ($${(line.dish.price * line.quantity).toLocaleString('es-AR')})\n`;
-      });
-      msg += `\n*Total: $${this.totalPrice().toLocaleString('es-AR')}*`;
-    }
-
-    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
-    window.open(waUrl, '_blank');
   }
 }

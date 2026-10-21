@@ -4,11 +4,11 @@ import { WaiterPanel } from './features/waiter/waiter-panel';
 import { AdminPanel } from './features/admin/admin-panel';
 import { ReelComposer } from './features/feed/reel-composer/reel-composer';
 import { ProfileModal } from './features/profile/profile-modal/profile-modal';
-import { StaffAuthModal } from './features/auth/staff-auth-modal/staff-auth-modal';
 import { OrderService } from './core/services/order.service';
 import { AuthService } from './core/services/auth.service';
 import { ProfileService } from './core/services/profile.service';
 import { Dish } from './core/models/dish.model';
+import { ADMIN_TOKEN_PARAM } from './core/config/admin-access';
 
 export type DemoView = 'cliente' | 'mozos' | 'admin';
 
@@ -20,7 +20,6 @@ export type DemoView = 'cliente' | 'mozos' | 'admin';
     AdminPanel,
     ReelComposer,
     ProfileModal,
-    StaffAuthModal,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -34,7 +33,6 @@ export class App {
   readonly currentView = signal<DemoView>('cliente');
   readonly isReelComposerOpen = signal(false);
   readonly isProfileModalOpen = signal(false);
-  readonly isStaffAuthOpen = signal(false);
 
   readonly userProfile = this.profileService.profile;
   readonly staffUser = this.authService.currentStaffUser;
@@ -58,10 +56,11 @@ export class App {
   );
 
   constructor() {
-    // Si el personal ya tenía la sesión abierta, arranca en su pantalla de trabajo
+    // Si el administrador ya tenía la sesión abierta, arranca en su pantalla de trabajo
     if (this.staffUser()) {
       this.currentView.set(this.defaultStaffView());
     }
+    void this.checkAdminTokenInUrl();
   }
 
   openProfileModal(): void {
@@ -70,18 +69,6 @@ export class App {
 
   closeProfileModal(): void {
     this.isProfileModalOpen.set(false);
-  }
-
-  openStaffAuth(): void {
-    this.isStaffAuthOpen.set(true);
-  }
-
-  closeStaffAuth(): void {
-    this.isStaffAuthOpen.set(false);
-  }
-
-  onStaffLoginSuccess(): void {
-    this.setView(this.defaultStaffView());
   }
 
   logoutStaff(): void {
@@ -102,12 +89,29 @@ export class App {
     this.setView('cliente');
   }
 
-  /** Las vistas de personal solo se abren con sesión iniciada. */
+  /** Las vistas de administración solo se abren con la sesión del administrador. */
   setView(view: DemoView): void {
     if (view !== 'cliente' && !this.staffUser()) {
-      this.openStaffAuth();
       return;
     }
     this.currentView.set(view);
+  }
+
+  /** Si la URL trae ?acceso=<token> válido, abre la administración y limpia la URL. */
+  private async checkAdminTokenInUrl(): Promise<void> {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const url = new URL(window.location.href);
+    const token = url.searchParams.get(ADMIN_TOKEN_PARAM);
+    if (!token) {
+      return;
+    }
+    url.searchParams.delete(ADMIN_TOKEN_PARAM);
+    window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+
+    if (await this.authService.loginWithAdminToken(token)) {
+      this.currentView.set('admin');
+    }
   }
 }

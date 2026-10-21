@@ -27,6 +27,16 @@
 
     <button
       type="button"
+      class="info-btn"
+      (click)="openWelcome()"
+      title="Factura y restricciones alimentarias"
+      aria-label="Información importante"
+    >
+      <i class="ti ti-info-circle"></i>
+    </button>
+
+    <button
+      type="button"
       class="profile-btn"
       (click)="openProfileRequested.emit()"
       title="Mi perfil"
@@ -53,7 +63,7 @@
     }
   </div>
 
-  @if (viewMode() === 'reels' && showSwipeHint()) {
+  @if (viewMode() === 'reels' && showSwipeHint() && !showWelcome()) {
     <button type="button" class="swipe-hint" (click)="dismissSwipeHint()">
       <i class="ti ti-chevron-up"></i>
       <span>Deslizá para ver más platos</span>
@@ -74,4 +84,8 @@
   }
 
   <app-order-drawer />
+
+  @if (showWelcome()) {
+    <app-welcome-notice (dismissed)="dismissWelcome()" />
+  }
 </div>

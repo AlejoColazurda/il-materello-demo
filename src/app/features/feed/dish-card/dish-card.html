@@ -47,7 +47,11 @@
     <div class="title-price-row">
       <h2 class="dish-name" [class.dimmed]="!dish().inStock">{{ dish().name }}</h2>
       <span class="dish-price" [class.price-disabled]="!dish().inStock">
-        {{ dish().price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+        @if (dish().price > 0) {
+          {{ dish().price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+        } @else {
+          Incluida con la pasta
+        }
       </span>
     </div>
 

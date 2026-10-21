@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
 import { Dish } from '../../../core/models/dish.model';
 
 /**
- * Botón "Agregar" que se convierte en un selector − N + cuando el plato ya está en el pedido.
+ * Botón "Agregar" que se convierte en un selector − N + cuando el plato ya está en la comanda.
+ * Solo lo ve el personal: el comensal usa la carta para mirar y le pide al mozo.
  * - variant "wide": botón ancho con texto (vista Reels).
  * - variant "compact": botón circular "+" (vista Lista).
  */
@@ -15,6 +17,8 @@ import { Dish } from '../../../core/models/dish.model';
 })
 export class AddButton {
   private readonly cartService = inject(CartService);
+
+  readonly canTakeOrders = inject(AuthService).canTakeOrders;
 
   readonly dish = input.required<Dish>();
   readonly variant = input<'wide' | 'compact'>('wide');

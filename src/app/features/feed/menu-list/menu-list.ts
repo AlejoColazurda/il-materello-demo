@@ -14,6 +14,7 @@ import { MenuService } from '../../../core/services/menu.service';
 import { Category } from '../../../core/models/category.model';
 import { Dish } from '../../../core/models/dish.model';
 import { AddButton } from '../../cart/add-button/add-button';
+import { CUBIERTO_PRICE } from '../../../../assets/mock/dishes.mock';
 
 interface MenuSection {
   category: Category;
@@ -49,6 +50,7 @@ export class MenuList {
 
   private readonly scroller = viewChild.required<ElementRef<HTMLElement>>('scroller');
 
+  readonly cubiertoPrice = CUBIERTO_PRICE;
   readonly query = signal('');
   private isAutoScrolling = false;
   private scrollFrame = 0;

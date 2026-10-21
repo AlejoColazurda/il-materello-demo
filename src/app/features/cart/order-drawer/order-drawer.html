@@ -7,11 +7,11 @@
       <!-- Pantalla de confirmación de Comanda Enviada -->
       <div class="order-success-view">
         <div class="success-icon-wrap"><i class="ti ti-check"></i></div>
-        <h3>¡Pedido enviado!</h3>
+        <h3>¡Comanda enviada!</h3>
         <span class="ticket-id">{{ order.id }} · {{ order.table }}</span>
 
         <p class="success-desc">
-          El mozo y la cocina ya lo recibieron. Te avisamos cuando esté listo.
+          Ya figura en Comandas para seguirla hasta la mesa.
         </p>
 
         <div class="confirmed-summary">
@@ -34,13 +34,7 @@
         </div>
 
         <div class="success-actions">
-          <button type="button" class="whatsapp-btn" (click)="checkoutWhatsApp()">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
-            </svg>
-            <span>Enviar comprobante por WhatsApp</span>
-          </button>
-          <button type="button" class="close-btn" (click)="close()">Listo, volver a la carta</button>
+          <button type="button" class="close-btn" (click)="close()">Cargar otra comanda</button>
         </div>
       </div>
     } @else {
@@ -52,14 +46,14 @@
             <line x1="3" y1="6" x2="21" y2="6" />
             <path d="M16 10a4 4 0 0 1-8 0" />
           </svg>
-          <h3>Tu pedido</h3>
+          <h3>Nueva comanda</h3>
         </div>
         <button type="button" class="drawer-close-x" (click)="close()"><i class="ti ti-x"></i></button>
       </div>
 
       <!-- Selector de Mesa -->
       <div class="table-selector-row">
-        <span class="table-label">¿En qué mesa estás?</span>
+        <span class="table-label">Mesa</span>
         <div class="table-chips">
           @for (table of tables; track table) {
             <button
@@ -77,8 +71,8 @@
       @if (lines().length === 0) {
         <div class="empty-wrap">
           <i class="ti ti-tools-kitchen-2 empty-icon"></i>
-          <p class="empty">Todavía no agregaste platos a tu pedido.</p>
-          <span class="empty-sub">Tocá "Agregar al pedido" (o el botón + en la lista) en los platos que quieras.</span>
+          <p class="empty">Todavía no hay platos en la comanda.</p>
+          <span class="empty-sub">Tocá "Agregar a la comanda" o el botón + de cada plato.</span>
         </div>
       } @else {
         <div class="lines">
@@ -101,7 +95,7 @@
         <div class="notes-input-wrap">
           <input
             type="text"
-            placeholder="¿Alguna aclaración? Ej: sin sal, bien cocido (opcional)"
+            placeholder="Aclaración para cocina (opcional). Ej: sin sal, bien cocido"
             [value]="orderNotes()"
             (input)="orderNotes.set($any($event.target).value)"
           />
@@ -115,19 +109,11 @@
         <!-- Botón Principal: Enviar comanda al mozo -->
         <button type="button" class="submit-order-btn" (click)="submitOrderToStaff()">
           <span class="btn-icon"><i class="ti ti-bell-ringing"></i></span>
-          <span>Enviar pedido · {{ selectedTable() }}</span>
-        </button>
-
-        <!-- Botón Secundario: WhatsApp -->
-        <button type="button" class="whatsapp-sub-btn" (click)="checkoutWhatsApp()">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
-          </svg>
-          <span>O pedir por WhatsApp</span>
+          <span>Enviar comanda · {{ selectedTable() }}</span>
         </button>
       }
 
-      <button type="button" class="close-btn" (click)="close()">Seguir mirando la carta</button>
+      <button type="button" class="close-btn" (click)="close()">Volver a la carta</button>
     }
   </div>
 }

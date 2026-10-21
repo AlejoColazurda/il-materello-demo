@@ -7,10 +7,11 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
 
 /**
- * Barra fija inferior "Ver mi pedido". Solo aparece cuando hay algo en el pedido
+ * Barra fija inferior "Ver comanda" (solo personal). Aparece cuando hay algo cargado
  * y "rebota" cada vez que se agrega un plato, sin tapar los botones de la carta.
  */
 @Component({
@@ -23,6 +24,7 @@ import { CartService } from '../../../core/services/cart.service';
 export class CartBar {
   private readonly cartService = inject(CartService);
 
+  readonly canTakeOrders = inject(AuthService).canTakeOrders;
   readonly itemCount = this.cartService.itemCount;
   readonly totalPrice = this.cartService.totalPrice;
   readonly bump = signal(false);

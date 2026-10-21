@@ -14,22 +14,41 @@ import {
 } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
 import { ProfileService } from '../../core/services/profile.service';
+import { AuthService } from '../../core/services/auth.service';
 import { CategoryChipBar } from './category-chip-bar/category-chip-bar';
 import { DishCard } from './dish-card/dish-card';
 import { MenuList } from './menu-list/menu-list';
 import { OrderDrawer } from '../cart/order-drawer/order-drawer';
 import { CartBar } from '../cart/cart-bar/cart-bar';
+import { WelcomeNotice } from './welcome-notice/welcome-notice';
 
 export type MenuViewMode = 'reels' | 'lista';
 
 const VIEW_MODE_KEY = 'ilm.menuViewMode';
 const SWIPE_HINT_KEY = 'ilm.swipeHintSeen';
+const WELCOME_KEY = 'ilm.welcomeSeen';
 
 function readStorage(key: string): string | null {
   try {
     return localStorage.getItem(key);
   } catch {
     return null;
+  }
+}
+
+function readSession(key: string): string | null {
+  try {
+    return sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeSession(key: string, value: string): void {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch {
+    // Sin storage: el aviso puede volver a aparecer, no es grave
   }
 }
 
@@ -43,7 +62,7 @@ function writeStorage(key: string, value: string): void {
 
 @Component({
   selector: 'app-feed',
-  imports: [CategoryChipBar, DishCard, MenuList, OrderDrawer, CartBar],
+  imports: [CategoryChipBar, DishCard, MenuList, OrderDrawer, CartBar, WelcomeNotice],
   templateUrl: './feed.html',
   styleUrl: './feed.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,6 +71,7 @@ export class Feed {
   private readonly menuService = inject(MenuService);
   private readonly profileService = inject(ProfileService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly authService = inject(AuthService);
 
   readonly openProfileRequested = output<void>();
 
@@ -69,6 +89,10 @@ export class Feed {
     readStorage(VIEW_MODE_KEY) === 'lista' ? 'lista' : 'reels',
   );
   readonly showSwipeHint = signal(readStorage(SWIPE_HINT_KEY) !== '1');
+  /** Aviso de factura y restricciones: una vez por visita, solo para comensales. */
+  readonly showWelcome = signal(
+    !this.authService.isAuthenticated() && readSession(WELCOME_KEY) !== '1',
+  );
 
   private isAutoScrolling = false;
   private observer: IntersectionObserver | undefined;
@@ -165,6 +189,15 @@ export class Feed {
     if (this.showSwipeHint() && this.feedElement().nativeElement.scrollTop > 40) {
       this.dismissSwipeHint();
     }
+  }
+
+  openWelcome(): void {
+    this.showWelcome.set(true);
+  }
+
+  dismissWelcome(): void {
+    this.showWelcome.set(false);
+    writeSession(WELCOME_KEY, '1');
   }
 
   dismissSwipeHint(): void {

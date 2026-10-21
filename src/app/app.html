@@ -47,10 +47,10 @@
           class="nav-btn nav-btn-preview"
           [class.active]="currentView() === 'cliente'"
           (click)="setView('cliente')"
-          title="Ver la carta tal como la ve el comensal"
+          [title]="permissions().canViewOrders ? 'Cargar una comanda desde la carta' : 'Ver la carta tal como la ve el comensal'"
         >
           <i class="ti ti-eye"></i>
-          <span>Ver como cliente</span>
+          <span>{{ permissions().canViewOrders ? 'Carta · tomar comanda' : 'Ver como cliente' }}</span>
         </button>
       </nav>
 
@@ -77,20 +77,10 @@
       <div class="brand">
         <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
         <span class="brand-text">
-          <span class="brand-name">Il Matterello · Palermo</span>
+          <span class="brand-name">Il Matterello</span>
           <span class="brand-mode"><i class="ti ti-user"></i> Vista cliente</span>
         </span>
       </div>
-
-      <button
-        type="button"
-        class="btn-staff-access"
-        (click)="openStaffAuth()"
-        title="Ingreso para mozos, cocina y administración"
-      >
-        <i class="ti ti-lock"></i>
-        <span>Acceso personal</span>
-      </button>
     </header>
   }
 
@@ -114,13 +104,6 @@
   <app-profile-modal
     [isOpen]="isProfileModalOpen()"
     (closed)="closeProfileModal()"
-  />
-
-  <!-- 2. Modal de Autenticación de Personal (Login con ojo, registro, recuperar y demos) -->
-  <app-staff-auth-modal
-    [isOpen]="isStaffAuthOpen()"
-    (closed)="closeStaffAuth()"
-    (loginSuccess)="onStaffLoginSuccess()"
   />
 
   <!-- 3. Modal estilo Instagram para subir nuevos Reels -->

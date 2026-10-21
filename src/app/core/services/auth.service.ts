@@ -1,5 +1,6 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { CustomRole, PRELOADED_ROLES, RolePermissions, StaffUser } from '../models/user.model';
+import { ADMIN_TOKEN_SHA256, sha256Hex } from '../config/admin-access';
 
 const STAFF_SESSION_KEY = 'ilmaterello_staff_session';
 const ROLES_STORAGE_KEY = 'ilmaterello_custom_roles';
@@ -82,6 +83,11 @@ export class AuthService {
     return role.permissions;
   });
 
+  /** La carta solo toma pedidos cuando la usa el personal de salón (los comensales solo miran). */
+  readonly canTakeOrders = computed(
+    () => this.isAuthenticated() && this.permissions().canViewOrders,
+  );
+
   readonly activeStaffCount = computed(
     () => this.staffUsersSignal().filter((u) => u.active).length,
   );
@@ -114,13 +120,16 @@ export class AuthService {
     try {
       const stored = localStorage.getItem(STAFF_SESSION_KEY);
       if (stored) {
-        return JSON.parse(stored);
+        const user: StaffUser = JSON.parse(stored);
+        // Solo el administrador tiene sesión en el frontend
+        return user.roleId === 'admin' ? user : null;
       }
     } catch {
       // fallback
     }
     return null;
   }
+
 
   private saveRoles(roles: CustomRole[]): void {
     try {
@@ -175,7 +184,23 @@ export class AuthService {
   }
 
   /**
-   * Acceso rápido 1-Click para demostraciones y clientes
+   * Acceso del administrador con el enlace tokenizado (?acceso=<token>).
+   * Se compara el hash SHA-256 del token, nunca el token en texto plano.
+   */
+  async loginWithAdminToken(token: string): Promise<boolean> {
+    if (!token || typeof crypto === 'undefined' || !crypto.subtle) {
+      return false;
+    }
+    const hash = await sha256Hex(token.trim());
+    if (hash !== ADMIN_TOKEN_SHA256) {
+      return false;
+    }
+    this.loginAsDemo('admin');
+    return this.isAuthenticated();
+  }
+
+  /**
+   * Inicia sesión con el primer usuario activo del rol indicado
    */
   loginAsDemo(roleType: 'admin' | 'mozo' | 'cocina'): void {
     const demoUser = this.staffUsersSignal().find((u) => u.roleId === roleType && u.active);

@@ -1,7 +1,7 @@
-@if (itemCount() > 0) {
+@if (canTakeOrders() && itemCount() > 0) {
   <button type="button" class="cart-bar" [class.bump]="bump()" (click)="open()">
     <span class="count">{{ itemCount() }}</span>
-    <span class="label">Ver mi pedido</span>
+    <span class="label">Ver comanda</span>
     <span class="total">{{ totalPrice() | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</span>
   </button>
 }

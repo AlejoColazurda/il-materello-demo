@@ -5,7 +5,7 @@ const STORAGE_KEY = 'ilmaterello_profile_data';
 
 export const DEFAULT_PROFILE: UserProfile = {
   name: 'Comensal Il Matterello',
-  nickname: 'comensal_palermo',
+  nickname: 'comensal_matterello',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
 };
 

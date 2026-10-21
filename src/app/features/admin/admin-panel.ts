@@ -66,7 +66,7 @@ export class AdminPanel {
 
   // Estado Fudo POS
   readonly fudoApiKey = signal('fudo_live_79a2b8e3914fc019');
-  readonly fudoBranchId = signal('sucursal_palermo_central');
+  readonly fudoBranchId = signal('sucursal_central');
   readonly fudoAutoSyncMenu = signal(true);
   readonly fudoAutoPushOrders = signal(true);
   readonly fudoSyncStatus = signal<string | null>(null);

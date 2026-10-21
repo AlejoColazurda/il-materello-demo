@@ -1,4 +1,12 @@
 <div class="scroller" #scroller (scroll)="onScroll()">
+  <p class="diet-note">
+    <i class="ti ti-wheat-off"></i>
+    <span>¿Alergias o celiaquía? <b>Consultá a tu mozo</b> antes de pedir.</span>
+  </p>
+  <p class="cover-note">
+    <i class="ti ti-tools-kitchen-2"></i>
+    <span>Se cobra cubierto: {{ cubiertoPrice | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</span>
+  </p>
   <div class="search">
     <i class="ti ti-search"></i>
     <input
@@ -47,7 +55,11 @@
                 }
                 <span class="dish-meta">
                   <span class="dish-price">
-                    {{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+                    @if (dish.price > 0) {
+                      {{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+                    } @else {
+                      Incluida
+                    }
                   </span>
                   @for (tag of dish.tags; track tag) {
                     @if (cleanTag(tag) !== 'Sin stock hoy') {

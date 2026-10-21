@@ -279,50 +279,6 @@
   }
 }
 
-/* WhatsApp Sub Button */
-.whatsapp-sub-btn {
-  margin-top: 8px;
-  background: rgba(37, 211, 102, 0.12);
-  color: #25d366;
-  border: 1px solid rgba(37, 211, 102, 0.35);
-  border-radius: 12px;
-  padding: 9px 14px;
-  font-weight: 600;
-  font-size: 12.5px;
-  font-family: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  &:hover {
-    background: rgba(37, 211, 102, 0.2);
-  }
-}
-
-.whatsapp-btn {
-  margin-top: 12px;
-  background: #25d366;
-  color: #fff;
-  border: none;
-  border-radius: 14px;
-  padding: 12px 16px;
-  font-weight: 700;
-  font-size: 13.5px;
-  font-family: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
-
-  &:hover {
-    background: #20ba59;
-  }
-}
-
 .close-btn {
   margin-top: 8px;
   background: rgba(255, 255, 255, 0.08);

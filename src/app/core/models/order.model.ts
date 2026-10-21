@@ -18,5 +18,6 @@ export interface Order {
   createdAt: Date;
   updatedAt?: Date;
   paymentMethod?: 'efectivo' | 'tarjeta' | 'mercadopago';
-  fudoSynced?: boolean;
+  /** Mozo que cargó la comanda / atiende la mesa. */
+  waiterName?: string;
 }

@@ -1,0 +1,27 @@
+<div class="backdrop" (click)="dismissed.emit()"></div>
+<div class="sheet" role="dialog" aria-labelledby="welcome-title">
+  <div class="brand">
+    <i class="ti ti-tools-kitchen-2"></i>
+  </div>
+  <h2 id="welcome-title">¡Bienvenido a Il Matterello!</h2>
+  <p class="lead">Antes de elegir, dos cositas:</p>
+
+  <ul class="notes">
+    <li>
+      <span class="ico ico-invoice"><i class="ti ti-receipt"></i></span>
+      <span>
+        <b>¿Necesitás factura?</b>
+        Avisale a tu mozo al sentarte, antes de pedir la cuenta.
+      </span>
+    </li>
+    <li>
+      <span class="ico ico-diet"><i class="ti ti-wheat-off"></i></span>
+      <span>
+        <b>¿Alergias, celiaquía u otra restricción?</b>
+        Consultá a tu mozo y te recomendamos qué pedir.
+      </span>
+    </li>
+  </ul>
+
+  <button type="button" class="cta" (click)="dismissed.emit()">Ver la carta</button>
+</div>

@@ -16,38 +16,38 @@ const INITIAL_ORDERS_MOCK: Order[] = [
     id: 'CMD-101',
     table: 'Mesa 4',
     customerName: 'Santiago & Familia',
+    waiterName: 'Mateo Salón',
     lines: [
-      { dish: dishById('pappardelle-ragu-232'), quantity: 2, notes: 'Bien caliente por favor' },
-      { dish: dishById('marco-zunino-malbec-763'), quantity: 1 },
+      { dish: dishById('pappardelle'), quantity: 2, notes: 'Bien caliente por favor' },
+      { dish: dishById('olivia-malbec'), quantity: 1 },
     ],
     status: 'preparando',
     createdAt: new Date(Date.now() - 12 * 60 * 1000), // hace 12 min
-    fudoSynced: true,
   }),
   seedOrder({
     id: 'CMD-102',
     table: 'Mesa 2',
     customerName: 'Micaela',
+    waiterName: 'Mateo Salón',
     lines: [
-      { dish: dishById('vitello-tonnato-143'), quantity: 1, notes: 'Salsa aparte' },
-      { dish: dishById('ravioli-genovesi-al-tuco-103'), quantity: 1 },
-      { dish: dishById('limonada-casera-428'), quantity: 1 },
+      { dish: dishById('vitel-tone'), quantity: 1, notes: 'Salsa aparte' },
+      { dish: dishById('ravioles-genoveses'), quantity: 1 },
+      { dish: dishById('limonada-casera'), quantity: 1 },
     ],
     status: 'pendiente',
     createdAt: new Date(Date.now() - 3 * 60 * 1000), // hace 3 min
-    fudoSynced: true,
   }),
   seedOrder({
     id: 'CMD-103',
     table: 'Mesa 7',
     customerName: 'Martín G.',
+    waiterName: 'Lucía Pérez',
     lines: [
-      { dish: dishById('lasagna-bolognese-501'), quantity: 1 },
-      { dish: dishById('tiramisu-596'), quantity: 1 },
+      { dish: dishById('lasagna-a-la-bolognesa'), quantity: 1 },
+      { dish: dishById('tiramisu'), quantity: 1 },
     ],
     status: 'entregado',
     createdAt: new Date(Date.now() - 35 * 60 * 1000), // hace 35 min
-    fudoSynced: true,
   }),
 ];
 
@@ -70,7 +70,13 @@ export class OrderService {
     () => this.ordersSignal().filter((o) => o.status === 'pendiente' || o.status === 'preparando').length,
   );
 
-  createOrder(table: string, lines: CartLine[], customerName?: string, notes?: string): Order {
+  createOrder(
+    table: string,
+    lines: CartLine[],
+    customerName?: string,
+    notes?: string,
+    waiterName?: string,
+  ): Order {
     const orderLines = lines.map((l) => ({
       dish: l.dish,
       quantity: l.quantity,
@@ -82,12 +88,12 @@ export class OrderService {
     const newOrder: Order = {
       id: `CMD-${this.nextTicketNumber++}`,
       table: table || 'Mesa 1',
-      customerName: customerName || 'Comensal QR',
+      customerName,
+      waiterName,
       lines: orderLines,
       totalPrice,
       status: 'pendiente',
       createdAt: new Date(),
-      fudoSynced: true, // Simulación de sincronización con POS Fudo
     };
 
     this.ordersSignal.update((orders) => [newOrder, ...orders]);

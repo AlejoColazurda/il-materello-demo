@@ -6,7 +6,7 @@
         <span class="brand-icon"><i class="ti ti-bell-ringing"></i></span>
         <div>
           <h2>Panel de Mozos y Comandas</h2>
-          <span class="sub">Il Materello · Control de Salón y Cocina en Vivo</span>
+          <span class="sub">Il Matterello · Control de Salón y Cocina en Vivo</span>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@
       <div class="empty-orders">
         <i class="ti ti-check empty-icon"></i>
         <h3>No hay comandas con este filtro</h3>
-        <p>Los pedidos que los clientes hagan desde la carta virtual aparecerán acá al instante.</p>
+        <p>Las comandas que cargue el personal desde la carta aparecen acá al instante.</p>
       </div>
     } @else {
       @for (order of filteredOrders(); track order.id) {
@@ -118,10 +118,15 @@
             </div>
           </div>
 
-          <!-- Comensal y notas -->
-          @if (order.customerName) {
+          <!-- Mozo asignado y comensal -->
+          @if (order.waiterName || order.customerName) {
             <div class="customer-info">
-              <span><i class="ti ti-user"></i> Comensal: <b>{{ order.customerName }}</b></span>
+              @if (order.waiterName) {
+                <span class="waiter-name"><i class="ti ti-user-check"></i> Mozo: <b>{{ order.waiterName }}</b></span>
+              }
+              @if (order.customerName) {
+                <span><i class="ti ti-user"></i> Comensal: <b>{{ order.customerName }}</b></span>
+              }
             </div>
           }
 

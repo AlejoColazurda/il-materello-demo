@@ -106,7 +106,7 @@ export class DishCard {
   shareViaWhatsApp(): void {
     const dish = this.dish();
     const url = `${window.location.origin}${window.location.pathname}#${dish.id}`;
-    const text = `¡Mirá este plato de Il Materello!\n*${dish.name}* - $${dish.price.toLocaleString('es-AR')}\n"${dish.description}"\n\nPodés verlo acá: ${url}`;
+    const text = `¡Mirá este plato de Il Matterello!\n*${dish.name}* - $${dish.price.toLocaleString('es-AR')}\n"${dish.description}"\n\nPodés verlo acá: ${url}`;
     const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
     window.open(waUrl, '_blank');
     this.closeShareModal();
@@ -115,7 +115,7 @@ export class DishCard {
   async copyShareLink(): Promise<void> {
     const dish = this.dish();
     const url = `${window.location.origin}${window.location.pathname}#${dish.id}`;
-    const text = `${dish.name} — Il Materello, Carta Virtual: ${url}`;
+    const text = `${dish.name} — Il Matterello, Carta Virtual: ${url}`;
 
     try {
       await navigator.clipboard.writeText(text);
@@ -133,7 +133,7 @@ export class DishCard {
   async shareViaNative(): Promise<void> {
     const dish = this.dish();
     const shareData = {
-      title: `${dish.name} — Il Materello`,
+      title: `${dish.name} — Il Matterello`,
       text: `${dish.name}: ${dish.description}`,
       url: `${window.location.origin}${window.location.pathname}#${dish.id}`,
     };

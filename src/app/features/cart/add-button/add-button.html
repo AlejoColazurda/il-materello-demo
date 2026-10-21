@@ -7,17 +7,19 @@
       <span>Agotado</span>
     }
   </span>
+} @else if (!canTakeOrders()) {
+  <!-- Comensal: solo mira la carta -->
 } @else if (quantity() === 0) {
   <button
     type="button"
     class="add-btn"
     [class.compact]="variant() === 'compact'"
     (click)="add($event)"
-    [attr.aria-label]="'Agregar ' + dish().name + ' al pedido'"
+    [attr.aria-label]="'Agregar ' + dish().name + ' a la comanda'"
   >
     <i class="ti ti-plus"></i>
     @if (variant() === 'wide') {
-      <span>Agregar al pedido</span>
+      <span>Agregar a la comanda</span>
     }
   </button>
 } @else {
@@ -37,7 +39,7 @@
     <span class="qty" aria-live="polite">
       {{ quantity() }}
       @if (variant() === 'wide') {
-        <small>en tu pedido</small>
+        <small>en la comanda</small>
       }
     </span>
     <button

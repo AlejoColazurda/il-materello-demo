@@ -68,7 +68,7 @@ export class ReelComposer {
   readonly audioTracks = [
     'Audio original · Cocina Il Matterello',
     'Tarantella Napoletana Tradizionale',
-    'Ambiente Acústico de Salón · Palermo',
+    'Ambiente acústico de salón',
     'Sonido de Fuego y Sartenes · Pastas',
   ];
 
@@ -179,7 +179,7 @@ export class ReelComposer {
         pastas: 'linear-gradient(160deg, #3a2216 0%, #1c100a 60%, #0d0704 100%)',
         antipasto: 'linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)',
         risotto: 'linear-gradient(160deg, #352c1a 0%, #1a150c 50%, #0c0905 100%)',
-        'pesce-carne': 'linear-gradient(160deg, #381a1a 0%, #1c0c0c 50%, #0e0606 100%)',
+        'carnes': 'linear-gradient(160deg, #381a1a 0%, #1c0c0c 50%, #0e0606 100%)',
         ensaladas: 'linear-gradient(160deg, #1c301c 0%, #0d1a0d 50%, #060d06 100%)',
         postres: 'linear-gradient(160deg, #381f2b 0%, #1f0f17 50%, #0f070b 100%)',
         bebidas: 'linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)',
