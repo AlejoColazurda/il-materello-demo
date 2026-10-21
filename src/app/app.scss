@@ -7,295 +7,296 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Demo Top Switcher Bar */
-.demo-topbar {
-  background: #141418;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px 18px;
+/* ===== Barra superior (común) ===== */
+.topbar {
+  --role-color: #f5c518;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 56px;
+  padding: 8px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   @media (max-width: 768px) {
-    padding: 8px 10px;
+    padding: 8px 12px;
     gap: 8px;
   }
 }
 
-.demo-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  cursor: pointer;
-
-  .logo {
-    font-size: 20px;
-    color: #f5c518;
-  }
-
-  .brand-name {
-    font-size: 13.5px;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.2px;
-
-    @media (max-width: 640px) {
-      display: none;
-    }
-  }
-}
-
-.view-switcher {
-  display: flex;
-  gap: 6px;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 4px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-.switch-btn {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.65);
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 700;
-  font-family: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: all 0.15s ease;
-
-  @media (max-width: 540px) {
-    padding: 5px 8px;
-    font-size: 11px;
-  }
-
-  &:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  &.active {
-    background: #fff;
-    color: #0f1013;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  }
-
-  &.btn-create-reel {
-    background: linear-gradient(135deg, rgba(240, 148, 51, 0.2), rgba(220, 39, 67, 0.25));
-    border: 1px solid rgba(220, 39, 67, 0.5);
-    color: #ff7675;
-
-    &:hover {
-      background: linear-gradient(135deg, rgba(240, 148, 51, 0.35), rgba(220, 39, 67, 0.45));
-      color: #fff;
-    }
-  }
-
-  .counter-badge {
-    background: #e74c3c;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 900;
-    padding: 1px 6px;
-    border-radius: 10px;
-    margin-left: 2px;
-    animation: pulseBadge 1.5s infinite;
-  }
-}
-
-@keyframes pulseBadge {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-
-/* User & Staff Actions Right Section */
-.topbar-user-actions {
+.brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-shrink: 0;
-
-  @media (max-width: 500px) {
-    gap: 6px;
-  }
-}
-
-.btn-profile-topbar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 3px 10px 3px 4px;
+  min-width: 0;
   cursor: pointer;
-  color: #fff;
-  font-family: inherit;
-  transition: all 0.15s ease;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  .profile-thumb-ring {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    padding: 2px;
-    background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .logo {
+    font-size: 22px;
+    color: #f5c518;
     flex-shrink: 0;
-
-    .thumb-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .thumb-fallback {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      color: #bbb;
-    }
-  }
-
-  .profile-meta-text {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-
-    @media (max-width: 600px) {
-      display: none;
-    }
-
-    .profile-handle {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #fff;
-      max-width: 110px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .profile-hint {
-      font-size: 9.5px;
-      color: rgba(255, 255, 255, 0.5);
-    }
   }
 }
 
-.staff-logged-badge {
+.brand-text {
   display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-mode {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
 
-  .role-pill {
-    font-size: 10.5px;
-    font-weight: 900;
-    padding: 3px 8px;
-    border-radius: 6px;
-
-    &.role-admin {
-      background: rgba(231, 76, 60, 0.25);
-      color: #e74c3c;
-    }
-    &.role-mozo {
-      background: rgba(52, 152, 219, 0.25);
-      color: #3498db;
-    }
-    &.role-cocina {
-      background: rgba(243, 156, 18, 0.25);
-      color: #f39c12;
-    }
+  i {
+    font-size: 12px;
   }
+}
 
-  .btn-logout {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-size: 11.5px;
-    cursor: pointer;
-    font-family: inherit;
+/* ===== Vista cliente: barra simple y neutra ===== */
+.topbar-client {
+  background: #141418;
 
-    &:hover {
-      background: rgba(231, 76, 60, 0.15);
-      color: #e74c3c;
-      border-color: rgba(231, 76, 60, 0.4);
-    }
-
-    @media (max-width: 520px) {
-      .btn-text-logout {
-        display: none;
-      }
-    }
+  .brand {
+    cursor: default;
   }
 }
 
 .btn-staff-access {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 14px;
-  cursor: pointer;
+  gap: 6px;
+  flex-shrink: 0;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
   font-family: inherit;
-  transition: all 0.15s ease;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.35);
   }
 
   i {
-    font-size: 13px;
     color: #f5c518;
+    font-size: 15px;
+  }
+}
+
+/* ===== Vista personal: otro fondo + franja del color del rol ===== */
+.topbar-staff {
+  background: #121a2b;
+  border-top: 3px solid var(--role-color);
+  flex-wrap: wrap;
+
+  &.role-admin {
+    --role-color: #e74c3c;
+  }
+  &.role-mozo {
+    --role-color: #3498db;
+  }
+  &.role-cocina {
+    --role-color: #f39c12;
   }
 
-  @media (max-width: 480px) {
-    padding: 5px 8px;
-    font-size: 11px;
+  .brand-mode {
+    color: var(--role-color);
+  }
+
+  @media (max-width: 768px) {
+    .staff-nav {
+      order: 3;
+      width: 100%;
+    }
+  }
+}
+
+.staff-nav {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  i {
+    font-size: 16px;
+  }
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  &.active {
+    background: #fff;
+    color: #121a2b;
+  }
+
+  &.nav-btn-reel {
+    color: #ff8a80;
+  }
+
+  &.nav-btn-preview {
+    margin-left: 6px;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+
+    &.active {
+      border-color: transparent;
+    }
+  }
+
+  .counter-badge {
+    background: #e74c3c;
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 900;
+    padding: 1px 6px;
+    border-radius: 10px;
+  }
+}
+
+.staff-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.staff-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px 3px 3px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.staff-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--role-color);
+}
+
+.staff-avatar-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  color: #bbb;
+}
+
+.staff-meta {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.2;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.staff-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.staff-role {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--role-color);
+}
+
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.75);
+  font-family: inherit;
+  font-size: 12.5px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    border-color: rgba(231, 76, 60, 0.4);
+  }
+
+  @media (max-width: 520px) {
+    .btn-logout-text {
+      display: none;
+    }
   }
 }
 

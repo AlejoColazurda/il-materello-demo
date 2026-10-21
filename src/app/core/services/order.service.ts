@@ -3,46 +3,52 @@ import { Order, OrderStatus } from '../models/order.model';
 import { CartLine } from './cart.service';
 import { DISHES_MOCK } from '../../../assets/mock/dishes.mock';
 
+const dishById = (id: string) => DISHES_MOCK.find((dish) => dish.id === id)!;
+
+/** Calcula el total a partir de las líneas, así nunca queda desfasado de los platos. */
+function seedOrder(order: Omit<Order, 'totalPrice'>): Order {
+  const totalPrice = order.lines.reduce((sum, line) => sum + line.dish.price * line.quantity, 0);
+  return { ...order, totalPrice };
+}
+
 const INITIAL_ORDERS_MOCK: Order[] = [
-  {
+  seedOrder({
     id: 'CMD-101',
     table: 'Mesa 4',
     customerName: 'Santiago & Familia',
     lines: [
-      { dish: DISHES_MOCK[1], quantity: 2, notes: 'Bien caliente por favor' }, // Sorrentinos osobuco
-      { dish: DISHES_MOCK[9], quantity: 2 }, // Vino Malbec
+      { dish: dishById('pappardelle-ragu-232'), quantity: 2, notes: 'Bien caliente por favor' },
+      { dish: dishById('marco-zunino-malbec-763'), quantity: 1 },
     ],
-    totalPrice: 25000,
     status: 'preparando',
     createdAt: new Date(Date.now() - 12 * 60 * 1000), // hace 12 min
     fudoSynced: true,
-  },
-  {
+  }),
+  seedOrder({
     id: 'CMD-102',
     table: 'Mesa 2',
     customerName: 'Micaela',
     lines: [
-      { dish: DISHES_MOCK[3], quantity: 1, notes: 'Sin orégano extra' }, // Pizza Napoletana
-      { dish: DISHES_MOCK[10], quantity: 1 }, // Limonada
+      { dish: dishById('vitello-tonnato-143'), quantity: 1, notes: 'Salsa aparte' },
+      { dish: dishById('ravioli-genovesi-al-tuco-103'), quantity: 1 },
+      { dish: dishById('limonada-casera-428'), quantity: 1 },
     ],
-    totalPrice: 9400,
     status: 'pendiente',
     createdAt: new Date(Date.now() - 3 * 60 * 1000), // hace 3 min
     fudoSynced: true,
-  },
-  {
+  }),
+  seedOrder({
     id: 'CMD-103',
     table: 'Mesa 7',
     customerName: 'Martín G.',
     lines: [
-      { dish: DISHES_MOCK[0], quantity: 1 }, // Provoleta
-      { dish: DISHES_MOCK[7], quantity: 1 }, // Tiramisú
+      { dish: dishById('lasagna-bolognese-501'), quantity: 1 },
+      { dish: dishById('tiramisu-596'), quantity: 1 },
     ],
-    totalPrice: 9700,
     status: 'entregado',
     createdAt: new Date(Date.now() - 35 * 60 * 1000), // hace 35 min
     fudoSynced: true,
-  },
+  }),
 ];
 
 @Injectable({ providedIn: 'root' })

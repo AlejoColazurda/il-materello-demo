@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Feed } from './features/feed/feed';
 import { WaiterPanel } from './features/waiter/waiter-panel';
 import { AdminPanel } from './features/admin/admin-panel';
@@ -22,7 +21,6 @@ export type DemoView = 'cliente' | 'mozos' | 'admin';
     ReelComposer,
     ProfileModal,
     StaffAuthModal,
-    UpperCasePipe,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -42,6 +40,29 @@ export class App {
   readonly staffUser = this.authService.currentStaffUser;
   readonly pendingOrdersCount = this.orderService.pendingOrdersCount;
   readonly activeOrdersCount = this.orderService.activeOrdersCount;
+  readonly permissions = this.authService.permissions;
+
+  readonly canSeeOrders = computed(
+    () => this.permissions().canViewOrders || this.permissions().canViewKitchenKDS,
+  );
+  readonly canSeeAdmin = computed(
+    () =>
+      this.permissions().canEditDishes ||
+      this.permissions().canManageStaff ||
+      this.permissions().canManageRoles,
+  );
+  readonly roleLabel = computed(() => this.authService.currentRole()?.name ?? 'Personal');
+  /** Pantalla de inicio de cada rol al entrar o tocar el logo. */
+  readonly defaultStaffView = computed<DemoView>(() =>
+    this.canSeeAdmin() ? 'admin' : this.canSeeOrders() ? 'mozos' : 'cliente',
+  );
+
+  constructor() {
+    // Si el personal ya tenía la sesión abierta, arranca en su pantalla de trabajo
+    if (this.staffUser()) {
+      this.currentView.set(this.defaultStaffView());
+    }
+  }
 
   openProfileModal(): void {
     this.isProfileModalOpen.set(true);
@@ -60,12 +81,7 @@ export class App {
   }
 
   onStaffLoginSuccess(): void {
-    const staff = this.staffUser();
-    if (staff?.roleId === 'mozo') {
-      this.setView('mozos');
-    } else {
-      this.setView('admin');
-    }
+    this.setView(this.defaultStaffView());
   }
 
   logoutStaff(): void {
@@ -86,12 +102,12 @@ export class App {
     this.setView('cliente');
   }
 
+  /** Las vistas de personal solo se abren con sesión iniciada. */
   setView(view: DemoView): void {
-    this.currentView.set(view);
-    if (view === 'mozos' && !this.staffUser()) {
-      this.authService.loginAsDemo('mozo');
-    } else if (view === 'admin' && !this.staffUser()) {
-      this.authService.loginAsDemo('admin');
+    if (view !== 'cliente' && !this.staffUser()) {
+      this.openStaffAuth();
+      return;
     }
+    this.currentView.set(view);
   }
 }

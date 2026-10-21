@@ -9,10 +9,6 @@
           <span class="sub">Il Materello · Control de Salón y Cocina en Vivo</span>
         </div>
       </div>
-      <div class="sync-status">
-        <span class="sync-dot"></span>
-        <span>Conectado a Fudo POS</span>
-      </div>
     </div>
 
     <!-- Tarjetas de métricas en tiempo real -->
@@ -154,11 +150,6 @@
                 <span>Total:</span>
                 <strong>{{ order.totalPrice | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</strong>
               </div>
-              @if (order.fudoSynced) {
-                <span class="fudo-badge" title="Comanda enviada a impresora de cocina y caja en Fudo">
-                  <i class="ti ti-check"></i> Fudo POS Synced
-                </span>
-              }
             </div>
 
             <!-- Botones de Acción según estado -->

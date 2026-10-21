@@ -83,7 +83,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 158,
     "shares": 26,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/vitello-tonnato-143.jpg"
   },
   {
     "id": "lengua-alla-modena-588",
@@ -97,7 +98,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 408,
     "shares": 26,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/lengua-alla-modena-588.jpg"
   },
   {
     "id": "carpaccio-di-manzo-707",
@@ -126,7 +128,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 145,
     "shares": 45,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/caponatina-di-verdure-897.jpg"
   },
   {
     "id": "mellanzane-alla-parmigiana-178",
@@ -155,7 +158,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 301,
     "shares": 44,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/verdure-gratinate-a-la-parmegi-260.jpg"
   },
   {
     "id": "croquetas-de-verdura-499",
@@ -169,7 +173,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 85,
     "shares": 17,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/croquetas-de-verdura-499.jpg"
   },
   {
     "id": "bruschetta-di-pomodoro-y-basil-454",
@@ -198,7 +203,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 388,
     "shares": 47,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/olivas-alla-ascolana-562.jpg"
   },
   {
     "id": "burrata-tricolor-657",
@@ -227,7 +233,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 403,
     "shares": 36,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/burrata-con-rucula-407.jpg"
   },
   {
     "id": "mozzarella-capresse-460",
@@ -241,7 +248,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 145,
     "shares": 65,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/mozzarella-capresse-460.jpg"
   },
   {
     "id": "prosciutto-di-parma-787",
@@ -255,7 +263,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 423,
     "shares": 45,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/prosciutto-di-parma-787.jpg"
   },
   {
     "id": "antipasto-completo-630",
@@ -284,7 +293,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 472,
     "shares": 36,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/langostinos-crocantes-con-pank-778.jpg"
   },
   {
     "id": "porotos-picantes-y-gigantes-874",
@@ -298,7 +308,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 252,
     "shares": 45,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/porotos-picantes-y-gigantes-874.jpg"
   },
   {
     "id": "mortadela-con-pistacchio-156",
@@ -312,7 +323,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 370,
     "shares": 33,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/mortadela-con-pistacchio-156.jpg"
   },
   {
     "id": "sobreasatta-563",
@@ -326,7 +338,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 62,
     "shares": 50,
-    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)"
+    "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
+    "imageUrl": "dishes/sobreasatta-563.jpg"
   },
   {
     "id": "gnocchi-875",
@@ -664,7 +677,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 478,
     "shares": 64,
-    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)"
+    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)",
+    "imageUrl": "dishes/ragu-584.jpg"
   },
   {
     "id": "estofado-de-carne-760",
@@ -678,7 +692,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 505,
     "shares": 63,
-    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)"
+    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)",
+    "imageUrl": "dishes/estofado-de-carne-760.jpg"
   },
   {
     "id": "estofado-de-salsiccia-492",
@@ -692,7 +707,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 254,
     "shares": 54,
-    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)"
+    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)",
+    "imageUrl": "dishes/estofado-de-salsiccia-492.jpg"
   },
   {
     "id": "ragu-733",
@@ -706,7 +722,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 162,
     "shares": 41,
-    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)"
+    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)",
+    "imageUrl": "dishes/ragu-733.jpg"
   },
   {
     "id": "estofado-705",
@@ -720,7 +737,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 165,
     "shares": 74,
-    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)"
+    "bgGradient": "linear-gradient(160deg, #3d1f1f 0%, #1f1010 50%, #0e0707 100%)",
+    "imageUrl": "dishes/estofado-705.jpg"
   },
   {
     "id": "fruti-di-mare-694",
@@ -735,7 +753,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 226,
     "shares": 38,
-    "bgGradient": "linear-gradient(160deg, #2b2b1a 0%, #17170e 50%, #0c0c07 100%)"
+    "bgGradient": "linear-gradient(160deg, #2b2b1a 0%, #17170e 50%, #0c0c07 100%)",
+    "imageUrl": "dishes/fruti-di-mare-694.jpg"
   },
   {
     "id": "nero-e-gamberi-519",
@@ -765,7 +784,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 83,
     "shares": 91,
-    "bgGradient": "linear-gradient(160deg, #2b2b1a 0%, #17170e 50%, #0c0c07 100%)"
+    "bgGradient": "linear-gradient(160deg, #2b2b1a 0%, #17170e 50%, #0c0c07 100%)",
+    "imageUrl": "dishes/al-funghi-664.jpg"
   },
   {
     "id": "alla-milanese-301",
@@ -794,7 +814,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 61,
     "shares": 81,
-    "bgGradient": "linear-gradient(160deg, #2b2b1a 0%, #17170e 50%, #0c0c07 100%)"
+    "bgGradient": "linear-gradient(160deg, #2b2b1a 0%, #17170e 50%, #0c0c07 100%)",
+    "imageUrl": "dishes/azul-489.jpg"
   },
   {
     "id": "salmone-alla-griglia-899",
@@ -808,7 +829,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 477,
     "shares": 23,
-    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)"
+    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)",
+    "imageUrl": "dishes/salmone-alla-griglia-899.jpg"
   },
   {
     "id": "trotta-all-burro-con-anneto-e--825",
@@ -837,7 +859,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 494,
     "shares": 16,
-    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)"
+    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)",
+    "imageUrl": "dishes/abadejo-della-giornatta-911.jpg"
   },
   {
     "id": "ojo-de-bife-alla-grilla-948",
@@ -851,7 +874,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 130,
     "shares": 52,
-    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)"
+    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)",
+    "imageUrl": "dishes/ojo-de-bife-alla-grilla-948.jpg"
   },
   {
     "id": "filetto-di-manzo-al-rosmarino-636",
@@ -925,7 +949,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 112,
     "shares": 14,
-    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)"
+    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)",
+    "imageUrl": "dishes/tagliatta-de-pollo-con-rucola-815.jpg"
   },
   {
     "id": "milanesa-de-ojo-de-bife-104",
@@ -939,7 +964,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 416,
     "shares": 88,
-    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)"
+    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)",
+    "imageUrl": "dishes/milanesa-de-ojo-de-bife-104.jpg"
   },
   {
     "id": "milanesa-de-ojo-de-bife-porten-659",
@@ -953,7 +979,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 447,
     "shares": 75,
-    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)"
+    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)",
+    "imageUrl": "dishes/milanesa-de-ojo-de-bife-porten-659.jpg"
   },
   {
     "id": "picanha-con-guarcicion-para-2--308",
@@ -967,7 +994,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 182,
     "shares": 96,
-    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)"
+    "bgGradient": "linear-gradient(160deg, #2c1a1a 0%, #170d0d 50%, #0a0606 100%)",
+    "imageUrl": "dishes/picanha-con-guarcicion-para-2--308.jpg"
   },
   {
     "id": "di-salmone-affumicato-767",
@@ -1012,7 +1040,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 223,
     "shares": 19,
-    "bgGradient": "linear-gradient(160deg, #1b2c1a 0%, #0d170d 50%, #060a06 100%)"
+    "bgGradient": "linear-gradient(160deg, #1b2c1a 0%, #0d170d 50%, #060a06 100%)",
+    "imageUrl": "dishes/di-campagna-181.jpg"
   },
   {
     "id": "capresse-835",
@@ -1041,7 +1070,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 509,
     "shares": 35,
-    "bgGradient": "linear-gradient(160deg, #1b2c1a 0%, #0d170d 50%, #060a06 100%)"
+    "bgGradient": "linear-gradient(160deg, #1b2c1a 0%, #0d170d 50%, #060a06 100%)",
+    "imageUrl": "dishes/rupepa-173.jpg"
   },
   {
     "id": "rucola-197",
@@ -1055,7 +1085,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 160,
     "shares": 32,
-    "bgGradient": "linear-gradient(160deg, #1b2c1a 0%, #0d170d 50%, #060a06 100%)"
+    "bgGradient": "linear-gradient(160deg, #1b2c1a 0%, #0d170d 50%, #060a06 100%)",
+    "imageUrl": "dishes/rucola-197.jpg"
   },
   {
     "id": "tiramisu-596",
@@ -1114,7 +1145,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 158,
     "shares": 18,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/peras-al-vino-tinto-943.jpg"
   },
   {
     "id": "bigne-121",
@@ -1143,7 +1175,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 143,
     "shares": 51,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/bigne-con-helado-y-chocolate-118.jpg"
   },
   {
     "id": "flan-752",
@@ -1172,7 +1205,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 425,
     "shares": 13,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/flan-con-dulce-de-leche-y-crem-131.jpg"
   },
   {
     "id": "ensalada-de-frutas-718",
@@ -1186,7 +1220,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 213,
     "shares": 24,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/ensalada-de-frutas-718.jpg"
   },
   {
     "id": "ensalada-de-frutas-con-helado-642",
@@ -1200,7 +1235,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 350,
     "shares": 69,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/ensalada-de-frutas-con-helado-642.jpg"
   },
   {
     "id": "queso-y-dulce-264",
@@ -1214,7 +1250,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 195,
     "shares": 73,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/queso-y-dulce-264.jpg"
   },
   {
     "id": "balcarce-763",
@@ -1243,7 +1280,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 301,
     "shares": 21,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/almendrado-565.jpg"
   },
   {
     "id": "charlotte-766",
@@ -1257,7 +1295,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 93,
     "shares": 45,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/charlotte-766.jpg"
   },
   {
     "id": "affogato-in-cafe-768",
@@ -1271,7 +1310,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 319,
     "shares": 72,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/affogato-in-cafe-768.jpg"
   },
   {
     "id": "cafe-110",
@@ -1285,7 +1325,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 328,
     "shares": 85,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/cafe-110.jpg"
   },
   {
     "id": "cafe-doble-962",
@@ -1299,7 +1340,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 92,
     "shares": 32,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/cafe-doble-962.jpg"
   },
   {
     "id": "capuchino-292",
@@ -1313,7 +1355,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 380,
     "shares": 84,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/capuchino-292.jpg"
   },
   {
     "id": "tes-taragui-381",
@@ -1327,7 +1370,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 131,
     "shares": 77,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/tes-taragui-381.jpg"
   },
   {
     "id": "helados-542",
@@ -1341,7 +1385,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 380,
     "shares": 16,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/helados-542.jpg"
   },
   {
     "id": "helado-de-pistacchio-901",
@@ -1355,7 +1400,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 248,
     "shares": 29,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/helado-de-pistacchio-901.jpg"
   },
   {
     "id": "helado-de-dulce-de-leche-983",
@@ -1369,7 +1415,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 314,
     "shares": 62,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/helado-de-dulce-de-leche-983.jpg"
   },
   {
     "id": "mousse-de-chocolate-310",
@@ -1383,7 +1430,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 117,
     "shares": 81,
-    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)"
+    "bgGradient": "linear-gradient(160deg, #2a1a2b 0%, #150d17 50%, #0a060c 100%)",
+    "imageUrl": "dishes/mousse-de-chocolate-310.jpg"
   },
   {
     "id": "gaseosa-687",
@@ -1395,7 +1443,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 460,
     "shares": 80,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/gaseosa-687.jpg"
   },
   {
     "id": "jugo-de-naranja-exprimido-122",
@@ -1407,7 +1456,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 246,
     "shares": 34,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/jugo-de-naranja-exprimido-122.jpg"
   },
   {
     "id": "agua-saborizada-754",
@@ -1419,7 +1469,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 306,
     "shares": 26,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/agua-saborizada-754.jpg"
   },
   {
     "id": "agua-mineralizada-750-ml--564",
@@ -1431,7 +1482,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 438,
     "shares": 62,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/agua-mineralizada-750-ml--564.jpg"
   },
   {
     "id": "san-pellegrino-399",
@@ -1443,7 +1495,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 113,
     "shares": 37,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/san-pellegrino-399.jpg"
   },
   {
     "id": "aqua-panna-883",
@@ -1455,7 +1508,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 106,
     "shares": 59,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/aqua-panna-883.jpg"
   },
   {
     "id": "imperial-lata-824",
@@ -1467,7 +1521,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 225,
     "shares": 42,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/imperial-lata-824.jpg"
   },
   {
     "id": "heineken-lata-757",
@@ -1479,7 +1534,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 439,
     "shares": 35,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/heineken-lata-757.jpg"
   },
   {
     "id": "blue-moon-belgian-white-542",
@@ -1491,7 +1547,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 99,
     "shares": 36,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/blue-moon-belgian-white-542.jpg"
   },
   {
     "id": "limonada-casera-428",
@@ -1503,7 +1560,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 73,
     "shares": 40,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/limonada-casera-428.jpg"
   },
   {
     "id": "el-enemigo-malbec-843",
@@ -1515,7 +1573,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 175,
     "shares": 81,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/el-enemigo-malbec-843.jpg"
   },
   {
     "id": "pyros-appellation-syrah-529",
@@ -1527,7 +1586,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 363,
     "shares": 73,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/pyros-appellation-syrah-529.jpg"
   },
   {
     "id": "marco-zunino-malbec-763",
@@ -1539,7 +1599,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 76,
     "shares": 34,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/marco-zunino-malbec-763.jpg"
   },
   {
     "id": "deslumbrante-reserva-malbec-965",
@@ -1551,7 +1612,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 220,
     "shares": 38,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/deslumbrante-reserva-malbec-965.jpg"
   },
   {
     "id": "mi-terruno-cabernet-franc-160",
@@ -1563,7 +1625,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 220,
     "shares": 60,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/mi-terruno-cabernet-franc-160.jpg"
   },
   {
     "id": "el-enemigo-malbec-221",
@@ -1575,7 +1638,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 136,
     "shares": 66,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/el-enemigo-malbec-221.jpg"
   },
   {
     "id": "armando-bonarda-869",
@@ -1587,7 +1651,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 64,
     "shares": 28,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/armando-bonarda-869.jpg"
   },
   {
     "id": "deslumbrante-malbec-777",
@@ -1599,7 +1664,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 289,
     "shares": 91,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/deslumbrante-malbec-777.jpg"
   },
   {
     "id": "nicasia-malbec-245",
@@ -1611,7 +1677,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 459,
     "shares": 63,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/nicasia-malbec-245.jpg"
   },
   {
     "id": "pyros-appellation-chardonnay-174",
@@ -1623,7 +1690,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 313,
     "shares": 83,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/pyros-appellation-chardonnay-174.jpg"
   },
   {
     "id": "colome-torrontes-289",
@@ -1635,7 +1703,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 336,
     "shares": 25,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/colome-torrontes-289.jpg"
   },
   {
     "id": "altosur-sauvignon-blanc-306",
@@ -1647,7 +1716,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 152,
     "shares": 64,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/altosur-sauvignon-blanc-306.jpg"
   },
   {
     "id": "tomero-s-blanc-687",
@@ -1659,7 +1729,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 505,
     "shares": 33,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/tomero-s-blanc-687.jpg"
   },
   {
     "id": "alamos-s-blanc-124",
@@ -1671,7 +1742,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 76,
     "shares": 29,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/alamos-s-blanc-124.jpg"
   },
   {
     "id": "latente-reserva-chardonnay-361",
@@ -1683,7 +1755,8 @@ export const DISHES_MOCK: Dish[] = [
     "inStock": true,
     "likes": 62,
     "shares": 77,
-    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)"
+    "bgGradient": "linear-gradient(160deg, #1a202c 0%, #0d1017 50%, #06080c 100%)",
+    "imageUrl": "dishes/latente-reserva-chardonnay-361.jpg"
   }
 ];
 

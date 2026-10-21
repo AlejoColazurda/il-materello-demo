@@ -1,112 +1,98 @@
 <div class="app-layout">
-  <!-- Barra Superior Principal -->
-  <header class="demo-topbar">
-    <div class="demo-brand" (click)="setView('cliente')">
-      <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
-      <span class="brand-name">Il Matterello · Palermo</span>
-    </div>
+  <!-- Barra superior: cambia de aspecto según si mira un cliente o el personal -->
+  @if (staffUser(); as staff) {
+    <header [class]="'topbar topbar-staff role-' + staff.roleId">
+      <div class="brand" (click)="setView(defaultStaffView())">
+        <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
+        <span class="brand-text">
+          <span class="brand-name">Il Matterello</span>
+          <span class="brand-mode"><i class="ti ti-shield-lock"></i> Modo personal</span>
+        </span>
+      </div>
 
-    <!-- Navegación central / switch de vistas -->
-    <div class="view-switcher">
-      <button
-        type="button"
-        class="switch-btn"
-        [class.active]="currentView() === 'cliente'"
-        (click)="setView('cliente')"
-      >
-        <span class="icon"><i class="ti ti-tools-kitchen-2"></i></span>
-        <span>Carta</span>
-      </button>
-
-      <button
-        type="button"
-        class="switch-btn"
-        [class.active]="currentView() === 'mozos'"
-        (click)="setView('mozos')"
-      >
-        <span class="icon"><i class="ti ti-bell-ringing"></i></span>
-        <span>Panel Mozos</span>
-        @if (pendingOrdersCount() > 0) {
-          <span class="counter-badge">{{ pendingOrdersCount() }}</span>
-        }
-      </button>
-
-      <button
-        type="button"
-        class="switch-btn"
-        [class.active]="currentView() === 'admin'"
-        (click)="setView('admin')"
-      >
-        <span class="icon"><i class="ti ti-settings"></i></span>
-        <span>Backoffice & Admin</span>
-      </button>
-
-      <button
-        type="button"
-        class="switch-btn btn-create-reel"
-        (click)="openReelComposer()"
-        title="Subir nuevo plato como Reel de Instagram"
-      >
-        <span class="icon"><i class="ti ti-video-plus"></i></span>
-        <span>+ Subir Reel</span>
-      </button>
-    </div>
-
-    <!-- Acciones de Usuario y Personal a la derecha -->
-    <div class="topbar-user-actions">
-      <!-- Botón de Mi Perfil (Instagram style): disponible para comensales y empleados -->
-      <button
-        type="button"
-        class="btn-profile-topbar"
-        (click)="openProfileModal()"
-        title="Mi Perfil · Cambiar foto y apodo"
-      >
-        <div class="profile-thumb-ring">
-          @if (staffUser()?.avatar || userProfile().avatar) {
-            <img
-              class="thumb-img"
-              [src]="staffUser()?.avatar || userProfile().avatar"
-              alt="Avatar"
-            />
-          } @else {
-            <div class="thumb-fallback"><i class="ti ti-user"></i></div>
-          }
-        </div>
-        <div class="profile-meta-text">
-          <span class="profile-handle">&#64;{{ staffUser()?.nickname || userProfile().nickname }}</span>
-          <span class="profile-hint">Mi Perfil</span>
-        </div>
-      </button>
-
-      <!-- Estado de Personal: Sesión activa o Botón de Acceso -->
-      @if (staffUser(); as staff) {
-        <div class="staff-logged-badge">
-          <span class="role-pill" [class]="'role-' + staff.roleId">
-            {{ staff.roleId | uppercase }}
-          </span>
+      <nav class="staff-nav" aria-label="Secciones del personal">
+        @if (canSeeOrders()) {
           <button
             type="button"
-            class="btn-logout"
-            (click)="logoutStaff()"
-            title="Cerrar sesión de personal"
+            class="nav-btn"
+            [class.active]="currentView() === 'mozos'"
+            (click)="setView('mozos')"
           >
-            <i class="ti ti-logout"></i>
-            <span class="btn-text-logout">Salir</span>
+            <i class="ti ti-bell-ringing"></i>
+            <span>Comandas</span>
+            @if (pendingOrdersCount() > 0) {
+              <span class="counter-badge">{{ pendingOrdersCount() }}</span>
+            }
           </button>
-        </div>
-      } @else {
+        }
+        @if (canSeeAdmin()) {
+          <button
+            type="button"
+            class="nav-btn"
+            [class.active]="currentView() === 'admin'"
+            (click)="setView('admin')"
+          >
+            <i class="ti ti-settings"></i>
+            <span>Administración</span>
+          </button>
+        }
+        @if (permissions().canCreateDishes) {
+          <button type="button" class="nav-btn nav-btn-reel" (click)="openReelComposer()">
+            <i class="ti ti-video-plus"></i>
+            <span>Subir reel</span>
+          </button>
+        }
         <button
           type="button"
-          class="btn-staff-access"
-          (click)="openStaffAuth()"
-          title="Acceso para mozos, cocina y administración"
+          class="nav-btn nav-btn-preview"
+          [class.active]="currentView() === 'cliente'"
+          (click)="setView('cliente')"
+          title="Ver la carta tal como la ve el comensal"
         >
-          <i class="ti ti-lock"></i>
-          <span>Personal</span>
+          <i class="ti ti-eye"></i>
+          <span>Ver como cliente</span>
         </button>
-      }
-    </div>
-  </header>
+      </nav>
+
+      <div class="staff-user">
+        <button type="button" class="staff-user-btn" (click)="openProfileModal()" title="Mi perfil">
+          @if (staff.avatar) {
+            <img class="staff-avatar" [src]="staff.avatar" alt="" />
+          } @else {
+            <span class="staff-avatar staff-avatar-fallback"><i class="ti ti-user"></i></span>
+          }
+          <span class="staff-meta">
+            <span class="staff-name">{{ staff.name }}</span>
+            <span class="staff-role">{{ roleLabel() }}</span>
+          </span>
+        </button>
+        <button type="button" class="btn-logout" (click)="logoutStaff()" title="Cerrar sesión">
+          <i class="ti ti-logout"></i>
+          <span class="btn-logout-text">Salir</span>
+        </button>
+      </div>
+    </header>
+  } @else {
+    <header class="topbar topbar-client">
+      <div class="brand">
+        <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
+        <span class="brand-text">
+          <span class="brand-name">Il Matterello · Palermo</span>
+          <span class="brand-mode"><i class="ti ti-user"></i> Vista cliente</span>
+        </span>
+      </div>
+
+      <button
+        type="button"
+        class="btn-staff-access"
+        (click)="openStaffAuth()"
+        title="Ingreso para mozos, cocina y administración"
+      >
+        <i class="ti ti-lock"></i>
+        <span>Acceso personal</span>
+      </button>
+    </header>
+  }
 
   <!-- Contenido según la vista seleccionada -->
   <main class="demo-main">
