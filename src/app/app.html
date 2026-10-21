@@ -47,10 +47,10 @@
           class="nav-btn nav-btn-preview"
           [class.active]="currentView() === 'cliente'"
           (click)="setView('cliente')"
-          [title]="permissions().canViewOrders ? 'Cargar una comanda desde la carta' : 'Ver la carta tal como la ve el comensal'"
+          [title]="canTakeOrders() ? 'Cargar una comanda desde la carta' : 'Ver la carta tal como la ve el comensal'"
         >
           <i class="ti ti-eye"></i>
-          <span>{{ permissions().canViewOrders ? 'Carta · tomar comanda' : 'Ver como cliente' }}</span>
+          <span>{{ canTakeOrders() ? 'Carta · tomar comanda' : 'Ver como cliente' }}</span>
         </button>
       </nav>
 

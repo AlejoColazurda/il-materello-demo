@@ -9,6 +9,7 @@ import { AuthService } from './core/services/auth.service';
 import { ProfileService } from './core/services/profile.service';
 import { Dish } from './core/models/dish.model';
 import { ADMIN_TOKEN_PARAM } from './core/config/admin-access';
+import { ORDERS_ENABLED } from './core/config/features';
 
 export type DemoView = 'cliente' | 'mozos' | 'admin';
 
@@ -41,8 +42,9 @@ export class App {
   readonly permissions = this.authService.permissions;
 
   readonly canSeeOrders = computed(
-    () => this.permissions().canViewOrders || this.permissions().canViewKitchenKDS,
+    () => ORDERS_ENABLED && (this.permissions().canViewOrders || this.permissions().canViewKitchenKDS),
   );
+  readonly canTakeOrders = this.authService.canTakeOrders;
   readonly canSeeAdmin = computed(
     () =>
       this.permissions().canEditDishes ||

@@ -1,6 +1,7 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { CustomRole, PRELOADED_ROLES, RolePermissions, StaffUser } from '../models/user.model';
 import { ADMIN_TOKEN_SHA256, sha256Hex } from '../config/admin-access';
+import { ORDERS_ENABLED } from '../config/features';
 
 const STAFF_SESSION_KEY = 'ilmaterello_staff_session';
 const ROLES_STORAGE_KEY = 'ilmaterello_custom_roles';
@@ -85,7 +86,7 @@ export class AuthService {
 
   /** La carta solo toma pedidos cuando la usa el personal de salón (los comensales solo miran). */
   readonly canTakeOrders = computed(
-    () => this.isAuthenticated() && this.permissions().canViewOrders,
+    () => ORDERS_ENABLED && this.isAuthenticated() && this.permissions().canViewOrders,
   );
 
   readonly activeStaffCount = computed(

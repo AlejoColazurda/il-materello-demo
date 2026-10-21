@@ -95,7 +95,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 84,
     "shares": 29,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/vitel-tone.jpg"
+    "imageUrl": "dishes/vitel-tone.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "carpaccio-de-lomo",
@@ -121,7 +122,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 70,
     "shares": 84,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/caponatina.jpg"
+    "imageUrl": "dishes/caponatina.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "berenjenas-a-la-parmesana",
@@ -147,7 +149,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 148,
     "shares": 76,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/croquetas-de-verdura.jpg"
+    "imageUrl": "dishes/croquetas-de-verdura.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "olivas-a-la-ascolana",
@@ -160,7 +163,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 290,
     "shares": 15,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/olivas-a-la-ascolana.jpg"
+    "imageUrl": "dishes/olivas-a-la-ascolana.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tricolor-con-burrata",
@@ -188,7 +192,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 295,
     "shares": 22,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/burrata-con-rucula.jpg"
+    "imageUrl": "dishes/burrata-con-rucula.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "mozzarella-caprese",
@@ -201,7 +206,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 253,
     "shares": 50,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/mozzarella-caprese.jpg"
+    "imageUrl": "dishes/mozzarella-caprese.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "prosciutto-di-parma",
@@ -214,7 +220,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 107,
     "shares": 12,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/prosciutto-di-parma.jpg"
+    "imageUrl": "dishes/prosciutto-di-parma.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "antipasto-completo",
@@ -255,7 +262,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 403,
     "shares": 24,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/queso-tipo-parmesano-o-azul.jpg"
+    "imageUrl": "dishes/queso-tipo-parmesano-o-azul.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "mortadella-bocatti",
@@ -268,7 +276,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 199,
     "shares": 56,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/mortadella-bocatti.jpg"
+    "imageUrl": "dishes/mortadella-bocatti.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tomates-secos",
@@ -281,7 +290,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 295,
     "shares": 32,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tomates-secos.jpg"
+    "imageUrl": "dishes/tomates-secos.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "mayonesa-de-atun",
@@ -294,7 +304,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 105,
     "shares": 94,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/mayonesa-de-atun.jpg"
+    "imageUrl": "dishes/mayonesa-de-atun.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tricolor",
@@ -309,7 +320,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 209,
     "shares": 28,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tricolor.jpg"
+    "imageUrl": "dishes/tricolor.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "hinojos-gratinados",
@@ -322,7 +334,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 248,
     "shares": 37,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/hinojos-gratinados.jpg"
+    "imageUrl": "dishes/hinojos-gratinados.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "mozzarella-caprese-con-tomates-secos",
@@ -335,7 +348,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 98,
     "shares": 75,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/mozzarella-caprese-con-tomates-secos.jpg"
+    "imageUrl": "dishes/mozzarella-caprese-con-tomates-secos.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "porotos-suaves-o-picantes",
@@ -348,7 +362,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 174,
     "shares": 38,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/porotos-suaves-o-picantes.jpg"
+    "imageUrl": "dishes/porotos-suaves-o-picantes.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "spianata",
@@ -363,7 +378,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 70,
     "shares": 89,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/spianata.jpg"
+    "imageUrl": "dishes/spianata.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "croquetas-de-hongos-y-cebolla",
@@ -376,7 +392,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 131,
     "shares": 85,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/croquetas-de-hongos-y-cebolla.jpg"
+    "imageUrl": "dishes/croquetas-de-hongos-y-cebolla.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tomate-gratinado",
@@ -389,7 +406,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 219,
     "shares": 29,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tomate-gratinado.jpg"
+    "imageUrl": "dishes/tomate-gratinado.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "zucchini-fritos",
@@ -402,7 +420,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 269,
     "shares": 43,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/zucchini-fritos.jpg"
+    "imageUrl": "dishes/zucchini-fritos.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "ensalada-de-atun-y-porotos",
@@ -536,7 +555,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 140,
     "shares": 29,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/pasta-para-celiacos.jpg"
+    "imageUrl": "dishes/pasta-para-celiacos.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "ravioles-genoveses",
@@ -692,7 +712,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 263,
     "shares": 46,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/porcion-de-ragu.jpg"
+    "imageUrl": "dishes/porcion-de-ragu.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "porcion-de-estofado",
@@ -705,7 +726,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 74,
     "shares": 94,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/porcion-de-estofado.jpg"
+    "imageUrl": "dishes/porcion-de-estofado.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "fileto",
@@ -718,7 +740,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 213,
     "shares": 84,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/fileto.jpg"
+    "imageUrl": "dishes/fileto.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tuco",
@@ -731,7 +754,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 263,
     "shares": 49,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tuco.jpg"
+    "imageUrl": "dishes/tuco.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "pesto-genovese",
@@ -744,7 +768,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 88,
     "shares": 77,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/pesto-genovese.jpg"
+    "imageUrl": "dishes/pesto-genovese.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "crema-y-panceta",
@@ -770,7 +795,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 49,
     "shares": 21,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/caruso.jpg"
+    "imageUrl": "dishes/caruso.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "manteca-quemada-al-ajo",
@@ -798,7 +824,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 291,
     "shares": 84,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/aglio-olio-e-peperoncino.jpg"
+    "imageUrl": "dishes/aglio-olio-e-peperoncino.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "oliva-y-albahaca",
@@ -811,7 +838,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 127,
     "shares": 80,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/oliva-y-albahaca.jpg"
+    "imageUrl": "dishes/oliva-y-albahaca.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "amatriciana",
@@ -824,7 +852,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 104,
     "shares": 11,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/amatriciana.jpg"
+    "imageUrl": "dishes/amatriciana.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "fiorentina",
@@ -837,7 +866,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 71,
     "shares": 10,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/fiorentina.jpg"
+    "imageUrl": "dishes/fiorentina.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "napolitana",
@@ -852,7 +882,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 244,
     "shares": 80,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/napolitana.jpg"
+    "imageUrl": "dishes/napolitana.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "puttanesca",
@@ -878,7 +909,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 228,
     "shares": 13,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/porcion-de-salsa-extra.jpg"
+    "imageUrl": "dishes/porcion-de-salsa-extra.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "peperoncino",
@@ -893,7 +925,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 146,
     "shares": 50,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/peperoncino.jpg"
+    "imageUrl": "dishes/peperoncino.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "hongos",
@@ -906,7 +939,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 64,
     "shares": 39,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/hongos.jpg"
+    "imageUrl": "dishes/hongos.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "porcion-de-pure-o-papas-fritas",
@@ -919,7 +953,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 128,
     "shares": 34,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/porcion-de-pure-o-papas-fritas.jpg"
+    "imageUrl": "dishes/porcion-de-pure-o-papas-fritas.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "estofado-de-carne-para-pasta",
@@ -932,7 +967,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 340,
     "shares": 20,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/estofado-de-carne-para-pasta.jpg"
+    "imageUrl": "dishes/estofado-de-carne-para-pasta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "salsa-de-hongos",
@@ -945,7 +981,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 103,
     "shares": 8,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/salsa-de-hongos.jpg"
+    "imageUrl": "dishes/salsa-de-hongos.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "ragu-para-pasta",
@@ -971,7 +1008,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 193,
     "shares": 17,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/carbonara.jpg"
+    "imageUrl": "dishes/carbonara.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "risotto-alla-milanese",
@@ -997,7 +1035,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 43,
     "shares": 74,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/risotto-azul.jpg"
+    "imageUrl": "dishes/risotto-azul.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "risotto-funghi",
@@ -1010,7 +1049,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 212,
     "shares": 72,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/risotto-funghi.jpg"
+    "imageUrl": "dishes/risotto-funghi.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "lomo-a-las-hierbas-con-papas",
@@ -1036,7 +1076,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 312,
     "shares": 64,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/saltimbocca-alla-romana.jpg"
+    "imageUrl": "dishes/saltimbocca-alla-romana.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "suprema-a-la-napolitana",
@@ -1049,7 +1090,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 142,
     "shares": 39,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/suprema-a-la-napolitana.jpg"
+    "imageUrl": "dishes/suprema-a-la-napolitana.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "estofado-de-carne",
@@ -1062,7 +1104,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 69,
     "shares": 85,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/estofado-de-carne.jpg"
+    "imageUrl": "dishes/estofado-de-carne.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "milanesa-de-lomo",
@@ -1075,7 +1118,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 71,
     "shares": 14,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/milanesa-de-lomo.jpg"
+    "imageUrl": "dishes/milanesa-de-lomo.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "lomo-a-la-parrilla",
@@ -1088,7 +1132,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 111,
     "shares": 34,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/lomo-a-la-parrilla.jpg"
+    "imageUrl": "dishes/lomo-a-la-parrilla.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "suprema",
@@ -1101,7 +1146,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 51,
     "shares": 60,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/suprema.jpg"
+    "imageUrl": "dishes/suprema.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "pollo-a-la-parrilla",
@@ -1114,7 +1160,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 207,
     "shares": 41,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/pollo-a-la-parrilla.jpg"
+    "imageUrl": "dishes/pollo-a-la-parrilla.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "pollo-a-las-hierbas-con-papas",
@@ -1127,7 +1174,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 245,
     "shares": 87,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/pollo-a-las-hierbas-con-papas.jpg"
+    "imageUrl": "dishes/pollo-a-las-hierbas-con-papas.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "milanesa-de-lomo-a-la-napolitana",
@@ -1179,7 +1227,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 384,
     "shares": 67,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/rucula-y-parmesano.jpg"
+    "imageUrl": "dishes/rucula-y-parmesano.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "rucula-queso-azul-y-nuez",
@@ -1192,7 +1241,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 214,
     "shares": 92,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/rucula-queso-azul-y-nuez.jpg"
+    "imageUrl": "dishes/rucula-queso-azul-y-nuez.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "ensalada-de-rucula-pera-y-parmesano",
@@ -1205,7 +1255,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 377,
     "shares": 44,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/ensalada-de-rucula-pera-y-parmesano.jpg"
+    "imageUrl": "dishes/ensalada-de-rucula-pera-y-parmesano.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tiramisu",
@@ -1244,7 +1295,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 231,
     "shares": 47,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/crostata-de-fruta.jpg"
+    "imageUrl": "dishes/crostata-de-fruta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "peras-al-vino-tinto",
@@ -1257,7 +1309,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 375,
     "shares": 71,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/peras-al-vino-tinto.jpg"
+    "imageUrl": "dishes/peras-al-vino-tinto.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "bigne",
@@ -1296,7 +1349,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 290,
     "shares": 21,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/flan-con-dulce-de-leche-y-crema.jpg"
+    "imageUrl": "dishes/flan-con-dulce-de-leche-y-crema.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "queso-y-dulce",
@@ -1309,7 +1363,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 297,
     "shares": 23,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/queso-y-dulce.jpg"
+    "imageUrl": "dishes/queso-y-dulce.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "almendrado",
@@ -1322,7 +1377,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 116,
     "shares": 54,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/almendrado.jpg"
+    "imageUrl": "dishes/almendrado.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "charlotte",
@@ -1335,7 +1391,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 160,
     "shares": 10,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/charlotte.jpg"
+    "imageUrl": "dishes/charlotte.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "affogato-al-cafe",
@@ -1348,7 +1405,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 405,
     "shares": 53,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/affogato-al-cafe.jpg"
+    "imageUrl": "dishes/affogato-al-cafe.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "cafe",
@@ -1361,7 +1419,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 53,
     "shares": 42,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/cafe.jpg"
+    "imageUrl": "dishes/cafe.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "cafe-doble",
@@ -1374,7 +1433,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 110,
     "shares": 65,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/cafe-doble.jpg"
+    "imageUrl": "dishes/cafe-doble.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "te",
@@ -1387,7 +1447,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 128,
     "shares": 72,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/te.jpg"
+    "imageUrl": "dishes/te.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "cafe-con-crema",
@@ -1400,7 +1461,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 156,
     "shares": 87,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/cafe-con-crema.jpg"
+    "imageUrl": "dishes/cafe-con-crema.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "capuchino",
@@ -1413,7 +1475,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 268,
     "shares": 42,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/capuchino.jpg"
+    "imageUrl": "dishes/capuchino.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "helado",
@@ -1426,7 +1489,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 355,
     "shares": 24,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/helado.jpg"
+    "imageUrl": "dishes/helado.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "bigne-con-helado-y-chocolate-caliente",
@@ -1441,7 +1505,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 171,
     "shares": 44,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/bigne-con-helado-y-chocolate-caliente.jpg"
+    "imageUrl": "dishes/bigne-con-helado-y-chocolate-caliente.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "flan-con-crema-o-dulce",
@@ -1454,7 +1519,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 380,
     "shares": 57,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/flan-con-crema-o-dulce.jpg"
+    "imageUrl": "dishes/flan-con-crema-o-dulce.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "sorbete-de-limon",
@@ -1467,7 +1533,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 72,
     "shares": 22,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/sorbete-de-limon.jpg"
+    "imageUrl": "dishes/sorbete-de-limon.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "eclair-de-chocolate-y-pistacchio",
@@ -1480,7 +1547,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 224,
     "shares": 30,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/eclair-de-chocolate-y-pistacchio.jpg"
+    "imageUrl": "dishes/eclair-de-chocolate-y-pistacchio.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "agua-mineral",
@@ -1493,7 +1561,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 229,
     "shares": 69,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/agua-mineral.jpg"
+    "imageUrl": "dishes/agua-mineral.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "gaseosa",
@@ -1506,7 +1575,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 339,
     "shares": 88,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/gaseosa.jpg"
+    "imageUrl": "dishes/gaseosa.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "jugo-de-naranja-exprimido",
@@ -1519,7 +1589,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 247,
     "shares": 94,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/jugo-de-naranja-exprimido.jpg"
+    "imageUrl": "dishes/jugo-de-naranja-exprimido.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "heineken",
@@ -1532,7 +1603,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 281,
     "shares": 80,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/heineken.jpg"
+    "imageUrl": "dishes/heineken.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "imperial-473-ml",
@@ -1545,7 +1617,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 207,
     "shares": 15,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/imperial-473-ml.jpg"
+    "imageUrl": "dishes/imperial-473-ml.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "limonada-casera",
@@ -1558,7 +1631,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 410,
     "shares": 56,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/limonada-casera.jpg"
+    "imageUrl": "dishes/limonada-casera.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "crema-de-limoncello-500-ml",
@@ -1573,7 +1647,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 193,
     "shares": 52,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/crema-de-limoncello-500-ml.jpg"
+    "imageUrl": "dishes/crema-de-limoncello-500-ml.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "aperol-spritz",
@@ -1586,7 +1661,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 166,
     "shares": 10,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/aperol-spritz.jpg"
+    "imageUrl": "dishes/aperol-spritz.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "negroni",
@@ -1599,7 +1675,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 63,
     "shares": 73,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/negroni.jpg"
+    "imageUrl": "dishes/negroni.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "campari-orange",
@@ -1612,7 +1689,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 213,
     "shares": 56,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/campari-orange.jpg"
+    "imageUrl": "dishes/campari-orange.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "campari-tonic",
@@ -1625,7 +1703,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 382,
     "shares": 17,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/campari-tonic.jpg"
+    "imageUrl": "dishes/campari-tonic.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "gin-tonic",
@@ -1638,7 +1717,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 194,
     "shares": 27,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/gin-tonic.jpg"
+    "imageUrl": "dishes/gin-tonic.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "fernet-con-coca",
@@ -1651,7 +1731,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 188,
     "shares": 11,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/fernet-con-coca.jpg"
+    "imageUrl": "dishes/fernet-con-coca.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "limoncello-500-ml",
@@ -1666,7 +1747,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 88,
     "shares": 71,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/limoncello-500-ml.jpg"
+    "imageUrl": "dishes/limoncello-500-ml.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "vermut-con-tonica",
@@ -1679,7 +1761,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 363,
     "shares": 11,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/vermut-con-tonica.jpg"
+    "imageUrl": "dishes/vermut-con-tonica.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "leonce-criolla-rose",
@@ -1692,7 +1775,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 378,
     "shares": 66,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/leonce-criolla-rose.jpg"
+    "imageUrl": "dishes/leonce-criolla-rose.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "cantieri-navali-rosso",
@@ -1705,7 +1789,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 176,
     "shares": 72,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/cantieri-navali-rosso.jpg"
+    "imageUrl": "dishes/cantieri-navali-rosso.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "cantieri-navali-bianco",
@@ -1718,7 +1803,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 217,
     "shares": 30,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/cantieri-navali-bianco.jpg"
+    "imageUrl": "dishes/cantieri-navali-bianco.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "guardianes-del-cerro-rosso",
@@ -1731,7 +1817,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 337,
     "shares": 30,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/guardianes-del-cerro-rosso.jpg"
+    "imageUrl": "dishes/guardianes-del-cerro-rosso.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "guardianes-del-cerro-bianco",
@@ -1744,7 +1831,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 274,
     "shares": 46,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/guardianes-del-cerro-bianco.jpg"
+    "imageUrl": "dishes/guardianes-del-cerro-bianco.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "johnnie-walker-etiqueta-roja",
@@ -1757,7 +1845,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 215,
     "shares": 83,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/johnnie-walker-etiqueta-roja.jpg"
+    "imageUrl": "dishes/johnnie-walker-etiqueta-roja.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "johnnie-walker-etiqueta-negra",
@@ -1770,7 +1859,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 81,
     "shares": 51,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/johnnie-walker-etiqueta-negra.jpg"
+    "imageUrl": "dishes/johnnie-walker-etiqueta-negra.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tullamore",
@@ -1783,7 +1873,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 199,
     "shares": 28,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tullamore.jpg"
+    "imageUrl": "dishes/tullamore.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "whyte-and-mackay",
@@ -1796,7 +1887,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 336,
     "shares": 68,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/whyte-and-mackay.jpg"
+    "imageUrl": "dishes/whyte-and-mackay.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "glorieta-la-posta",
@@ -1809,7 +1901,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 244,
     "shares": 32,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/glorieta-la-posta.jpg"
+    "imageUrl": "dishes/glorieta-la-posta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca",
@@ -1822,7 +1915,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 171,
     "shares": 28,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca.jpg"
+    "imageUrl": "dishes/luigi-bosca.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "dv-catena-pn-pn",
@@ -1835,7 +1929,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 318,
     "shares": 51,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/dv-catena-pn-pn.jpg"
+    "imageUrl": "dishes/dv-catena-pn-pn.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "alma-mater-100-pinot-noir-valle-de-uco-mendoza",
@@ -1848,7 +1943,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 127,
     "shares": 63,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/alma-mater-100-pinot-noir-valle-de-uco-mendoza.jpg"
+    "imageUrl": "dishes/alma-mater-100-pinot-noir-valle-de-uco-mendoza.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "altaland-merlot",
@@ -1861,7 +1957,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 377,
     "shares": 90,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/altaland-merlot.jpg"
+    "imageUrl": "dishes/altaland-merlot.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "domingo-molina",
@@ -1874,7 +1971,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 185,
     "shares": 90,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/domingo-molina.jpg"
+    "imageUrl": "dishes/domingo-molina.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "rivera-del-cuarzo-patagonia-rio-negro",
@@ -1887,7 +1985,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 345,
     "shares": 44,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/rivera-del-cuarzo-patagonia-rio-negro.jpg"
+    "imageUrl": "dishes/rivera-del-cuarzo-patagonia-rio-negro.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "proyecto-las-compuertas-durigutti-charbono",
@@ -1900,7 +1999,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 73,
     "shares": 26,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/proyecto-las-compuertas-durigutti-charbono.jpg"
+    "imageUrl": "dishes/proyecto-las-compuertas-durigutti-charbono.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "durigutti-reserva",
@@ -1913,7 +2013,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 91,
     "shares": 71,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/durigutti-reserva.jpg"
+    "imageUrl": "dishes/durigutti-reserva.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "armando-la-posta",
@@ -1926,7 +2027,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 264,
     "shares": 92,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/armando-la-posta.jpg"
+    "imageUrl": "dishes/armando-la-posta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tomero",
@@ -1939,7 +2041,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 145,
     "shares": 39,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tomero.jpg"
+    "imageUrl": "dishes/tomero.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca-de-sangre-cabernet-franc",
@@ -1952,7 +2055,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 162,
     "shares": 22,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca-de-sangre-cabernet-franc.jpg"
+    "imageUrl": "dishes/luigi-bosca-de-sangre-cabernet-franc.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "olivia",
@@ -1965,7 +2069,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 390,
     "shares": 62,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/olivia.jpg"
+    "imageUrl": "dishes/olivia.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "aguijon-de-abeja-obrera",
@@ -1978,7 +2083,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 340,
     "shares": 70,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/aguijon-de-abeja-obrera.jpg"
+    "imageUrl": "dishes/aguijon-de-abeja-obrera.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "proyecto-las-compuertas-durigutti",
@@ -1991,7 +2097,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 145,
     "shares": 59,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/proyecto-las-compuertas-durigutti.jpg"
+    "imageUrl": "dishes/proyecto-las-compuertas-durigutti.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "vistalba-corte-b",
@@ -2004,7 +2111,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 90,
     "shares": 70,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/vistalba-corte-b.jpg"
+    "imageUrl": "dishes/vistalba-corte-b.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "vistalba-corte-a",
@@ -2017,7 +2125,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 405,
     "shares": 61,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/vistalba-corte-a.jpg"
+    "imageUrl": "dishes/vistalba-corte-a.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "catena-zapata-estiba-reservada",
@@ -2030,7 +2139,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 167,
     "shares": 37,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/catena-zapata-estiba-reservada.jpg"
+    "imageUrl": "dishes/catena-zapata-estiba-reservada.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "mortero-de-domingo-molina",
@@ -2043,7 +2153,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 251,
     "shares": 57,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/mortero-de-domingo-molina.jpg"
+    "imageUrl": "dishes/mortero-de-domingo-molina.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "vistalba-corte-c",
@@ -2056,7 +2167,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 87,
     "shares": 42,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/vistalba-corte-c.jpg"
+    "imageUrl": "dishes/vistalba-corte-c.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tinto-del-pueblo",
@@ -2069,7 +2181,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 354,
     "shares": 73,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tinto-del-pueblo.jpg"
+    "imageUrl": "dishes/tinto-del-pueblo.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "pie-de-monte-durigutti-criolla",
@@ -2082,7 +2195,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 240,
     "shares": 54,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/pie-de-monte-durigutti-criolla.jpg"
+    "imageUrl": "dishes/pie-de-monte-durigutti-criolla.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "cocodrilo-vina-cobos-mendoza",
@@ -2095,7 +2209,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 272,
     "shares": 41,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/cocodrilo-vina-cobos-mendoza.jpg"
+    "imageUrl": "dishes/cocodrilo-vina-cobos-mendoza.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "finca-la-anita-gran-corte",
@@ -2108,7 +2223,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 73,
     "shares": 20,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/finca-la-anita-gran-corte.jpg"
+    "imageUrl": "dishes/finca-la-anita-gran-corte.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "saint-felicien-malbec",
@@ -2121,7 +2237,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 184,
     "shares": 88,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/saint-felicien-malbec.jpg"
+    "imageUrl": "dishes/saint-felicien-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "paulucci-la-posta",
@@ -2134,7 +2251,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 326,
     "shares": 88,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/paulucci-la-posta.jpg"
+    "imageUrl": "dishes/paulucci-la-posta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "aguijon-de-abeja-reina-malbec",
@@ -2147,7 +2265,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 211,
     "shares": 83,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/aguijon-de-abeja-reina-malbec.jpg"
+    "imageUrl": "dishes/aguijon-de-abeja-reina-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "dv-catena",
@@ -2160,7 +2279,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 208,
     "shares": 15,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/dv-catena.jpg"
+    "imageUrl": "dishes/dv-catena.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "ian-malbec",
@@ -2173,7 +2293,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 378,
     "shares": 38,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/ian-malbec.jpg"
+    "imageUrl": "dishes/ian-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "huentala-malbec",
@@ -2186,7 +2307,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 134,
     "shares": 29,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/huentala-malbec.jpg"
+    "imageUrl": "dishes/huentala-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "huentala-block-malbec",
@@ -2199,7 +2321,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 59,
     "shares": 39,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/huentala-block-malbec.jpg"
+    "imageUrl": "dishes/huentala-block-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "pizzella-la-posta",
@@ -2212,7 +2335,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 172,
     "shares": 93,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/pizzella-la-posta.jpg"
+    "imageUrl": "dishes/pizzella-la-posta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca-de-sangre-malbec",
@@ -2225,7 +2349,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 349,
     "shares": 61,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca-de-sangre-malbec.jpg"
+    "imageUrl": "dishes/luigi-bosca-de-sangre-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "fazzio",
@@ -2238,7 +2363,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 245,
     "shares": 13,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/fazzio.jpg"
+    "imageUrl": "dishes/fazzio.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "deslumbrante-malbec",
@@ -2251,7 +2377,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 216,
     "shares": 22,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/deslumbrante-malbec.jpg"
+    "imageUrl": "dishes/deslumbrante-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "fazzio-la-posta",
@@ -2264,7 +2391,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 223,
     "shares": 35,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/fazzio-la-posta.jpg"
+    "imageUrl": "dishes/fazzio-la-posta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "finca-la-anita-malbec",
@@ -2277,7 +2405,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 132,
     "shares": 53,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/finca-la-anita-malbec.jpg"
+    "imageUrl": "dishes/finca-la-anita-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "m2",
@@ -2290,7 +2419,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 256,
     "shares": 27,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/m2.jpg"
+    "imageUrl": "dishes/m2.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "pachamama",
@@ -2303,7 +2433,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 263,
     "shares": 66,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/pachamama.jpg"
+    "imageUrl": "dishes/pachamama.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "proyecto-las-compuertas-cordisco-durigutti",
@@ -2316,7 +2447,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 227,
     "shares": 16,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/proyecto-las-compuertas-cordisco-durigutti.jpg"
+    "imageUrl": "dishes/proyecto-las-compuertas-cordisco-durigutti.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "ian",
@@ -2329,7 +2461,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 117,
     "shares": 71,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/ian.jpg"
+    "imageUrl": "dishes/ian.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "aguijon-de-abeja-reina-fusion-de-blancas",
@@ -2342,7 +2475,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 40,
     "shares": 50,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/aguijon-de-abeja-reina-fusion-de-blancas.jpg"
+    "imageUrl": "dishes/aguijon-de-abeja-reina-fusion-de-blancas.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "durigutti",
@@ -2355,7 +2489,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 214,
     "shares": 8,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/durigutti.jpg"
+    "imageUrl": "dishes/durigutti.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "de-sangre-luigui-bosca",
@@ -2368,7 +2503,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 275,
     "shares": 17,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/de-sangre-luigui-bosca.jpg"
+    "imageUrl": "dishes/de-sangre-luigui-bosca.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "colome-altura-maxima",
@@ -2381,7 +2517,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 74,
     "shares": 35,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/colome-altura-maxima.jpg"
+    "imageUrl": "dishes/colome-altura-maxima.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "tomero-2",
@@ -2394,7 +2531,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 204,
     "shares": 66,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/tomero-2.jpg"
+    "imageUrl": "dishes/tomero-2.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "olivia-2",
@@ -2407,7 +2545,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 405,
     "shares": 84,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/olivia-2.jpg"
+    "imageUrl": "dishes/olivia-2.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca-2",
@@ -2420,7 +2559,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 104,
     "shares": 8,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca-2.jpg"
+    "imageUrl": "dishes/luigi-bosca-2.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca-chardonnay",
@@ -2433,7 +2573,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 360,
     "shares": 95,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca-chardonnay.jpg"
+    "imageUrl": "dishes/luigi-bosca-chardonnay.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "domingo-molina-2",
@@ -2446,7 +2587,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 362,
     "shares": 73,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/domingo-molina-2.jpg"
+    "imageUrl": "dishes/domingo-molina-2.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "altaland-torrontes",
@@ -2459,7 +2601,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 257,
     "shares": 87,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/altaland-torrontes.jpg"
+    "imageUrl": "dishes/altaland-torrontes.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca-de-sangre-white-blend",
@@ -2472,7 +2615,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 47,
     "shares": 35,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca-de-sangre-white-blend.jpg"
+    "imageUrl": "dishes/luigi-bosca-de-sangre-white-blend.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "malbec-de-rose-la-posta",
@@ -2485,7 +2629,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 274,
     "shares": 13,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/malbec-de-rose-la-posta.jpg"
+    "imageUrl": "dishes/malbec-de-rose-la-posta.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "indama-rosado",
@@ -2498,7 +2643,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 280,
     "shares": 40,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/indama-rosado.jpg"
+    "imageUrl": "dishes/indama-rosado.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "olivia-rosado",
@@ -2511,7 +2657,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 154,
     "shares": 91,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/olivia-rosado.jpg"
+    "imageUrl": "dishes/olivia-rosado.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "casa-boher-ex-brut",
@@ -2524,7 +2671,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 266,
     "shares": 20,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/casa-boher-ex-brut.jpg"
+    "imageUrl": "dishes/casa-boher-ex-brut.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "zaffiro-extra-brut",
@@ -2537,7 +2685,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 299,
     "shares": 70,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/zaffiro-extra-brut.jpg"
+    "imageUrl": "dishes/zaffiro-extra-brut.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "amalaya-brut-nature",
@@ -2550,7 +2699,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 45,
     "shares": 29,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/amalaya-brut-nature.jpg"
+    "imageUrl": "dishes/amalaya-brut-nature.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "rosell-boher-rose",
@@ -2563,7 +2713,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 86,
     "shares": 36,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/rosell-boher-rose.jpg"
+    "imageUrl": "dishes/rosell-boher-rose.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "zaffiro-brut-rose",
@@ -2576,7 +2727,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 62,
     "shares": 30,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/zaffiro-brut-rose.jpg"
+    "imageUrl": "dishes/zaffiro-brut-rose.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca-ex-brut",
@@ -2589,7 +2741,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 229,
     "shares": 54,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca-ex-brut.jpg"
+    "imageUrl": "dishes/luigi-bosca-ex-brut.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "la-posta-nature",
@@ -2602,7 +2755,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 241,
     "shares": 90,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/la-posta-nature.jpg"
+    "imageUrl": "dishes/la-posta-nature.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "luigi-bosca-nature",
@@ -2615,7 +2769,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 74,
     "shares": 39,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/luigi-bosca-nature.jpg"
+    "imageUrl": "dishes/luigi-bosca-nature.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "zaffiro-brut-nature",
@@ -2628,7 +2783,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 71,
     "shares": 21,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/zaffiro-brut-nature.jpg"
+    "imageUrl": "dishes/zaffiro-brut-nature.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "olivia-malbec",
@@ -2641,7 +2797,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 96,
     "shares": 37,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/olivia-malbec.jpg"
+    "imageUrl": "dishes/olivia-malbec.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "durigutti-reserva-tinto",
@@ -2654,7 +2811,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 83,
     "shares": 37,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/durigutti-reserva-tinto.jpg"
+    "imageUrl": "dishes/durigutti-reserva-tinto.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "vino-blanco-por-copa",
@@ -2667,7 +2825,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 79,
     "shares": 44,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/vino-blanco-por-copa.jpg"
+    "imageUrl": "dishes/vino-blanco-por-copa.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "durigutti-reserva-blanco",
@@ -2680,7 +2839,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 159,
     "shares": 79,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/durigutti-reserva-blanco.jpg"
+    "imageUrl": "dishes/durigutti-reserva-blanco.jpg",
+    "photoIsPlaceholder": true
   },
   {
     "id": "espumante-por-copa",
@@ -2693,7 +2853,8 @@ export const DISHES_MOCK: Dish[] = [
     "likes": 215,
     "shares": 53,
     "bgGradient": "linear-gradient(160deg, #3a2a1a 0%, #1c140e 50%, #0d0a07 100%)",
-    "imageUrl": "dishes/espumante-por-copa.jpg"
+    "imageUrl": "dishes/espumante-por-copa.jpg",
+    "photoIsPlaceholder": true
   }
 ];
 

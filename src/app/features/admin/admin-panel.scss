@@ -700,3 +700,106 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Fotos ilustrativas (no son del restaurante) */
+.photo-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(243, 156, 18, 0.1);
+  border: 1px solid rgba(243, 156, 18, 0.35);
+
+  > i {
+    font-size: 24px;
+    color: #f39c12;
+    flex-shrink: 0;
+  }
+}
+
+.photo-alert-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+
+  strong {
+    color: #fff;
+    font-size: 14px;
+  }
+}
+
+.photo-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.thumb-wrap {
+  position: relative;
+  flex-shrink: 0;
+
+  &.is-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 2px dashed #f39c12;
+    border-radius: 10px;
+    pointer-events: none;
+  }
+}
+
+.photo-status-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.photo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  background: rgba(243, 156, 18, 0.18);
+  color: #f5b041;
+
+  &.own {
+    background: rgba(46, 204, 113, 0.15);
+    color: #58d68d;
+  }
+}
+
+.photo-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  input {
+    display: none;
+  }
+}
+

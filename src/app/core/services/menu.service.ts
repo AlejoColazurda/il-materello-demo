@@ -118,6 +118,11 @@ export class MenuService {
     );
   }
 
+  /** Reemplaza la foto de un plato por una propia (deja de ser ilustrativa). */
+  replaceDishPhoto(dishId: string, imageUrl: string): void {
+    this.updateDish(dishId, { imageUrl, photoIsPlaceholder: false });
+  }
+
   deleteDish(dishId: string): void {
     this.dishesSignal.update((dishes) => dishes.filter((d) => d.id !== dishId));
   }

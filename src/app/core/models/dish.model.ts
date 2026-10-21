@@ -9,5 +9,7 @@ export interface Dish {
   likes: number;
   bgGradient: string;
   imageUrl?: string;
+  /** La foto es ilustrativa (no es del restaurante): hay que reemplazarla por una propia. */
+  photoIsPlaceholder?: boolean;
   shares?: number;
 }

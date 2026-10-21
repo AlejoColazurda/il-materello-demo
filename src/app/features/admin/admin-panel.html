@@ -4,7 +4,7 @@
       <span class="icon"><i class="ti ti-settings"></i></span>
       <div>
         <h2>Backoffice & Administración</h2>
-        <span class="sub">Il Matterello · Carga de Carta, Personal, Roles y Conexión POS</span>
+        <span class="sub">Il Matterello · Carta, fotos, precios y stock</span>
       </div>
     </div>
 
@@ -17,7 +17,7 @@
         (click)="setTab('dishes')"
       >
         <i class="ti ti-tools-kitchen-2"></i>
-        <span>Carta y Platos ({{ dishes().length }})</span>
+        <span>Carta y Platos ({{ allDishes().length }})</span>
       </button>
 
       <button
@@ -38,16 +38,6 @@
       >
         <i class="ti ti-shield-lock"></i>
         <span>Roles & Permisos ({{ roles().length }})</span>
-      </button>
-
-      <button
-        type="button"
-        class="tab-btn"
-        [class.active]="activeTab() === 'fudo'"
-        (click)="setTab('fudo')"
-      >
-        <i class="ti ti-plug"></i>
-        <span>Integración Fudo POS</span>
       </button>
     </nav>
   </header>
@@ -72,6 +62,25 @@
         </div>
       </div>
 
+      <!-- Fotos ilustrativas pendientes de reemplazo -->
+      @if (placeholderCount() > 0) {
+        <div class="photo-alert">
+          <i class="ti ti-photo-exclamation"></i>
+          <div class="photo-alert-text">
+            <strong>{{ placeholderCount() }} platos tienen foto ilustrativa</strong>
+            <span>No son fotos del restaurante. Reemplazalas por fotos propias con "Subir foto".</span>
+          </div>
+          <label class="photo-filter">
+            <input
+              type="checkbox"
+              [checked]="onlyPlaceholders()"
+              (change)="onlyPlaceholders.set($any($event.target).checked)"
+            />
+            <span>Ver solo estas</span>
+          </label>
+        </div>
+      }
+
       <!-- Listado de platos -->
       <div class="dishes-table-wrap">
         <table class="admin-table">
@@ -89,14 +98,28 @@
             @for (dish of dishes(); track dish.id) {
               <tr>
                 <td class="dish-cell">
-                  @if (dish.imageUrl) {
-                    <img class="table-thumb" [src]="dish.imageUrl" [alt]="dish.name" />
-                  } @else {
-                    <div class="table-thumb-placeholder"><i class="ti ti-tools-kitchen-2"></i></div>
-                  }
+                  <div class="thumb-wrap" [class.is-placeholder]="dish.photoIsPlaceholder">
+                    @if (dish.imageUrl) {
+                      <img class="table-thumb" [src]="dish.imageUrl" [alt]="dish.name" />
+                    } @else {
+                      <div class="table-thumb-placeholder"><i class="ti ti-tools-kitchen-2"></i></div>
+                    }
+                  </div>
                   <div class="dish-name-desc">
                     <strong>{{ dish.name }}</strong>
                     <span>{{ dish.description | slice: 0 : 55 }}...</span>
+                    <span class="photo-status-row">
+                      @if (dish.photoIsPlaceholder) {
+                        <span class="photo-badge"><i class="ti ti-photo-exclamation"></i> Foto ilustrativa</span>
+                      } @else {
+                        <span class="photo-badge own"><i class="ti ti-photo-check"></i> Foto propia</span>
+                      }
+                      <label class="photo-upload">
+                        <i class="ti ti-upload"></i>
+                        {{ dish.photoIsPlaceholder ? 'Subir foto' : 'Cambiar' }}
+                        <input type="file" accept="image/*" (change)="onPhotoSelected(dish.id, $event)" />
+                      </label>
+                    </span>
                   </div>
                 </td>
                 <td><span class="cat-pill">{{ dish.categoryId }}</span></td>
@@ -429,14 +452,6 @@
                   />
                   <span>Modificar roles y accesos</span>
                 </label>
-                <label class="perm-switch-label">
-                  <input
-                    type="checkbox"
-                    [checked]="rolePermissionsState().canConfigurePOS"
-                    (change)="toggleRolePermission('canConfigurePOS')"
-                  />
-                  <span>Configurar Fudo POS</span>
-                </label>
               </div>
             </div>
           </div>
@@ -491,7 +506,6 @@
                 @if (role.permissions.canCloseTables) { <span class="perm-chip">Cobrar mesas</span> }
                 @if (role.permissions.canViewKitchenKDS) { <span class="perm-chip">Cocina KDS</span> }
                 @if (role.permissions.canManageStaff) { <span class="perm-chip">Gestión personal</span> }
-                @if (role.permissions.canConfigurePOS) { <span class="perm-chip">Fudo POS</span> }
               </div>
             </div>
           </div>
@@ -500,103 +514,5 @@
     </section>
   }
 
-  <!-- PESTAÑA 4: INTEGRACIÓN FUDO POS -->
-  @if (activeTab() === 'fudo') {
-    <section class="tab-content fudo-section">
-      <div class="section-actions">
-        <div>
-          <h3>Integración con Fudo Gastronomía</h3>
-          <p class="section-sub">Conectá la Carta Virtual con el sistema de punto de venta (POS) y comanderas del local.</p>
-        </div>
-        <div class="fudo-status-pill">
-          <span class="live-dot"></span>
-          <span>API Fudo v1 Conectada</span>
-        </div>
-      </div>
 
-      <div class="fudo-how-it-works">
-        <h4>¿Cómo funciona la integración con Fudo?</h4>
-        <div class="steps-grid">
-          <div class="step-card">
-            <span class="step-num">1</span>
-            <h5>Sincronización de Catálogo</h5>
-            <p>La carta virtual descarga automáticamente los platos, categorías y precios configurados en Fudo.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">2</span>
-            <h5>Envío Directo de Comandas</h5>
-            <p>Cuando el cliente toca "Enviar Comanda", la app crea la venta en Fudo asignada a la mesa correspondiente.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">3</span>
-            <h5>Impresión en Cocina & Facturación</h5>
-            <p>Fudo dispara el ticket físico a la comandera de cocina o barra y deja la mesa abierta para su cobro.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="fudo-config-card">
-        <h4>Credenciales y Configuración de Fudo</h4>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>API Key / Token de Acceso (Fudo):</label>
-            <input
-              type="text"
-              [value]="fudoApiKey()"
-              (input)="fudoApiKey.set($any($event.target).value)"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>ID de Sucursal (Branch):</label>
-            <input
-              type="text"
-              [value]="fudoBranchId()"
-              (input)="fudoBranchId.set($any($event.target).value)"
-            />
-          </div>
-
-          <div class="form-group full-width">
-            <label>Webhook URL de eventos:</label>
-            <input
-              type="text"
-              readonly
-              value="https://api.ilmaterello.com/webhooks/fudo/orders"
-            />
-          </div>
-        </div>
-
-        <div class="fudo-toggles">
-          <label class="toggle-row">
-            <input
-              type="checkbox"
-              [checked]="fudoAutoSyncMenu()"
-              (change)="fudoAutoSyncMenu.set($any($event.target).checked)"
-            />
-            <span>Sincronizar cambios de precios automáticamente desde Fudo</span>
-          </label>
-          <label class="toggle-row">
-            <input
-              type="checkbox"
-              [checked]="fudoAutoPushOrders()"
-              (change)="fudoAutoPushOrders.set($any($event.target).checked)"
-            />
-            <span>Imprimir comanda física en cocina al confirmar pedido</span>
-          </label>
-        </div>
-
-        <div class="form-buttons">
-          <button type="button" class="btn-save" (click)="simulateFudoSync()">
-            Probar Conexión y Sincronizar Catálogo
-          </button>
-        </div>
-
-        @if (fudoSyncStatus()) {
-          <div class="fudo-status-msg">
-            {{ fudoSyncStatus() }}
-          </div>
-        }
-      </div>
-    </section>
-  }
 </div>

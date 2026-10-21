@@ -1,5 +1,5 @@
 import { CurrencyPipe, SlicePipe, UpperCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, output, signal } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
 import { AuthService } from '../../core/services/auth.service';
 import { CustomRole, RolePermissions, StaffUser } from '../../core/models/user.model';
@@ -20,7 +20,17 @@ export class AdminPanel {
   readonly activeTab = signal<'dishes' | 'users' | 'roles' | 'fudo'>('dishes');
 
   readonly categories = this.menuService.categories;
-  readonly dishes = this.menuService.dishes;
+  readonly allDishes = this.menuService.dishes;
+  /** Fotos ilustrativas (no son del restaurante) que hay que ir reemplazando. */
+  readonly placeholderCount = computed(
+    () => this.allDishes().filter((d) => d.photoIsPlaceholder).length,
+  );
+  readonly onlyPlaceholders = signal(false);
+  readonly dishes = computed(() =>
+    this.onlyPlaceholders()
+      ? this.allDishes().filter((d) => d.photoIsPlaceholder)
+      : this.allDishes(),
+  );
   readonly staffUsers = this.authService.staffUsers;
   readonly roles = this.authService.roles;
   readonly permissions = this.authService.permissions;
@@ -70,6 +80,19 @@ export class AdminPanel {
   readonly fudoAutoSyncMenu = signal(true);
   readonly fudoAutoPushOrders = signal(true);
   readonly fudoSyncStatus = signal<string | null>(null);
+
+  /** Sube una foto propia para el plato (sin servidor, queda en esta sesión del navegador). */
+  onPhotoSelected(dishId: string, event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file || !file.type.startsWith('image/')) {
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => this.menuService.replaceDishPhoto(dishId, String(reader.result));
+    reader.readAsDataURL(file);
+    input.value = '';
+  }
 
   setTab(tab: 'dishes' | 'users' | 'roles' | 'fudo'): void {
     this.activeTab.set(tab);
