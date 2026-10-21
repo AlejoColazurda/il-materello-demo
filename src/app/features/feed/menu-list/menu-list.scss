@@ -5,6 +5,10 @@
   background: var(--bg);
 }
 
+:host([hidden]) {
+  display: none;
+}
+
 .scroller {
   position: absolute;
   inset: 0;

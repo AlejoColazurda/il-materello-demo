@@ -27,6 +27,16 @@
 
     <button
       type="button"
+      class="info-btn review-btn"
+      (click)="openReview()"
+      title="Valorá tu experiencia"
+      aria-label="Valorá tu experiencia"
+    >
+      <i class="ti ti-star"></i>
+    </button>
+
+    <button
+      type="button"
       class="info-btn"
       (click)="openWelcome()"
       title="Factura y restricciones alimentarias"
@@ -71,12 +81,18 @@
   }
 
   <!-- Vista Lista: carta clásica por secciones -->
-  @if (viewMode() === 'lista') {
-    <app-menu-list
-      [categories]="categories()"
-      [dishes]="dishes()"
-      (dishOpened)="openDishInReels($event)"
-    />
+  <app-menu-list
+    [hidden]="viewMode() !== 'lista'"
+    [categories]="categories()"
+    [dishes]="dishes()"
+    (dishOpened)="openDishInReels($event)"
+  />
+
+  @if (viewMode() === 'reels' && cameFromList()) {
+    <button type="button" class="back-to-list" (click)="backToList()">
+      <i class="ti ti-arrow-left"></i>
+      <span>Volver a la lista</span>
+    </button>
   }
 
   @if (!commentsOpen()) {
@@ -87,5 +103,9 @@
 
   @if (showWelcome()) {
     <app-welcome-notice (dismissed)="dismissWelcome()" />
+  }
+
+  @if (showReview()) {
+    <app-review-prompt (closed)="closeReview()" />
   }
 </div>

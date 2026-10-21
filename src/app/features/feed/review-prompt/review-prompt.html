@@ -1,0 +1,61 @@
+<div class="backdrop" (click)="closed.emit()"></div>
+
+<div class="sheet" role="dialog" aria-labelledby="review-title">
+  <button type="button" class="close" (click)="closed.emit()" aria-label="Cerrar">
+    <i class="ti ti-x"></i>
+  </button>
+
+  @if (!selected()) {
+    <h2 id="review-title">¿Cómo la estás pasando?</h2>
+    <p class="lead">Tocá una carita, nos ayuda a mejorar.</p>
+
+    <div class="moods">
+      @for (mood of moods; track mood.value) {
+        <button
+          type="button"
+          class="mood"
+          [style.--mood-color]="mood.color"
+          (click)="select(mood)"
+          [attr.aria-label]="mood.label"
+        >
+          <span class="emoji">{{ mood.emoji }}</span>
+          <span class="label">{{ mood.label }}</span>
+        </button>
+      }
+    </div>
+  } @else if (isHappy()) {
+    <div class="result" [style.--mood-color]="selected()!.color">
+      <span class="big-emoji">{{ selected()!.emoji }}</span>
+      <h2 id="review-title">¡Qué alegría!</h2>
+      <p class="lead">¿Nos dejás tu reseña en Google? Contale a otros cómo te fue: nos ayuda muchísimo.</p>
+      <button type="button" class="google-btn" (click)="openGoogle()">
+        <span class="g">G</span>
+        <span>Dejar mi reseña en Google</span>
+      </button>
+      <button type="button" class="text-btn" (click)="closed.emit()">Ahora no</button>
+    </div>
+  } @else {
+    <div class="result" [style.--mood-color]="selected()!.color">
+      <span class="big-emoji">{{ selected()!.emoji }}</span>
+      @if (!feedbackSent()) {
+        <h2 id="review-title">Gracias por decírnoslo</h2>
+        <p class="lead">Contale al encargado qué pasó y lo resolvemos ahora mismo. Es privado.</p>
+        <textarea
+          rows="3"
+          placeholder="¿Qué podemos mejorar?"
+          [value]="feedback()"
+          (input)="feedback.set($any($event.target).value)"
+        ></textarea>
+        <button type="button" class="primary-btn" [disabled]="!feedback().trim()" (click)="sendFeedback()">
+          Enviar al encargado
+        </button>
+      } @else {
+        <h2 id="review-title">¡Recibido!</h2>
+        <p class="lead">El encargado ya está al tanto. Gracias por darnos la oportunidad de mejorar.</p>
+      }
+      <button type="button" class="link-google" (click)="openGoogle()">
+        También podés dejar tu reseña en Google
+      </button>
+    </div>
+  }
+</div>

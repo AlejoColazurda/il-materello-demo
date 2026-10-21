@@ -21,12 +21,15 @@ import { MenuList } from './menu-list/menu-list';
 import { OrderDrawer } from '../cart/order-drawer/order-drawer';
 import { CartBar } from '../cart/cart-bar/cart-bar';
 import { WelcomeNotice } from './welcome-notice/welcome-notice';
+import { ReviewPrompt } from './review-prompt/review-prompt';
+import { REVIEW_PROMPT_DELAY_S } from '../../core/config/reviews';
 
 export type MenuViewMode = 'reels' | 'lista';
 
 const VIEW_MODE_KEY = 'ilm.menuViewMode';
 const SWIPE_HINT_KEY = 'ilm.swipeHintSeen';
 const WELCOME_KEY = 'ilm.welcomeSeen';
+const REVIEW_KEY = 'ilm.reviewAsked';
 
 function readStorage(key: string): string | null {
   try {
@@ -62,7 +65,7 @@ function writeStorage(key: string, value: string): void {
 
 @Component({
   selector: 'app-feed',
-  imports: [CategoryChipBar, DishCard, MenuList, OrderDrawer, CartBar, WelcomeNotice],
+  imports: [CategoryChipBar, DishCard, MenuList, OrderDrawer, CartBar, WelcomeNotice, ReviewPrompt],
   templateUrl: './feed.html',
   styleUrl: './feed.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -89,6 +92,10 @@ export class Feed {
     readStorage(VIEW_MODE_KEY) === 'lista' ? 'lista' : 'reels',
   );
   readonly showSwipeHint = signal(readStorage(SWIPE_HINT_KEY) !== '1');
+  readonly showReview = signal(false);
+
+  /** El comensal llegó a Reels desde el detalle de la lista: mostrar "Volver". */
+  readonly cameFromList = signal(false);
   /** Aviso de factura y restricciones: una vez por visita, solo para comensales. */
   readonly showWelcome = signal(
     !this.authService.isAuthenticated() && readSession(WELCOME_KEY) !== '1',
@@ -101,6 +108,7 @@ export class Feed {
   constructor() {
     afterNextRender(() => {
       this.initScrollObserver();
+      this.scheduleReviewPrompt();
     });
 
     // Observar también las tarjetas que se agregan después (ej. un reel nuevo)
@@ -163,6 +171,7 @@ export class Feed {
       return;
     }
     this.menuService.closeCommentSheet();
+    this.cameFromList.set(false);
     this.viewMode.set(mode);
     writeStorage(VIEW_MODE_KEY, mode);
 
@@ -173,6 +182,8 @@ export class Feed {
 
   /** Desde la lista: abrir un plato en grande en la vista Reels. */
   openDishInReels(dishId: string): void {
+    this.cameFromList.set(true);
+    this.dismissSwipeHint();
     this.viewMode.set('reels');
     writeStorage(VIEW_MODE_KEY, 'reels');
 
@@ -185,10 +196,40 @@ export class Feed {
     requestAnimationFrame(() => this.scrollReelsTo(index, false));
   }
 
+  /** Vuelve a la lista en el mismo lugar (la lista queda montada, conserva scroll y búsqueda). */
+  backToList(): void {
+    this.menuService.closeCommentSheet();
+    this.cameFromList.set(false);
+    this.viewMode.set('lista');
+    writeStorage(VIEW_MODE_KEY, 'lista');
+  }
+
   onFeedScroll(): void {
     if (this.showSwipeHint() && this.feedElement().nativeElement.scrollTop > 40) {
       this.dismissSwipeHint();
     }
+  }
+
+  /** Invita a valorar una vez por visita, solo a comensales y sin pisar otro aviso. */
+  private scheduleReviewPrompt(): void {
+    if (this.authService.isAuthenticated() || readSession(REVIEW_KEY) === '1') {
+      return;
+    }
+    const timer = setTimeout(() => {
+      if (!this.showWelcome() && !this.authService.isAuthenticated()) {
+        this.openReview();
+      }
+    }, REVIEW_PROMPT_DELAY_S * 1000);
+    this.destroyRef.onDestroy(() => clearTimeout(timer));
+  }
+
+  openReview(): void {
+    this.showReview.set(true);
+    writeSession(REVIEW_KEY, '1');
+  }
+
+  closeReview(): void {
+    this.showReview.set(false);
   }
 
   openWelcome(): void {

@@ -1,0 +1,238 @@
+:host {
+  position: absolute;
+  inset: 0;
+  z-index: 72;
+  display: flex;
+  align-items: flex-end;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.25s ease;
+}
+
+.sheet {
+  position: relative;
+  width: 100%;
+  padding: 26px 18px 24px;
+  border-radius: 24px 24px 0 0;
+  background: #18181c;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  animation: slideUp 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.lead {
+  margin: 6px auto 18px;
+  max-width: 300px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.moods {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.mood {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 2px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  animation: popIn 0.4s ease backwards;
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--mood-color);
+    background: color-mix(in srgb, var(--mood-color) 16%, transparent);
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  .emoji {
+    font-size: 34px;
+    line-height: 1;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--mood-color);
+  }
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .lead {
+    margin-bottom: 16px;
+  }
+}
+
+.big-emoji {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background: color-mix(in srgb, var(--mood-color) 20%, transparent);
+  border: 2px solid var(--mood-color);
+  animation: popIn 0.4s ease;
+}
+
+.google-btn {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 14px;
+  background: #fff;
+  color: #1f1f1f;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+
+  .g {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    color: #fff;
+    background: conic-gradient(#ea4335 0 25%, #fbbc05 0 50%, #34a853 0 75%, #4285f4 0);
+  }
+}
+
+textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  resize: none;
+
+  &:focus {
+    outline: none;
+    border-color: var(--mood-color);
+  }
+}
+
+.primary-btn {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  border-radius: 14px;
+  background: var(--accent-2);
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+}
+
+.text-btn,
+.link-google {
+  margin-top: 12px;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: inherit;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.link-google {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

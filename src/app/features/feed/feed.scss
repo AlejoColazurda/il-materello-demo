@@ -93,7 +93,6 @@
 }
 
 .info-btn {
-  margin-left: auto;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -107,6 +106,11 @@
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
+}
+
+.review-btn {
+  margin-left: auto;
+  color: var(--accent-2);
 }
 
 .profile-btn {
@@ -148,6 +152,33 @@
 
   &[hidden] {
     display: none;
+  }
+}
+
+/* Volver a la lista desde un reel abierto en el detalle */
+.back-to-list {
+  position: absolute;
+  top: 108px;
+  left: 14px;
+  z-index: 28;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px 0 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  animation: hintFade 0.3s ease-out;
+
+  i {
+    font-size: 17px;
   }
 }
 

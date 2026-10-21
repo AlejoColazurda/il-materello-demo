@@ -14,6 +14,7 @@ import { MenuService } from '../../../core/services/menu.service';
 import { Category } from '../../../core/models/category.model';
 import { Dish } from '../../../core/models/dish.model';
 import { AddButton } from '../../cart/add-button/add-button';
+import { DishDetail } from '../dish-detail/dish-detail';
 import { CUBIERTO_PRICE } from '../../../../assets/mock/dishes.mock';
 
 interface MenuSection {
@@ -32,11 +33,11 @@ const normalize = (text: string): string =>
 
 /**
  * Carta en modo lista clásico: secciones por categoría, buscador y botón "+" por plato.
- * Tocar un plato lo abre en la vista Reels para verlo en grande.
+ * Tocar un plato abre su detalle; desde ahí se puede ver en Reels.
  */
 @Component({
   selector: 'app-menu-list',
-  imports: [CurrencyPipe, AddButton],
+  imports: [CurrencyPipe, AddButton, DishDetail],
   templateUrl: './menu-list.html',
   styleUrl: './menu-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,6 +53,11 @@ export class MenuList {
 
   readonly cubiertoPrice = CUBIERTO_PRICE;
   readonly query = signal('');
+  readonly selectedDish = signal<Dish | null>(null);
+
+  readonly selectedCategoryLabel = computed(
+    () => this.categories().find((c) => c.id === this.selectedDish()?.categoryId)?.label ?? '',
+  );
   private isAutoScrolling = false;
   private scrollFrame = 0;
 
@@ -122,6 +128,19 @@ export class MenuList {
         this.menuService.setActiveCategory(current);
       }
     });
+  }
+
+  openDetail(dish: Dish): void {
+    this.selectedDish.set(dish);
+  }
+
+  closeDetail(): void {
+    this.selectedDish.set(null);
+  }
+
+  openInReels(dishId: string): void {
+    this.selectedDish.set(null);
+    this.dishOpened.emit(dishId);
   }
 
   cleanTag(tag: string): string {

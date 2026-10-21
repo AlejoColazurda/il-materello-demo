@@ -1,0 +1,56 @@
+<div class="backdrop" (click)="closed.emit()"></div>
+
+<article class="sheet" role="dialog" [attr.aria-label]="dish().name">
+  <div class="photo" [style.background-image]="dish().bgGradient">
+    @if (dish().imageUrl) {
+      <img [src]="dish().imageUrl" [alt]="dish().name" />
+    }
+    <button type="button" class="close" (click)="closed.emit()" aria-label="Cerrar">
+      <i class="ti ti-x"></i>
+    </button>
+    @if (!dish().inStock) {
+      <span class="sold-out-badge">Agotado por hoy</span>
+    }
+  </div>
+
+  <div class="body">
+    @if (categoryLabel()) {
+      <span class="category">{{ categoryLabel() }}</span>
+    }
+    <div class="title-row">
+      <h2>{{ dish().name }}</h2>
+      <span class="price">
+        @if (dish().price > 0) {
+          {{ dish().price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+        } @else {
+          Incluida
+        }
+      </span>
+    </div>
+
+    @if (dish().description) {
+      <p class="desc">{{ dish().description }}</p>
+    }
+
+    @if (dish().tags.length) {
+      <div class="tags">
+        @for (tag of dish().tags; track tag) {
+          <span class="tag">{{ tag.trim() }}</span>
+        }
+      </div>
+    }
+
+    <p class="diet">
+      <i class="ti ti-wheat-off"></i>
+      ¿Alergias o celiaquía? Consultá a tu mozo.
+    </p>
+
+    <div class="actions">
+      <app-add-button [dish]="dish()" variant="wide" />
+      <button type="button" class="reel-btn" (click)="openInReels.emit(dish().id)">
+        <i class="ti ti-player-play-filled"></i>
+        <span>Ver en Reels</span>
+      </button>
+    </div>
+  </div>
+</article>

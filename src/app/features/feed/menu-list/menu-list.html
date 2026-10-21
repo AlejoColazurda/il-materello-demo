@@ -45,8 +45,8 @@
             <button
               type="button"
               class="dish-main"
-              (click)="dishOpened.emit(dish.id)"
-              [attr.aria-label]="'Ver ' + dish.name + ' en grande'"
+              (click)="openDetail(dish)"
+              [attr.aria-label]="'Ver detalle de ' + dish.name"
             >
               <span class="dish-text">
                 <span class="dish-name">{{ dish.name }}</span>
@@ -92,3 +92,12 @@
     </div>
   }
 </div>
+
+@if (selectedDish(); as dish) {
+  <app-dish-detail
+    [dish]="dish"
+    [categoryLabel]="selectedCategoryLabel()"
+    (closed)="closeDetail()"
+    (openInReels)="openInReels($event)"
+  />
+}
