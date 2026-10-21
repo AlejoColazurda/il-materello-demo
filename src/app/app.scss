@@ -35,10 +35,11 @@
   min-width: 0;
   cursor: pointer;
 
-  .logo {
-    font-size: 22px;
-    color: #f5c518;
+  .logo-img {
+    height: 28px;
+    width: auto;
     flex-shrink: 0;
+    display: block;
   }
 }
 

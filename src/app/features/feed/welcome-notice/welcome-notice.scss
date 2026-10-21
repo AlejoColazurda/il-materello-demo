@@ -25,17 +25,11 @@
   animation: slideUp 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
 }
 
-.brand {
-  width: 52px;
-  height: 52px;
-  margin: 0 auto 12px;
-  border-radius: 50%;
-  background: var(--accent-2);
-  color: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
+.brand-logo {
+  display: block;
+  width: 170px;
+  height: auto;
+  margin: 0 auto 14px;
 }
 
 h2 {

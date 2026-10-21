@@ -58,15 +58,10 @@
   user-select: none;
   pointer-events: none;
 
-  .watermark-icon {
-    font-size: 80px;
-  }
-
-  .watermark-brand {
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+  .watermark-logo {
+    width: 60%;
+    max-width: 240px;
+    height: auto;
   }
 }
 

@@ -3,7 +3,7 @@
   @if (staffUser(); as staff) {
     <header [class]="'topbar topbar-staff role-' + staff.roleId">
       <div class="brand" (click)="setView(defaultStaffView())">
-        <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
+        <img class="logo-img" src="brand/isotipo-blanco.png" alt="Il Matterello" />
         <span class="brand-text">
           <span class="brand-name">Il Matterello</span>
           <span class="brand-mode"><i class="ti ti-shield-lock"></i> Modo personal</span>
@@ -75,7 +75,7 @@
   } @else {
     <header class="topbar topbar-client">
       <div class="brand">
-        <span class="logo"><i class="ti ti-tools-kitchen-2"></i></span>
+        <img class="logo-img" src="brand/isotipo-blanco.png" alt="Il Matterello" />
         <span class="brand-text">
           <span class="brand-name">Il Matterello</span>
           <span class="brand-mode"><i class="ti ti-user"></i> Vista cliente</span>
