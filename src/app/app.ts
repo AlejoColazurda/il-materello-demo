@@ -3,10 +3,8 @@ import { Feed } from './features/feed/feed';
 import { WaiterPanel } from './features/waiter/waiter-panel';
 import { AdminPanel } from './features/admin/admin-panel';
 import { ReelComposer } from './features/feed/reel-composer/reel-composer';
-import { ProfileModal } from './features/profile/profile-modal/profile-modal';
 import { OrderService } from './core/services/order.service';
 import { AuthService } from './core/services/auth.service';
-import { ProfileService } from './core/services/profile.service';
 import { Dish } from './core/models/dish.model';
 import { ADMIN_TOKEN_PARAM } from './core/config/admin-access';
 import { ORDERS_ENABLED } from './core/config/features';
@@ -20,7 +18,6 @@ export type DemoView = 'cliente' | 'mozos' | 'admin';
     WaiterPanel,
     AdminPanel,
     ReelComposer,
-    ProfileModal,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -29,13 +26,10 @@ export type DemoView = 'cliente' | 'mozos' | 'admin';
 export class App {
   private readonly orderService = inject(OrderService);
   private readonly authService = inject(AuthService);
-  private readonly profileService = inject(ProfileService);
 
   readonly currentView = signal<DemoView>('cliente');
   readonly isReelComposerOpen = signal(false);
-  readonly isProfileModalOpen = signal(false);
 
-  readonly userProfile = this.profileService.profile;
   readonly staffUser = this.authService.currentStaffUser;
   readonly pendingOrdersCount = this.orderService.pendingOrdersCount;
   readonly activeOrdersCount = this.orderService.activeOrdersCount;
@@ -63,14 +57,6 @@ export class App {
       this.currentView.set(this.defaultStaffView());
     }
     void this.checkAdminTokenInUrl();
-  }
-
-  openProfileModal(): void {
-    this.isProfileModalOpen.set(true);
-  }
-
-  closeProfileModal(): void {
-    this.isProfileModalOpen.set(false);
   }
 
   logoutStaff(): void {

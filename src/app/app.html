@@ -55,7 +55,7 @@
       </nav>
 
       <div class="staff-user">
-        <button type="button" class="staff-user-btn" (click)="openProfileModal()" title="Mi perfil">
+        <div class="staff-user-btn">
           @if (staff.avatar) {
             <img class="staff-avatar" [src]="staff.avatar" alt="" />
           } @else {
@@ -65,7 +65,7 @@
             <span class="staff-name">{{ staff.name }}</span>
             <span class="staff-role">{{ roleLabel() }}</span>
           </span>
-        </button>
+        </div>
         <button type="button" class="btn-logout" (click)="logoutStaff()" title="Cerrar sesión">
           <i class="ti ti-logout"></i>
           <span class="btn-logout-text">Salir</span>
@@ -88,7 +88,7 @@
   <main class="demo-main">
     @switch (currentView()) {
       @case ('cliente') {
-        <app-feed (openProfileRequested)="openProfileModal()" />
+        <app-feed />
       }
       @case ('mozos') {
         <app-waiter-panel />
@@ -100,12 +100,6 @@
   </main>
 
   <!-- Modales del sistema -->
-  <!-- 1. Modal Mi Perfil (Cargar foto desde celular/PC + Apodo) -->
-  <app-profile-modal
-    [isOpen]="isProfileModalOpen()"
-    (closed)="closeProfileModal()"
-  />
-
   <!-- 3. Modal estilo Instagram para subir nuevos Reels -->
   <app-reel-composer
     [isOpen]="isReelComposerOpen()"

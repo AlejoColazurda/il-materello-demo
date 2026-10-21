@@ -7,13 +7,11 @@ import {
   computed,
   effect,
   inject,
-  output,
   signal,
   viewChild,
   viewChildren,
 } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
-import { ProfileService } from '../../core/services/profile.service';
 import { AuthService } from '../../core/services/auth.service';
 import { CategoryChipBar } from './category-chip-bar/category-chip-bar';
 import { DishCard } from './dish-card/dish-card';
@@ -72,11 +70,8 @@ function writeStorage(key: string, value: string): void {
 })
 export class Feed {
   private readonly menuService = inject(MenuService);
-  private readonly profileService = inject(ProfileService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly authService = inject(AuthService);
-
-  readonly openProfileRequested = output<void>();
 
   private readonly feedElement = viewChild.required<ElementRef<HTMLElement>>('feed');
   private readonly dishCardElements = viewChildren(DishCard, { read: ElementRef });
@@ -85,7 +80,6 @@ export class Feed {
   readonly categories = this.menuService.categories;
   readonly dishes = this.menuService.dishes;
   readonly activeCategoryId = this.menuService.activeCategoryId;
-  readonly userProfile = this.profileService.profile;
   readonly commentsOpen = computed(() => this.menuService.openCommentSheetId() !== null);
 
   readonly viewMode = signal<MenuViewMode>(

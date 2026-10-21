@@ -44,20 +44,6 @@
     >
       <i class="ti ti-info-circle"></i>
     </button>
-
-    <button
-      type="button"
-      class="profile-btn"
-      (click)="openProfileRequested.emit()"
-      title="Mi perfil"
-      aria-label="Mi perfil"
-    >
-      @if (userProfile().avatar) {
-        <img class="profile-avatar" [src]="userProfile().avatar" alt="" />
-      } @else {
-        <span class="profile-avatar-fallback"><i class="ti ti-user"></i></span>
-      }
-    </button>
   </header>
 
   <app-category-chip-bar
