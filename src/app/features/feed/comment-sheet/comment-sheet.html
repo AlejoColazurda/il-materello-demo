@@ -1,81 +1,100 @@
-<div
-  class="comment-backdrop"
-  (click)="closed.emit()"
->
-  <div
-    class="comment-sheet"
-    (click)="$event.stopPropagation()"
-  >
+<div class="comment-backdrop" (click)="closed.emit()">
+  <div class="comment-sheet" (click)="$event.stopPropagation()">
     <div class="sheet-handle"></div>
 
     <div class="sheet-header">
       <span class="header-spacer"></span>
-      <h4>Comentarios ({{ comments().length }})</h4>
-      <button type="button" class="close-btn" (click)="closed.emit()"><i class="ti ti-x"></i></button>
-    </div>
-
-    <!-- Lista de comentarios con scroll -->
-    <div class="comments-scroll">
-      @if (comments().length === 0) {
-        <div class="empty-comments">
-          <p>Todavía no hay comentarios.</p>
-          <span>¡Sé el primero en comentar sobre este plato!</span>
-        </div>
-      } @else {
-        @for (comment of comments(); track comment.id) {
-          <div class="comment-row">
-            @if (comment.avatar) {
-              <img class="avatar-img" [src]="comment.avatar" [alt]="comment.author" />
-            } @else {
-              <div class="avatar-placeholder">{{ comment.author.charAt(0).toUpperCase() }}</div>
-            }
-
-            <div class="comment-content">
-              <div class="comment-meta">
-                <span class="author-name">{{ comment.author }}</span>
-                <span class="comment-time">{{ comment.timeAgo ?? 'reciente' }}</span>
-              </div>
-              <p class="comment-body">{{ comment.text }}</p>
-            </div>
-
-            <button type="button" class="comment-like-btn" title="Me gusta">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-              </svg>
-              @if (comment.likes && comment.likes > 0) {
-                <span class="comment-like-count">{{ comment.likes }}</span>
-              }
-            </button>
-          </div>
-        }
-      }
-    </div>
-
-    <!-- Input fijo en la parte inferior estilo Instagram -->
-    <div class="comment-input-bar">
-      <div class="my-avatar">
-        @if (currentProfile().avatar) {
-          <img class="my-avatar-img" [src]="currentProfile().avatar" alt="Mi avatar" />
-        } @else {
-          <i class="ti ti-user"></i>
-        }
-      </div>
-      <input
-        type="text"
-        placeholder="Añade un comentario..."
-        [value]="draftText()"
-        (input)="draftText.set($any($event.target).value)"
-        (keyup.enter)="submit()"
-      />
-      <button
-        type="button"
-        class="post-btn"
-        [class.active]="draftText().trim().length > 0"
-        [disabled]="!draftText().trim().length"
-        (click)="submit()"
-      >
-        Publicar
+      <h4>Contale al restaurante</h4>
+      <button type="button" class="close-btn" (click)="closed.emit()" aria-label="Cerrar">
+        <i class="ti ti-x"></i>
       </button>
+    </div>
+
+    <div class="comments-scroll">
+      @if (sent()) {
+        <div class="private-intro sent">
+          <i class="ti ti-circle-check"></i>
+          <p>
+            ¡Gracias{{ name().trim() ? ', ' + name().trim().split(' ')[0] : '' }}! Lo recibió el restaurante.
+            @if (email().trim() || whatsapp().trim()) {
+              <span>Si hace falta, te van a responder por mail o WhatsApp.</span>
+            }
+          </p>
+        </div>
+        <button type="button" class="again-btn" (click)="sent.set(false)">Escribir otro comentario</button>
+      } @else {
+        <div class="private-intro">
+          <i class="ti ti-lock"></i>
+          <p>
+            ¿Qué te pareció{{ dishName() ? ' ' + dishName() : ' este plato' }}?
+            <span>Tu comentario y tus datos los ve solo el restaurante. No se publica nada.</span>
+          </p>
+        </div>
+
+        <form class="contact-form" (submit)="$event.preventDefault(); submit()" novalidate>
+          <label>
+            <span>Comentario</span>
+            <textarea
+              rows="3"
+              maxlength="400"
+              placeholder="Contanos qué te pareció…"
+              [value]="draftText()"
+              (input)="draftText.set($any($event.target).value)"
+              [class.invalid]="triedSubmit() && !textOk()"
+            ></textarea>
+          </label>
+
+          <p class="optional-note">¿Querés que te respondamos? Dejanos tus datos (opcional).</p>
+          <label>
+            <span>Nombre y apellido</span>
+            <input
+              type="text"
+              autocomplete="name"
+              placeholder="Ej: Laura Gómez"
+              [value]="name()"
+              (input)="name.set($any($event.target).value)"
+            />
+          </label>
+          <div class="row">
+            <label>
+              <span>Mail</span>
+              <input
+                type="email"
+                autocomplete="email"
+                inputmode="email"
+                placeholder="tu@mail.com"
+                [value]="email()"
+                (input)="email.set($any($event.target).value)"
+                [class.invalid]="triedSubmit() && !emailOk()"
+              />
+            </label>
+            <label>
+              <span>WhatsApp</span>
+              <input
+                type="tel"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="11 2345 6789"
+                [value]="whatsapp()"
+                (input)="whatsapp.set($any($event.target).value)"
+                [class.invalid]="triedSubmit() && !whatsappOk()"
+              />
+            </label>
+          </div>
+          @if (triedSubmit() && !canSend()) {
+            <p class="form-error">
+              <i class="ti ti-alert-circle"></i>
+              @if (!textOk()) {
+                Escribí tu comentario.
+              } @else {
+                Revisá el mail o el WhatsApp.
+              }
+            </p>
+          }
+
+          <button type="submit" class="send-btn">Enviar al restaurante</button>
+        </form>
+      }
     </div>
   </div>
 </div>

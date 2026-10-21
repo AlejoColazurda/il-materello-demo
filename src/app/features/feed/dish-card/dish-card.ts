@@ -4,7 +4,8 @@ import { MenuService } from '../../../core/services/menu.service';
 import { Dish } from '../../../core/models/dish.model';
 import { ActionRail } from '../action-rail/action-rail';
 import { AddButton } from '../../cart/add-button/add-button';
-import { CommentSheet } from '../comment-sheet/comment-sheet';
+import { CommentSheet, CommentSubmission } from '../comment-sheet/comment-sheet';
+import { InboxService } from '../../../core/services/inbox.service';
 
 @Component({
   selector: 'app-dish-card',
@@ -15,6 +16,7 @@ import { CommentSheet } from '../comment-sheet/comment-sheet';
 })
 export class DishCard {
   private readonly menuService = inject(MenuService);
+  private readonly inboxService = inject(InboxService);
 
   readonly dish = input.required<Dish>();
   readonly heartBurstActive = signal(false);
@@ -29,14 +31,6 @@ export class DishCard {
 
   get isLiked(): boolean {
     return this.menuService.isLiked(this.dish().id);
-  }
-
-  get commentCount(): number {
-    return this.menuService.commentCountFor(this.dish().id);
-  }
-
-  get comments() {
-    return this.menuService.commentsFor(this.dish().id);
   }
 
   get commentsOpen(): boolean {
@@ -95,8 +89,15 @@ export class DishCard {
     this.menuService.closeCommentSheet();
   }
 
-  submitComment(text: string): void {
-    this.menuService.addComment(this.dish().id, text);
+  /** Los comentarios no se publican: van a la bandeja privada del restaurante. */
+  submitComment(submission: CommentSubmission): void {
+    this.inboxService.add({
+      kind: 'comentario',
+      text: submission.text,
+      dishId: this.dish().id,
+      dishName: this.dish().name,
+      contact: submission.contact,
+    });
   }
 
   openShareModal(): void {

@@ -19,6 +19,27 @@
         <i class="ti ti-tools-kitchen-2"></i>
         <span>Carta y Platos ({{ allDishes().length }})</span>
       </button>
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="activeTab() === 'promo'"
+        (click)="setTab('promo')"
+      >
+        <i class="ti ti-sparkles"></i>
+        <span>Promo y destacados</span>
+      </button>
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="activeTab() === 'inbox'"
+        (click)="setTab('inbox')"
+      >
+        <i class="ti ti-inbox"></i>
+        <span>Bandeja</span>
+        @if (unreadCount() > 0) {
+          <span class="tab-badge">{{ unreadCount() }}</span>
+        }
+      </button>
     </nav>
   </header>
 
@@ -102,8 +123,8 @@
                     </span>
                   </div>
                 </td>
-                <td><span class="cat-pill">{{ dish.categoryId }}</span></td>
-                <td class="price-cell">{{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}</td>
+                <td><span class="cat-pill" [style.border-color]="categoryColor(dish.categoryId)" [style.color]="categoryColor(dish.categoryId)">{{ categoryLabel(dish.categoryId) }}</span></td>
+                <td class="price-cell">@if (dish.price > 0) { {{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }} } @else { Incluida }</td>
                 <td>
                   <span class="meta-tag"><i class="ti ti-heart"></i> {{ dish.likes }}</span>
                   <span class="meta-tag"><i class="ti ti-share"></i> {{ dish.shares ?? 0 }}</span>
@@ -119,7 +140,20 @@
                     <span>{{ dish.inStock ? 'En Stock' : 'Sin Stock' }}</span>
                   </button>
                 </td>
-                <td>
+                <td class="actions-cell">
+                  <button
+                    type="button"
+                    class="btn-icon btn-star"
+                    [class.on]="dish.featured"
+                    (click)="toggleFeatured(dish.id)"
+                    [title]="dish.featured ? 'Quitar de destacados' : 'Destacar plato'"
+                  >
+                    <i class="ti" [class.ti-star-filled]="dish.featured" [class.ti-star]="!dish.featured"></i>
+                  </button>
+                  <button type="button" class="btn-icon btn-edit" (click)="startEdit(dish)" title="Editar plato">
+                    <i class="ti ti-pencil"></i>
+                    <span>Editar</span>
+                  </button>
                   <button
                     type="button"
                     class="btn-delete"
@@ -135,6 +169,231 @@
         </table>
       </div>
     </section>
+  }
+
+  <!-- PESTAÑA: PROMO Y DESTACADOS -->
+  @if (activeTab() === 'promo') {
+    <section class="tab-content">
+      <div class="section-actions">
+        <div>
+          <h3>Promo destacada</h3>
+          <p class="section-sub">Es el banner grande que ve el comensal al abrir la lista de la carta.</p>
+        </div>
+      </div>
+
+      <div class="promo-editor">
+        <div class="promo-form">
+          <label class="switch-row">
+            <input
+              type="checkbox"
+              [checked]="promoDraft().active"
+              (change)="updatePromo({ active: $any($event.target).checked })"
+            />
+            <span>Mostrar la promo en la carta</span>
+          </label>
+
+          <label class="field">
+            <span>Plato</span>
+            <select (change)="selectPromoDish($any($event.target).value)">
+              @for (dish of allDishes(); track dish.id) {
+                <option [value]="dish.id" [selected]="dish.id === promoDraft().dishId">
+                  {{ categoryLabel(dish.categoryId) }} · {{ dish.name }}
+                </option>
+              }
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Etiqueta</span>
+            <input
+              type="text"
+              placeholder="Ej: Sugerencia del chef, Promo de la semana, 2x1"
+              [value]="promoDraft().badge"
+              (input)="updatePromo({ badge: $any($event.target).value })"
+            />
+          </label>
+
+          <label class="field">
+            <span>Título</span>
+            <input type="text" [value]="promoDraft().title" (input)="updatePromo({ title: $any($event.target).value })" />
+          </label>
+
+          <label class="field">
+            <span>Texto</span>
+            <textarea
+              rows="2"
+              [value]="promoDraft().subtitle"
+              (input)="updatePromo({ subtitle: $any($event.target).value })"
+            ></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="button" class="btn-primary" (click)="savePromo()">
+              <i class="ti ti-device-floppy"></i> Guardar promo
+            </button>
+            @if (promoSaved()) {
+              <span class="saved-ok"><i class="ti ti-check"></i> Guardada: ya se ve en la carta</span>
+            }
+          </div>
+        </div>
+
+        <div class="promo-preview">
+          <span class="preview-label">Así se ve</span>
+          @if (promoPreviewDish(); as dish) {
+            <div class="hero-preview" [class.off]="!promoDraft().active">
+              <img [src]="dish.imageUrl" alt="" />
+              <div class="hero-preview-content">
+                <span class="hero-preview-badge">{{ promoDraft().badge }}</span>
+                <strong>{{ promoDraft().title }}</strong>
+                <span>{{ promoDraft().subtitle }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="section-actions featured-head">
+        <div>
+          <h3>Platos destacados ({{ featuredDishes().length }})</h3>
+          <p class="section-sub">Aparecen en la fila "Destacados" de la carta y con una estrella. Se agregan con la ⭐ en "Carta y Platos".</p>
+        </div>
+      </div>
+      <div class="featured-chips">
+        @for (dish of featuredDishes(); track dish.id) {
+          <span class="featured-chip">
+            <img [src]="dish.imageUrl" alt="" />
+            {{ dish.name }}
+            <button type="button" (click)="toggleFeatured(dish.id)" title="Quitar de destacados">
+              <i class="ti ti-x"></i>
+            </button>
+          </span>
+        } @empty {
+          <p class="section-sub">Todavía no hay platos destacados.</p>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- PESTAÑA: BANDEJA DE ENTRADA -->
+  @if (activeTab() === 'inbox') {
+    <section class="tab-content">
+      <div class="section-actions">
+        <div>
+          <h3>Bandeja de entrada</h3>
+          <p class="section-sub">
+            Comentarios sobre platos y mensajes de la valoración. Son privados: solo los ve el restaurante.
+          </p>
+        </div>
+        @if (unreadCount() > 0) {
+          <button type="button" class="btn-secondary" (click)="markAllRead()">
+            <i class="ti ti-checks"></i> Marcar todo como leído
+          </button>
+        }
+      </div>
+
+      <div class="inbox-list">
+        @for (msg of inbox(); track msg.id) {
+          <article class="inbox-item" [class.unread]="!msg.read">
+            <div class="inbox-head">
+              @if (msg.kind === 'comentario') {
+                <span class="inbox-kind"><i class="ti ti-message-circle"></i> Comentario · {{ msg.dishName }}</span>
+              } @else {
+                <span class="inbox-kind mood">{{ msg.mood ? moodEmoji[msg.mood] : '💬' }} Mensaje de la valoración</span>
+              }
+              <span class="inbox-date">{{ msg.at | date: 'd/M/yy HH:mm' }}</span>
+            </div>
+            <p class="inbox-text">{{ msg.text }}</p>
+            @if (msg.contact; as c) {
+              <div class="inbox-contact">
+                @if (c.name) {
+                  <span><i class="ti ti-user"></i> {{ c.name }}</span>
+                }
+                @if (c.email) {
+                  <a [href]="'mailto:' + c.email"><i class="ti ti-mail"></i> {{ c.email }}</a>
+                }
+                @if (c.whatsapp) {
+                  <a [href]="whatsappLink(c.whatsapp)" target="_blank" rel="noopener">
+                    <i class="ti ti-brand-whatsapp"></i> {{ c.whatsapp }}
+                  </a>
+                }
+              </div>
+            }
+            <div class="inbox-actions">
+              <button type="button" class="btn-link" (click)="toggleRead(msg)">
+                {{ msg.read ? 'Marcar como no leído' : 'Marcar como leído' }}
+              </button>
+              <button type="button" class="btn-link danger" (click)="deleteMessage(msg.id)">Eliminar</button>
+            </div>
+          </article>
+        } @empty {
+          <div class="inbox-empty">
+            <i class="ti ti-inbox"></i>
+            <p>Todavía no hay mensajes.</p>
+            <span>Cuando un comensal comente un plato o deje un mensaje en la valoración, aparece acá.</span>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- MODAL: EDITAR PLATO -->
+  @if (editing(); as dish) {
+    <div class="edit-backdrop" (click)="cancelEdit()"></div>
+    <div class="edit-modal" role="dialog" aria-label="Editar plato">
+      <div class="edit-head">
+        <img [src]="dish.imageUrl" alt="" />
+        <h3>Editar plato</h3>
+        <button type="button" class="btn-icon" (click)="cancelEdit()" aria-label="Cerrar"><i class="ti ti-x"></i></button>
+      </div>
+
+      <label class="field">
+        <span>Nombre</span>
+        <input type="text" [value]="editName()" (input)="editName.set($any($event.target).value)" />
+      </label>
+      <label class="field">
+        <span>Descripción</span>
+        <textarea rows="3" [value]="editDesc()" (input)="editDesc.set($any($event.target).value)"></textarea>
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span>Precio ($)</span>
+          <input type="number" min="0" step="100" [value]="editPrice()" (input)="editPrice.set(+$any($event.target).value)" />
+        </label>
+        <label class="field">
+          <span>Categoría</span>
+          <select (change)="editCategory.set($any($event.target).value)">
+            @for (cat of categories(); track cat.id) {
+              <option [value]="cat.id" [selected]="cat.id === editCategory()">{{ cat.label }}</option>
+            }
+          </select>
+        </label>
+      </div>
+      <label class="field">
+        <span>Etiquetas (separadas por coma)</span>
+        <input
+          type="text"
+          placeholder="Ej: Para compartir, Sin TACC"
+          [value]="editTags()"
+          (input)="editTags.set($any($event.target).value)"
+        />
+      </label>
+      <div class="switches">
+        <label class="switch-row">
+          <input type="checkbox" [checked]="editInStock()" (change)="editInStock.set($any($event.target).checked)" />
+          <span>Disponible (en stock)</span>
+        </label>
+        <label class="switch-row">
+          <input type="checkbox" [checked]="editFeatured()" (change)="editFeatured.set($any($event.target).checked)" />
+          <span>⭐ Destacado</span>
+        </label>
+      </div>
+      <div class="form-actions end">
+        <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancelar</button>
+        <button type="button" class="btn-primary" [disabled]="!editName().trim()" (click)="saveEdit()">
+          <i class="ti ti-device-floppy"></i> Guardar cambios
+        </button>
+      </div>
+    </div>
   }
 
 </div>

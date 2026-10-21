@@ -10,7 +10,6 @@ import { Dish } from '../../../core/models/dish.model';
 export class ActionRail {
   readonly dish = input.required<Dish>();
   readonly liked = input.required<boolean>();
-  readonly commentCount = input.required<number>();
   readonly compact = input(false);
   readonly shareLabel = input('Compartir');
 

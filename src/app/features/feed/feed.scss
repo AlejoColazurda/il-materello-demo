@@ -16,7 +16,7 @@
   /* En celulares y pantallas táctiles (pantallas de hasta 640px) */
   @media (max-width: 640px) {
     max-width: 100%;
-    width: 100vw;
+    width: 100%;
     height: calc(100dvh - 54px);
     max-height: none;
     min-height: auto;

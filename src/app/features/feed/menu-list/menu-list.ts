@@ -52,6 +52,9 @@ export class MenuList {
   private readonly scroller = viewChild.required<ElementRef<HTMLElement>>('scroller');
 
   readonly cubiertoPrice = CUBIERTO_PRICE;
+  readonly promo = this.menuService.promo;
+  readonly promoDish = this.menuService.promoDish;
+  readonly featuredDishes = this.menuService.featuredDishes;
   readonly query = signal('');
   /** Filtro rápido por etiqueta (Para compartir, Sin TACC, Para llevar…). */
   readonly activeTag = signal<string | null>(null);

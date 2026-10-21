@@ -1,4 +1,51 @@
 <div class="scroller" #scroller (scroll)="onScroll()">
+  <!-- Promo / sugerencia destacada (se edita desde el panel) -->
+  @if (promo().active && promoDish(); as dish) {
+    <button type="button" class="hero" (click)="openDetail(dish)" [attr.aria-label]="promo().title">
+      <img class="hero-img" [src]="dish.imageUrl" alt="" />
+      <span class="hero-shade"></span>
+      <span class="hero-content">
+        <span class="hero-badge"><i class="ti ti-sparkles"></i> {{ promo().badge }}</span>
+        <span class="hero-title">{{ promo().title }}</span>
+        @if (promo().subtitle) {
+          <span class="hero-sub">{{ promo().subtitle }}</span>
+        }
+        <span class="hero-foot">
+          <span class="hero-price">
+            @if (dish.price > 0) {
+              {{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+            }
+          </span>
+          <span class="hero-cta">Ver plato <i class="ti ti-arrow-right"></i></span>
+        </span>
+      </span>
+    </button>
+  }
+
+  <!-- Destacados -->
+  @if (featuredDishes().length) {
+    <div class="featured">
+      <h2 class="featured-title"><i class="ti ti-star-filled"></i> Destacados</h2>
+      <div class="featured-row">
+        @for (dish of featuredDishes(); track dish.id) {
+          <button type="button" class="featured-card" (click)="openDetail(dish)">
+            <span class="featured-img" [style.background-image]="dish.bgGradient">
+              @if (dish.imageUrl) {
+                <img [src]="dish.imageUrl" [alt]="dish.name" loading="lazy" />
+              }
+            </span>
+            <span class="featured-name">{{ dish.name }}</span>
+            <span class="featured-price">
+              @if (dish.price > 0) {
+                {{ dish.price | currency: 'ARS' : 'symbol-narrow' : '1.0-0' }}
+              }
+            </span>
+          </button>
+        }
+      </div>
+    </div>
+  }
+
   <p class="diet-note">
     <i class="ti ti-wheat-off"></i>
     <span>¿Alergias o celiaquía? <b>Consultá a tu mozo</b> antes de pedir.</span>
@@ -70,7 +117,12 @@
               [attr.aria-label]="'Ver detalle de ' + dish.name"
             >
               <span class="dish-text">
-                <span class="dish-name">{{ dish.name }}</span>
+                <span class="dish-name">
+                  @if (dish.featured) {
+                    <i class="ti ti-star-filled featured-star" title="Destacado"></i>
+                  }
+                  {{ dish.name }}
+                </span>
                 @if (dish.description) {
                   <span class="dish-desc">{{ dish.description }}</span>
                 }

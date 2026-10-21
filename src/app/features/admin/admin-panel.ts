@@ -1,12 +1,16 @@
-import { CurrencyPipe, SlicePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, SlicePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, output, signal } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
 import { AuthService } from '../../core/services/auth.service';
+import { InboxMessage, InboxService } from '../../core/services/inbox.service';
+import { Dish, Promo } from '../../core/models/dish.model';
 import { CustomRole, RolePermissions, StaffUser } from '../../core/models/user.model';
+
+type AdminTab = 'dishes' | 'promo' | 'inbox';
 
 @Component({
   selector: 'app-admin-panel',
-  imports: [CurrencyPipe, SlicePipe],
+  imports: [CurrencyPipe, DatePipe, SlicePipe],
   templateUrl: './admin-panel.html',
   styleUrl: './admin-panel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,10 +18,34 @@ import { CustomRole, RolePermissions, StaffUser } from '../../core/models/user.m
 export class AdminPanel {
   private readonly menuService = inject(MenuService);
   private readonly authService = inject(AuthService);
+  private readonly inboxService = inject(InboxService);
 
   readonly openComposerRequested = output<void>();
 
-  readonly activeTab = signal<'dishes' | 'users' | 'roles' | 'fudo'>('dishes');
+  readonly activeTab = signal<AdminTab>('dishes');
+
+  // ---------- Bandeja de entrada (comentarios y mensajes privados) ----------
+  readonly inbox = this.inboxService.messages;
+  readonly unreadCount = this.inboxService.unreadCount;
+  readonly moodEmoji: Record<number, string> = { 1: '😡', 2: '😕', 3: '😐', 4: '🙂', 5: '😍' };
+
+  // ---------- Promo y destacados ----------
+  readonly featuredDishes = this.menuService.featuredDishes;
+  readonly promoDraft = signal<Promo>({ ...this.menuService.promo() });
+  readonly promoSaved = signal(false);
+  readonly promoPreviewDish = computed(() =>
+    this.allDishes().find((d) => d.id === this.promoDraft().dishId),
+  );
+
+  // ---------- Edición de un plato ----------
+  readonly editing = signal<Dish | null>(null);
+  readonly editName = signal('');
+  readonly editDesc = signal('');
+  readonly editPrice = signal(0);
+  readonly editCategory = signal('');
+  readonly editTags = signal('');
+  readonly editInStock = signal(true);
+  readonly editFeatured = signal(false);
 
   readonly categories = this.menuService.categories;
   readonly allDishes = this.menuService.dishes;
@@ -94,8 +122,102 @@ export class AdminPanel {
     input.value = '';
   }
 
-  setTab(tab: 'dishes' | 'users' | 'roles' | 'fudo'): void {
+  setTab(tab: AdminTab): void {
+    if (tab === 'promo') {
+      this.promoDraft.set({ ...this.menuService.promo() });
+      this.promoSaved.set(false);
+    }
     this.activeTab.set(tab);
+  }
+
+  categoryLabel(categoryId: string): string {
+    return this.categories().find((c) => c.id === categoryId)?.label ?? categoryId;
+  }
+
+  categoryColor(categoryId: string): string {
+    return this.categories().find((c) => c.id === categoryId)?.color ?? '#999';
+  }
+
+  toggleFeatured(dishId: string): void {
+    this.menuService.toggleFeatured(dishId);
+  }
+
+  // ---------- Edición ----------
+  startEdit(dish: Dish): void {
+    this.editing.set(dish);
+    this.editName.set(dish.name);
+    this.editDesc.set(dish.description);
+    this.editPrice.set(dish.price);
+    this.editCategory.set(dish.categoryId);
+    this.editTags.set(dish.tags.map((t) => t.trim()).join(', '));
+    this.editInStock.set(dish.inStock);
+    this.editFeatured.set(!!dish.featured);
+  }
+
+  cancelEdit(): void {
+    this.editing.set(null);
+  }
+
+  saveEdit(): void {
+    const dish = this.editing();
+    const name = this.editName().trim();
+    if (!dish || !name) {
+      return;
+    }
+    this.menuService.updateDish(dish.id, {
+      name,
+      description: this.editDesc().trim(),
+      price: Math.max(0, Math.round(Number(this.editPrice()) || 0)),
+      categoryId: this.editCategory(),
+      tags: this.editTags()
+        .split(',')
+        .map((t) => t.trim())
+        .filter(Boolean),
+      inStock: this.editInStock(),
+      featured: this.editFeatured(),
+    });
+    this.editing.set(null);
+  }
+
+  // ---------- Promo ----------
+  updatePromo(changes: Partial<Promo>): void {
+    this.promoDraft.update((p) => ({ ...p, ...changes }));
+    this.promoSaved.set(false);
+  }
+
+  /** Al elegir otro plato, propone su nombre y descripción como textos del banner. */
+  selectPromoDish(dishId: string): void {
+    const dish = this.allDishes().find((d) => d.id === dishId);
+    this.updatePromo({
+      dishId,
+      title: dish?.name ?? this.promoDraft().title,
+      subtitle: dish?.description ?? this.promoDraft().subtitle,
+    });
+  }
+
+  savePromo(): void {
+    this.menuService.setPromo({ ...this.promoDraft() });
+    this.promoSaved.set(true);
+  }
+
+  // ---------- Bandeja ----------
+  toggleRead(message: InboxMessage): void {
+    this.inboxService.markRead(message.id, !message.read);
+  }
+
+  markAllRead(): void {
+    this.inboxService.markAllRead();
+  }
+
+  deleteMessage(id: string): void {
+    if (confirm('¿Eliminar este mensaje?')) {
+      this.inboxService.remove(id);
+    }
+  }
+
+  whatsappLink(phone: string): string {
+    const digits = phone.replace(/\D/g, '');
+    return `https://wa.me/${digits.startsWith('54') ? digits : '549' + digits}`;
   }
 
   toggleDishStock(dishId: string): void {

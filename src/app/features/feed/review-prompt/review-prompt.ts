@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, output, signal } from '@angular/core';
+import { InboxService } from '../../../core/services/inbox.service';
 import { GOOGLE_REVIEW_URL } from '../../../core/config/reviews';
 
 interface Mood {
@@ -7,8 +8,6 @@ interface Mood {
   label: string;
   color: string;
 }
-
-const FEEDBACK_KEY = 'ilm.privateFeedback';
 
 /**
  * "¿Cómo la estás pasando?" con caritas.
@@ -23,6 +22,8 @@ const FEEDBACK_KEY = 'ilm.privateFeedback';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewPrompt {
+  private readonly inboxService = inject(InboxService);
+
   readonly closed = output<void>();
 
   readonly moods: Mood[] = [
@@ -49,14 +50,7 @@ export class ReviewPrompt {
     if (!text) {
       return;
     }
-    // Sin backend: queda guardado en el dispositivo. Con servidor, esto le llega al encargado.
-    try {
-      const list = JSON.parse(localStorage.getItem(FEEDBACK_KEY) || '[]');
-      list.push({ mood: this.selected()?.value, text, at: new Date().toISOString() });
-      localStorage.setItem(FEEDBACK_KEY, JSON.stringify(list));
-    } catch {
-      // sin storage
-    }
+    this.inboxService.add({ kind: 'experiencia', mood: this.selected()?.value, text });
     this.feedbackSent.set(true);
   }
 

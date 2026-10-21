@@ -10,8 +10,6 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | Archivo | Foto original | Autor | Licencia |
 |---|---|---|---|
 | `public/dishes/olivas-a-la-ascolana.jpg` | [Olive all'ascolana.jpg](https://commons.wikimedia.org/wiki/File:Olive_all%27ascolana.jpg) | Manuela Zangara | CC BY-SA 2.0 |
-| `public/dishes/tricolor.jpg` | [Insalata Caprese (from Poznan).JPG](https://commons.wikimedia.org/wiki/File:Insalata_Caprese_(from_Poznan).JPG) | MOs810 | CC BY-SA 3.0 |
-| `public/dishes/hinojos-gratinados.jpg` | [Parmigiana Bianca di Zucchine.jpg](https://commons.wikimedia.org/wiki/File:Parmigiana_Bianca_di_Zucchine.jpg) | DinaBenedettoFerrandina | CC BY-SA 4.0 |
 | `public/dishes/mozzarella-caprese-con-tomates-secos.jpg` | [Caprese salad (3124173496).jpg](https://commons.wikimedia.org/wiki/File:Caprese_salad_(3124173496).jpg) | Geoff Peters from Vancouver, BC, Canada | CC BY 2.0 |
 | `public/dishes/zucchini-fritos.jpg` | [Sliced Zucchini, air fried with herbs - On plate.jpg](https://commons.wikimedia.org/wiki/File:Sliced_Zucchini,_air_fried_with_herbs_-_On_plate.jpg) | Infrogmation of New Orleans | CC BY-SA 4.0 |
 | `public/dishes/porcion-de-ragu.jpg` | [Tagliatelle al ragù.jpg](https://commons.wikimedia.org/wiki/File:Tagliatelle_al_rag%C3%B9.jpg) | Catia Giaccherini | CC BY-SA 3.0 |
@@ -55,15 +53,12 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | `public/dishes/espumante-por-copa.jpg` | [Champagne flute and bottle.jpg](https://commons.wikimedia.org/wiki/File:Champagne_flute_and_bottle.jpg) | Taken on September 22, 2005 | CC BY 2.0 |
 | `public/dishes/vitel-tone.jpg` | [Vitello Tonnato August 2019 .jpeg](https://commons.wikimedia.org/wiki/File:Vitello_Tonnato_August_2019_.jpeg) | Adrian Michael | CC BY-SA 3.0 |
 | `public/dishes/caponatina.jpg` | [Capunata a un restaurant del carrer de la Creu, València.jpg](https://commons.wikimedia.org/wiki/File:Capunata_a_un_restaurant_del_carrer_de_la_Creu,_Val%C3%A8ncia.jpg) | Joanbanjo | CC BY-SA 4.0 |
-| `public/dishes/croquetas-de-verdura.jpg` | [Potato croquettes 001.jpg](https://commons.wikimedia.org/wiki/File:Potato_croquettes_001.jpg) | Ocdp | CC0 |
 | `public/dishes/burrata-con-rucula.jpg` | [Burrata - Nanninella.jpg](https://commons.wikimedia.org/wiki/File:Burrata_-_Nanninella.jpg) | Andy Li | CC0 |
 | `public/dishes/mozzarella-caprese.jpg` | [Caprese-1.jpg](https://commons.wikimedia.org/wiki/File:Caprese-1.jpg) | Rainer Zenz | CC BY-SA 3.0 |
 | `public/dishes/prosciutto-di-parma.jpg` | [Prosciutto con melone IMGP0936.jpg](https://commons.wikimedia.org/wiki/File:Prosciutto_con_melone_IMGP0936.jpg) | Nikodem Nijaki | CC BY-SA 3.0 |
 | `public/dishes/queso-tipo-parmesano-o-azul.jpg` | [Parmesan Cheese Parmigiano-Reggiano.jpg](https://commons.wikimedia.org/wiki/File:Parmesan_Cheese_Parmigiano-Reggiano.jpg) | Amin | CC BY-SA 4.0 |
 | `public/dishes/mortadella-bocatti.jpg` | [Mortadella IMGP0978.jpg](https://commons.wikimedia.org/wiki/File:Mortadella_IMGP0978.jpg) | Nikodem Nijaki | CC BY-SA 3.0 |
 | `public/dishes/tomates-secos.jpg` | [Dried tomatoes in mason jar.jpg](https://commons.wikimedia.org/wiki/File:Dried_tomatoes_in_mason_jar.jpg) | Nutrition, Food Safety &amp; Health | CC0 |
-| `public/dishes/mayonesa-de-atun.jpg` | [Tuna salad at QAG Cafe, May 2021.jpg](https://commons.wikimedia.org/wiki/File:Tuna_salad_at_QAG_Cafe,_May_2021.jpg) | Kgbo | CC BY-SA 4.0 |
-| `public/dishes/porotos-suaves-o-picantes.jpg` | [Pinto Beans Seeds.jpg](https://commons.wikimedia.org/wiki/File:Pinto_Beans_Seeds.jpg) | Sanjay Acharya | CC BY-SA 4.0 |
 | `public/dishes/spianata.jpg` | [Salami aka.jpg](https://commons.wikimedia.org/wiki/File:Salami_aka.jpg) | André Karwath aka Aka | CC BY-SA 2.5 |
 | `public/dishes/croquetas-de-hongos-y-cebolla.jpg` | [La Murta vins i tapes - Croquetes de pernil.jpg](https://commons.wikimedia.org/wiki/File:La_Murta_vins_i_tapes_-_Croquetes_de_pernil.jpg) | Francesc Fort | CC BY-SA 4.0 |
 | `public/dishes/tomate-gratinado.jpg` | [Stuffed tomatoes; Tomates rellenos (Las Siete Orillas project).jpg](https://commons.wikimedia.org/wiki/File:Stuffed_tomatoes;_Tomates_rellenos_(Las_Siete_Orillas_project).jpg) | El Mono Español | CC BY-SA 4.0 |
@@ -77,15 +72,11 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | `public/dishes/napolitana.jpg` | [Maccheroni alla amatriciana (3543752494).jpg](https://commons.wikimedia.org/wiki/File:Maccheroni_alla_amatriciana_(3543752494).jpg) | Randy OHC from West Park, New York, USA | CC BY 2.0 |
 | `public/dishes/porcion-de-salsa-extra.jpg` | [Liat Portal for Foodie Disorder - Spaghetti with Tomato Sauce.jpg](https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Spaghetti_with_Tomato_Sauce.jpg) | HaJunkiyada | CC BY-SA 4.0 |
 | `public/dishes/peperoncino.jpg` | [VitorJubini MercadoDaVilaRubim Vitoria ES (39182859020) (square crop).jpg](https://commons.wikimedia.org/wiki/File:VitorJubini_MercadoDaVilaRubim_Vitoria_ES_(39182859020)_(square_crop).jpg) | MTur Destinos | Public domain |
-| `public/dishes/hongos.jpg` | [Edible fungi in basket 2012 G1.jpg](https://commons.wikimedia.org/wiki/File:Edible_fungi_in_basket_2012_G1.jpg) | George Chernilevsky | Public domain |
 | `public/dishes/porcion-de-pure-o-papas-fritas.jpg` | [DoughnDolce Beef Sandwich.jpg](https://commons.wikimedia.org/wiki/File:DoughnDolce_Beef_Sandwich.jpg) | Vincent60030 | CC BY-SA 4.0 |
-| `public/dishes/salsa-de-hongos.jpg` | [Edible fungi in basket 2019 G2.jpg](https://commons.wikimedia.org/wiki/File:Edible_fungi_in_basket_2019_G2.jpg) | George Chernilevsky | Public domain |
 | `public/dishes/carbonara.jpg` | [Carbonara alla gricia.jpg](https://commons.wikimedia.org/wiki/File:Carbonara_alla_gricia.jpg) | Misaochan | CC BY-SA 3.0 |
 | `public/dishes/risotto-funghi.jpg` | [Risotto Champignons.jpg](https://commons.wikimedia.org/wiki/File:Risotto_Champignons.jpg) | PixelBrûlé | CC BY-SA 4.0 |
 | `public/dishes/saltimbocca-alla-romana.jpg` | [Saltimbocca mit Polenta und Zucchini (IMG 20250922 121032).jpg](https://commons.wikimedia.org/wiki/File:Saltimbocca_mit_Polenta_und_Zucchini_(IMG_20250922_121032).jpg) | Simon Legner (User:simon04) | CC BY-SA 4.0 |
-| `public/dishes/estofado-de-carne.jpg` | [Plat (noix de quasi de veau au jus truffe, étuvée de panais, pomme dauphines et chips croustillantes) (Munster) (2).jpg](https://commons.wikimedia.org/wiki/File:Plat_(noix_de_quasi_de_veau_au_jus_truffe,_%C3%A9tuv%C3%A9e_de_panais,_pomme_dauphines_et_chips_croustillantes)_(Munster)_(2).jpg) | Gzen92 | CC BY-SA 4.0 |
 | `public/dishes/milanesa-de-lomo.jpg` | [The pork schnitzel at the Figlmuller restaurant in Vienna, Austria.jpg](https://commons.wikimedia.org/wiki/File:The_pork_schnitzel_at_the_Figlmuller_restaurant_in_Vienna,_Austria.jpg) | TravelPhotosNL | CC BY-SA 4.0 |
-| `public/dishes/lomo-a-la-parrilla.jpg` | [Steak at hotel.jpg](https://commons.wikimedia.org/wiki/File:Steak_at_hotel.jpg) | Arisepeter | CC BY-SA 4.0 |
 | `public/dishes/suprema.jpg` | [Wiener Schnitzel - Chicken with Cheese Sauce - plus Frites and a Green Salad - Walvis Bay, Namibia.jpg](https://commons.wikimedia.org/wiki/File:Wiener_Schnitzel_-_Chicken_with_Cheese_Sauce_-_plus_Frites_and_a_Green_Salad_-_Walvis_Bay,_Namibia.jpg) | Wiki.cullin | CC BY-SA 4.0 |
 | `public/dishes/rucula-queso-azul-y-nuez.jpg` | [Char-siu pork salad - Oriental cuisine.jpg](https://commons.wikimedia.org/wiki/File:Char-siu_pork_salad_-_Oriental_cuisine.jpg) | Sarkar Sayantan | CC BY-SA 4.0 |
 | `public/dishes/crostata-de-fruta.jpg` | [Wax- cake model Japan1550.jpg](https://commons.wikimedia.org/wiki/File:Wax-_cake_model_Japan1550.jpg) | Ermell | CC0 |
@@ -103,7 +94,6 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | `public/dishes/bigne-con-helado-y-chocolate-caliente.jpg` | [Postre de profiteroles.jpg](https://commons.wikimedia.org/wiki/File:Postre_de_profiteroles.jpg) | Juan Emilio Prades Bel | CC BY-SA 4.0 |
 | `public/dishes/flan-con-crema-o-dulce.jpg` | [Homemade Flan.jpg](https://commons.wikimedia.org/wiki/File:Homemade_Flan.jpg) | Cary Bass | CC BY-SA 2.5 |
 | `public/dishes/sorbete-de-limon.jpg` | [Eis 002 2015 04 25.jpg](https://commons.wikimedia.org/wiki/File:Eis_002_2015_04_25.jpg) | Friedrich Haag | CC BY-SA 4.0 |
-| `public/dishes/agua-mineral.jpg` | [Blue glass with carbonated water.jpg](https://commons.wikimedia.org/wiki/File:Blue_glass_with_carbonated_water.jpg) | W.carter | CC0 |
 | `public/dishes/gaseosa.jpg` | [15-09-26-RalfR-WLC-0098 - Coca-Cola glass bottle (Germany).jpg](https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_(Germany).jpg) | Ralf Roletschek | Public domain |
 | `public/dishes/jugo-de-naranja-exprimido.jpg` | [Orange juice 1 edit1.jpg](https://commons.wikimedia.org/wiki/File:Orange_juice_1_edit1.jpg) | Agency of the United States Department of Agriculture Edited Version by: Arad | Public domain |
 | `public/dishes/crema-de-limoncello-500-ml.jpg` | [Chupitos de Limoncello y de Arroz.jpg](https://commons.wikimedia.org/wiki/File:Chupitos_de_Limoncello_y_de_Arroz.jpg) | Juan Emilio Prades Bel | CC BY-SA 4.0 |
@@ -112,8 +102,6 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | `public/dishes/gin-tonic.jpg` | [Gin and tonic cocktail with wedge of lime.jpg](https://commons.wikimedia.org/wiki/File:Gin_and_tonic_cocktail_with_wedge_of_lime.jpg) | Davidnuescheler | CC BY-SA 4.0 |
 | `public/dishes/cantieri-navali-bianco.jpg` | [15-09-26-RalfR-WLC-0084.jpg](https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0084.jpg) | Ralf Roletschek | CC BY-SA 3.0 |
 | `public/dishes/guardianes-del-cerro-bianco.jpg` | [15-09-26-RalfR-WLC-0084.jpg](https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0084.jpg) | Ralf Roletschek | CC BY-SA 3.0 |
-| `public/dishes/cantieri-navali-rosso.jpg` | [Maidenii Vermouth (Sweet) 02.jpg](https://commons.wikimedia.org/wiki/File:Maidenii_Vermouth_(Sweet)_02.jpg) | Indrajit Das | CC BY-SA 4.0 |
-| `public/dishes/guardianes-del-cerro-rosso.jpg` | [Maidenii Vermouth (Sweet) 02.jpg](https://commons.wikimedia.org/wiki/File:Maidenii_Vermouth_(Sweet)_02.jpg) | Indrajit Das | CC BY-SA 4.0 |
 | `public/dishes/olivia-malbec.jpg` | [Glass of Red Wine (28216529995).jpg](https://commons.wikimedia.org/wiki/File:Glass_of_Red_Wine_(28216529995).jpg) | Sam Howzit | CC BY 2.0 |
 | `public/dishes/durigutti-reserva-tinto.jpg` | [A glass of red wine.jpg](https://commons.wikimedia.org/wiki/File:A_glass_of_red_wine.jpg) | Davide Restivo from Lenzburg, Aarau, Switzerland | CC BY-SA 2.0 |
 | `public/dishes/vino-blanco-por-copa.jpg` | [A hand pours white wine from a bottle into a glass, capturing the festive spirit of a gathering in a garden.jpg](https://commons.wikimedia.org/wiki/File:A_hand_pours_white_wine_from_a_bottle_into_a_glass,_capturing_the_festive_spirit_of_a_gathering_in_a_garden.jpg) | Shixart1985 | CC BY 2.0 |
@@ -142,7 +130,6 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | `public/dishes/pie-de-monte-durigutti-criolla.jpg` | [Schramsberg Vineyards, July 2019-7579+7580.jpg](https://commons.wikimedia.org/wiki/File:Schramsberg_Vineyards,_July_2019-7579%2B7580.jpg) | Frank Schulenburg | CC BY-SA 4.0 |
 | `public/dishes/cocodrilo-vina-cobos-mendoza.jpg` | [Bottle and glass of red wine.jpg](https://commons.wikimedia.org/wiki/File:Bottle_and_glass_of_red_wine.jpg) | congerdesign | CC0 |
 | `public/dishes/finca-la-anita-gran-corte.jpg` | [Vineyard in Mendoza, Argentina.jpg](https://commons.wikimedia.org/wiki/File:Vineyard_in_Mendoza,_Argentina.jpg) | David | CC BY 2.0 |
-| `public/dishes/saint-felicien-malbec.jpg` | [2020 10 10 016 Tour de Vin.jpg](https://commons.wikimedia.org/wiki/File:2020_10_10_016_Tour_de_Vin.jpg) | Friedrich Haag | CC BY-SA 4.0 |
 | `public/dishes/paulucci-la-posta.jpg` | [2022-03-26 15 17 54 A glass of red wine and a glass of white wine at the Saratoga Country Club in Saratoga, Santa Clara County, California.jpg](https://commons.wikimedia.org/wiki/File:2022-03-26_15_17_54_A_glass_of_red_wine_and_a_glass_of_white_wine_at_the_Saratoga_Country_Club_in_Saratoga,_Santa_Clara_County,_California.jpg) | Famartin | CC BY-SA 4.0 |
 | `public/dishes/aguijon-de-abeja-reina-malbec.jpg` | [Los Pioneros Vineyard 2.jpg](https://commons.wikimedia.org/wiki/File:Los_Pioneros_Vineyard_2.jpg) | PP2025 | CC0 |
 | `public/dishes/dv-catena.jpg` | [Spier 21 Gables.jpg](https://commons.wikimedia.org/wiki/File:Spier_21_Gables.jpg) | USBGroup4 | CC BY-SA 3.0 |
@@ -158,7 +145,6 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | `public/dishes/m2.jpg` | [Schramsberg Vineyards, July 2019-7579+7580.jpg](https://commons.wikimedia.org/wiki/File:Schramsberg_Vineyards,_July_2019-7579%2B7580.jpg) | Frank Schulenburg | CC BY-SA 4.0 |
 | `public/dishes/pachamama.jpg` | [Bottle and glass of red wine.jpg](https://commons.wikimedia.org/wiki/File:Bottle_and_glass_of_red_wine.jpg) | congerdesign | CC0 |
 | `public/dishes/proyecto-las-compuertas-cordisco-durigutti.jpg` | [Vineyard in Mendoza, Argentina.jpg](https://commons.wikimedia.org/wiki/File:Vineyard_in_Mendoza,_Argentina.jpg) | David | CC BY 2.0 |
-| `public/dishes/ian.jpg` | [2020 10 10 016 Tour de Vin.jpg](https://commons.wikimedia.org/wiki/File:2020_10_10_016_Tour_de_Vin.jpg) | Friedrich Haag | CC BY-SA 4.0 |
 | `public/dishes/aguijon-de-abeja-reina-fusion-de-blancas.jpg` | [Red and white wine 12-2015.jpg](https://commons.wikimedia.org/wiki/File:Red_and_white_wine_12-2015.jpg) | A.Savin | CC BY-SA 3.0 |
 | `public/dishes/durigutti.jpg` | [A hand pours white wine from a bottle into a glass, capturing the festive spirit of a gathering in a garden.jpg](https://commons.wikimedia.org/wiki/File:A_hand_pours_white_wine_from_a_bottle_into_a_glass,_capturing_the_festive_spirit_of_a_gathering_in_a_garden.jpg) | Shixart1985 | CC BY 2.0 |
 | `public/dishes/de-sangre-luigui-bosca.jpg` | [Celebrating with a glass of white wine in a lively bar setting.jpg](https://commons.wikimedia.org/wiki/File:Celebrating_with_a_glass_of_white_wine_in_a_lively_bar_setting.jpg) | Shixart1985 | CC BY 2.0 |
@@ -170,3 +156,18 @@ Reemplazarlas por fotos propias antes de pasar a producción.
 | `public/dishes/domingo-molina-2.jpg` | [Drink Glass Wine Wine Glass Alcohol Wineglass.jpg](https://commons.wikimedia.org/wiki/File:Drink_Glass_Wine_Wine_Glass_Alcohol_Wineglass.jpg) | ongchinonn | CC0 |
 | `public/dishes/altaland-torrontes.jpg` | [Bodega Dante Robino, Mendoza.jpg](https://commons.wikimedia.org/wiki/File:Bodega_Dante_Robino,_Mendoza.jpg) | Bernard Gagnon | CC BY-SA 4.0 |
 | `public/dishes/luigi-bosca-de-sangre-white-blend.jpg` | [Red and white wine 12-2015.jpg](https://commons.wikimedia.org/wiki/File:Red_and_white_wine_12-2015.jpg) | A.Savin | CC BY-SA 3.0 |
+| `public/dishes/croquetas-de-verdura.jpg` | [Spinach Croquette (3760006167).jpg](https://commons.wikimedia.org/wiki/File:Spinach_Croquette_(3760006167).jpg) | Vegan Feast Catering | CC BY 2.0 |
+| `public/dishes/tricolor.jpg` | [Burrata cheese.jpg](https://commons.wikimedia.org/wiki/File:Burrata_cheese.jpg) | lazy fri13th | CC BY 2.0 |
+| `public/dishes/porotos-suaves-o-picantes.jpg` | [Giant beans (Gigantes).jpg](https://commons.wikimedia.org/wiki/File:Giant_beans_(Gigantes).jpg) | Henry Burrows derivative work: Hic et nunc (talk) | CC BY-SA 2.0 |
+| `public/dishes/mayonesa-de-atun.jpg` | [Baked potato with tuna, sweetcorn and mayonnaise - Waitrose café, Worthing 2025-12-11.jpg](https://commons.wikimedia.org/wiki/File:Baked_potato_with_tuna,_sweetcorn_and_mayonnaise_-_Waitrose_caf%C3%A9,_Worthing_2025-12-11.jpg) | Andy Li | CC0 |
+| `public/dishes/hinojos-gratinados.jpg` | [Parmigiana di melanzane-cer.JPG](https://commons.wikimedia.org/wiki/File:Parmigiana_di_melanzane-cer.JPG) | Tamorlan | CC BY-SA 3.0 |
+| `public/dishes/tagliatelle.jpg` | [Tagliatelle Funghi e Prosciutto - Donatello 2023-09-12.jpg](https://commons.wikimedia.org/wiki/File:Tagliatelle_Funghi_e_Prosciutto_-_Donatello_2023-09-12.jpg) | Andy Li | CC0 |
+| `public/dishes/hongos.jpg` | [Pasta with cream sauce bacon and mushroom.jpg](https://commons.wikimedia.org/wiki/File:Pasta_with_cream_sauce_bacon_and_mushroom.jpg) | Geoffreyrabbit | CC BY-SA 4.0 |
+| `public/dishes/salsa-de-hongos.jpg` | [Bacon and mushroom with creamy sauce pasta.jpg](https://commons.wikimedia.org/wiki/File:Bacon_and_mushroom_with_creamy_sauce_pasta.jpg) | Apeach316 | CC BY-SA 2.0 |
+| `public/dishes/estofado-de-carne.jpg` | [001 Spezzatino.jpg](https://commons.wikimedia.org/wiki/File:001_Spezzatino.jpg) | franzconde | CC BY 2.0 |
+| `public/dishes/lomo-a-la-parrilla.jpg` | [Cut of Sirloin Steak in Medium.jpg](https://commons.wikimedia.org/wiki/File:Cut_of_Sirloin_Steak_in_Medium.jpg) | Ceeseven | CC BY-SA 4.0 |
+| `public/dishes/agua-mineral.jpg` | [Fasting 4-Fasting-a-glass-of-water-on-an-empty-plate.jpg](https://commons.wikimedia.org/wiki/File:Fasting_4-Fasting-a-glass-of-water-on-an-empty-plate.jpg) | Dr Jean Fortunet | CC BY-SA 3.0 |
+| `public/dishes/cantieri-navali-rosso.jpg` | [Burning Manhattan Cocktail.png](https://commons.wikimedia.org/wiki/File:Burning_Manhattan_Cocktail.png) | Tallertallguy | CC0 |
+| `public/dishes/guardianes-del-cerro-rosso.jpg` | [Burning Manhattan Cocktail.png](https://commons.wikimedia.org/wiki/File:Burning_Manhattan_Cocktail.png) | Tallertallguy | CC0 |
+| `public/dishes/saint-felicien-malbec.jpg` | [Bottle and glass of red wine.jpg](https://commons.wikimedia.org/wiki/File:Bottle_and_glass_of_red_wine.jpg) | congerdesign | CC0 |
+| `public/dishes/ian.jpg` | [Los Pioneros Vineyard 2.jpg](https://commons.wikimedia.org/wiki/File:Los_Pioneros_Vineyard_2.jpg) | PP2025 | CC0 |

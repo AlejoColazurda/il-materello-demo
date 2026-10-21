@@ -40,6 +40,9 @@
       @if (category; as cat) {
         <span class="cat-pill" [style.--cat-color]="cat.color || '#f5c518'">{{ cat.label }}</span>
       }
+      @if (dish().featured) {
+        <span class="tag tag-featured"><i class="ti ti-star-filled"></i> Destacado</span>
+      }
       @for (tag of dish().tags; track tag) {
         <span class="tag" [class.tag-warning]="tag.trim() === 'Sin stock hoy'">{{ tag.trim() }}</span>
       }
@@ -70,7 +73,6 @@
   <app-action-rail
     [dish]="dish()"
     [liked]="isLiked"
-    [commentCount]="commentCount"
     [compact]="commentsOpen"
     [shareLabel]="shareLabel"
     (likeToggled)="toggleLike()"
@@ -81,7 +83,7 @@
   <!-- Hoja de comentarios desplegable -->
   @if (commentsOpen) {
     <app-comment-sheet
-      [comments]="comments"
+      [dishName]="dish().name"
       (closed)="closeComments()"
       (commentSubmitted)="submitComment($event)"
     />
