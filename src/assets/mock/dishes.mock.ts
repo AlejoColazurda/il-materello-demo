@@ -6,67 +6,80 @@ export const CATEGORIES_MOCK: Category[] = [
   {
     "id": "antipasto",
     "label": "Antipasti",
-    "icon": "tools-kitchen-2"
+    "icon": "tools-kitchen-2",
+    "color": "#FF8A3D"
   },
   {
     "id": "pastas",
     "label": "Pastas",
-    "icon": "tools-kitchen"
+    "icon": "tools-kitchen",
+    "color": "#F5C518"
   },
   {
     "id": "salsas",
     "label": "Salsas y extras",
-    "icon": "bowl"
+    "icon": "bowl",
+    "color": "#EF5350"
   },
   {
     "id": "risotto",
     "label": "Risotto",
-    "icon": "bowl"
+    "icon": "bowl",
+    "color": "#9575CD"
   },
   {
     "id": "carnes",
     "label": "Carnes",
-    "icon": "meat"
+    "icon": "meat",
+    "color": "#F06292"
   },
   {
     "id": "ensaladas",
     "label": "Ensaladas",
-    "icon": "leaf"
+    "icon": "leaf",
+    "color": "#66BB6A"
   },
   {
     "id": "postres",
     "label": "Postres y café",
-    "icon": "cake"
+    "icon": "cake",
+    "color": "#4DD0E1"
   },
   {
     "id": "bebidas",
     "label": "Bebidas",
-    "icon": "cup"
+    "icon": "cup",
+    "color": "#42A5F5"
   },
   {
     "id": "tragos",
     "label": "Aperitivos y tragos",
-    "icon": "glass-cocktail"
+    "icon": "glass-cocktail",
+    "color": "#26A69A"
   },
   {
     "id": "vinos-tintos",
     "label": "Vinos tintos",
-    "icon": "bottle"
+    "icon": "bottle",
+    "color": "#D81B60"
   },
   {
     "id": "vinos-blancos",
     "label": "Blancos y rosados",
-    "icon": "bottle"
+    "icon": "bottle",
+    "color": "#E6D690"
   },
   {
     "id": "espumantes",
     "label": "Espumantes",
-    "icon": "sparkles"
+    "icon": "sparkles",
+    "color": "#B0BEC5"
   },
   {
     "id": "por-copa",
     "label": "Por copa",
-    "icon": "glass-full"
+    "icon": "glass-full",
+    "color": "#FFAB91"
   }
 ];
 

@@ -4,6 +4,7 @@
       type="button"
       class="chip"
       [class.active]="category.id === activeCategoryId()"
+      [style.--chip-color]="category.color || '#f5c518'"
       (click)="selectCategory(category.id)"
     >
       @if (category.icon) {

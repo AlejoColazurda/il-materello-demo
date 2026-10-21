@@ -34,11 +34,19 @@
 
   transition: all 0.2s ease;
 
+  .chip-icon {
+    color: var(--chip-color);
+  }
+
   &.active {
-    background: var(--accent-2, #f5c518);
+    background: var(--chip-color);
     color: #1a1a1a;
-    border-color: var(--accent-2, #f5c518);
-    box-shadow: 0 2px 10px rgba(245, 197, 24, 0.45);
+    border-color: var(--chip-color);
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--chip-color) 50%, transparent);
+
+    .chip-icon {
+      color: #1a1a1a;
+    }
     transform: scale(1.03);
   }
 }

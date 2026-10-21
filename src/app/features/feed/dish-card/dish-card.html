@@ -37,6 +37,9 @@
   <div class="dish-info" [class.with-comments]="commentsOpen">
     <!-- Tags / Etiquetas nutricionales o de categoría -->
     <div class="dish-tags">
+      @if (category; as cat) {
+        <span class="cat-pill" [style.--cat-color]="cat.color || '#f5c518'">{{ cat.label }}</span>
+      }
       @for (tag of dish().tags; track tag) {
         <span class="tag" [class.tag-warning]="tag.trim() === 'Sin stock hoy'">{{ tag.trim() }}</span>
       }

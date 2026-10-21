@@ -1,4 +1,4 @@
-import { CurrencyPipe, SlicePipe, UpperCasePipe } from '@angular/common';
+import { CurrencyPipe, SlicePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, output, signal } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
 import { AuthService } from '../../core/services/auth.service';
@@ -6,7 +6,7 @@ import { CustomRole, RolePermissions, StaffUser } from '../../core/models/user.m
 
 @Component({
   selector: 'app-admin-panel',
-  imports: [CurrencyPipe, SlicePipe, UpperCasePipe],
+  imports: [CurrencyPipe, SlicePipe],
   templateUrl: './admin-panel.html',
   styleUrl: './admin-panel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

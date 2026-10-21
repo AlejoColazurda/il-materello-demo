@@ -30,7 +30,11 @@
   }
 
   @for (section of sections(); track section.category.id) {
-    <section class="section" [attr.data-category]="section.category.id">
+    <section
+      class="section"
+      [attr.data-category]="section.category.id"
+      [style.--cat-color]="section.category.color || '#f5c518'"
+    >
       <h2 class="section-title">
         @if (section.category.icon) {
           <i class="ti ti-{{ section.category.icon }}"></i>

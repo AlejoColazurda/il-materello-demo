@@ -23,6 +23,10 @@ export class DishCard {
 
   private lastTap = 0;
 
+  get category() {
+    return this.menuService.categories().find((c) => c.id === this.dish().categoryId);
+  }
+
   get isLiked(): boolean {
     return this.menuService.isLiked(this.dish().id);
   }
