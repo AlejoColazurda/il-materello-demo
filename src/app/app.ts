@@ -45,7 +45,9 @@ export class App {
       this.permissions().canManageStaff ||
       this.permissions().canManageRoles,
   );
-  readonly roleLabel = computed(() => this.authService.currentRole()?.name ?? 'Personal');
+  readonly roleLabel = computed(() =>
+    this.staffUser()?.roleId === 'admin' ? 'Administración' : (this.authService.currentRole()?.name ?? 'Personal'),
+  );
   /** Pantalla de inicio de cada rol al entrar o tocar el logo. */
   readonly defaultStaffView = computed<DemoView>(() =>
     this.canSeeAdmin() ? 'admin' : this.canSeeOrders() ? 'mozos' : 'cliente',

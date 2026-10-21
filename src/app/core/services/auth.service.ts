@@ -1,6 +1,6 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { CustomRole, PRELOADED_ROLES, RolePermissions, StaffUser } from '../models/user.model';
-import { ADMIN_TOKEN_SHA256, sha256Hex } from '../config/admin-access';
+import { ADMIN_ACCESS, sha256Hex } from '../config/admin-access';
 import { ORDERS_ENABLED } from '../config/features';
 
 const STAFF_SESSION_KEY = 'ilmaterello_staff_session';
@@ -122,8 +122,8 @@ export class AuthService {
       const stored = localStorage.getItem(STAFF_SESSION_KEY);
       if (stored) {
         const user: StaffUser = JSON.parse(stored);
-        // Solo el administrador tiene sesión en el frontend
-        return user.roleId === 'admin' ? user : null;
+        // Solo administradores con un acceso vigente tienen sesión en el frontend
+        return ADMIN_ACCESS.some((entry) => entry.user.id === user.id) ? user : null;
       }
     } catch {
       // fallback
@@ -193,11 +193,15 @@ export class AuthService {
       return false;
     }
     const hash = await sha256Hex(token.trim());
-    if (hash !== ADMIN_TOKEN_SHA256) {
+    const access = ADMIN_ACCESS.find((entry) => entry.sha256 === hash);
+    if (!access) {
       return false;
     }
-    this.loginAsDemo('admin');
-    return this.isAuthenticated();
+    // Cada enlace entra con su propio administrador (nombre visible en el panel)
+    const user = { ...access.user, lastLogin: new Date() };
+    this.currentStaffUserSignal.set(user);
+    this.saveSession(user);
+    return true;
   }
 
   /**
