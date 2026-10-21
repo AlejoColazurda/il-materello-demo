@@ -23,7 +23,24 @@
     }
   </div>
 
-  @if (query() && resultCount() > 0) {
+  @if (availableTags().length) {
+    <div class="tag-filters" role="group" aria-label="Filtrar por etiqueta">
+      @for (item of availableTags(); track item.tag) {
+        <button
+          type="button"
+          class="tag-filter"
+          [class.active]="activeTag() === item.tag"
+          [attr.aria-pressed]="activeTag() === item.tag"
+          (click)="toggleTag(item.tag)"
+        >
+          {{ item.tag }}
+          <span class="tag-count">{{ item.count }}</span>
+        </button>
+      }
+    </div>
+  }
+
+  @if ((query() || activeTag()) && resultCount() > 0) {
     <p class="result-count">
       {{ resultCount() }} {{ resultCount() === 1 ? 'plato encontrado' : 'platos encontrados' }}
     </p>
@@ -91,7 +108,7 @@
   } @empty {
     <div class="empty">
       <i class="ti ti-mood-empty"></i>
-      <p>No encontramos platos con "{{ query() }}".</p>
+      <p>No encontramos platos{{ query() ? ' con "' + query() + '"' : '' }}{{ activeTag() ? ' en "' + activeTag() + '"' : '' }}.</p>
       <button type="button" (click)="clearQuery()">Ver toda la carta</button>
     </div>
   }

@@ -53,6 +53,19 @@ export class MenuList {
 
   readonly cubiertoPrice = CUBIERTO_PRICE;
   readonly query = signal('');
+  /** Filtro rápido por etiqueta (Para compartir, Sin TACC, Para llevar…). */
+  readonly activeTag = signal<string | null>(null);
+
+  readonly availableTags = computed(() => {
+    const counts = new Map<string, number>();
+    for (const dish of this.dishes()) {
+      for (const tag of dish.tags) {
+        const clean = tag.trim();
+        if (clean) counts.set(clean, (counts.get(clean) ?? 0) + 1);
+      }
+    }
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([tag, count]) => ({ tag, count }));
+  });
   readonly selectedDish = signal<Dish | null>(null);
 
   readonly selectedCategoryLabel = computed(
@@ -63,6 +76,7 @@ export class MenuList {
 
   readonly sections = computed<MenuSection[]>(() => {
     const q = normalize(this.query().trim());
+    const tag = this.activeTag();
     const dishes = this.dishes();
 
     return this.categories()
@@ -71,7 +85,8 @@ export class MenuList {
         dishes: dishes.filter(
           (dish) =>
             dish.categoryId === category.id &&
-            (!q || normalize(`${dish.name} ${dish.description}`).includes(q)),
+            (!q || normalize(`${dish.name} ${dish.description}`).includes(q)) &&
+            (!tag || dish.tags.some((t) => t.trim() === tag)),
         ),
       }))
       .filter((section) => section.dishes.length > 0);
@@ -88,6 +103,12 @@ export class MenuList {
 
   clearQuery(): void {
     this.setQuery('');
+    this.activeTag.set(null);
+  }
+
+  toggleTag(tag: string): void {
+    this.activeTag.update((current) => (current === tag ? null : tag));
+    this.scroller().nativeElement.scrollTo({ top: 0 });
   }
 
   scrollToCategory(categoryId: string): void {
