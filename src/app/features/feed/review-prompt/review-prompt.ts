@@ -11,9 +11,12 @@ interface Mood {
 
 /**
  * "¿Cómo la estás pasando?" con caritas.
- * A TODOS se les ofrece dejar la reseña en Google (pedir reseñas solo a los contentos va
- * contra las políticas de Google). A quien no la está pasando bien se le ofrece además,
- * primero, contarle al encargado en privado para resolverlo en el momento.
+ * Muy bien / Excelente → invitación a dejar la reseña en Google.
+ * Mal / Regular / Bien → mensaje privado al encargado (sin enlace a Google).
+ *
+ * Decisión de la clienta (21/10/2026), tomada sabiendo que las políticas de reseñas de
+ * Google prohíben pedir reseñas solo a clientes satisfechos ("review gating") y que
+ * Google puede quitar reseñas o penalizar la ficha si lo detecta.
  */
 @Component({
   selector: 'app-review-prompt',
